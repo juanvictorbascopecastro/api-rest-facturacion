@@ -90,27 +90,22 @@ class CustomerController extends BaseController
         $this->prepareData();
 
         $query = Customer::find()
-            ->where(['like', 'numeroDocumento', $doc])
+            ->where(['ILIKE', 'numeroDocumento', $doc])
+            ->limit(20)
             ->all();
-
-        // if (empty($query)) {
-        //     throw new NotFoundHttpException("No customers found with Document Number like $doc.");
-        // }
 
         return $query;
     }
+
     public function actionSearchByName($name)
     {
         $this->prepareData();
 
         $query = Customer::find()
-            ->where(['like', 'razonSocial', $name])
+            ->where(['ILIKE', 'razonSocial', $name])
+            ->limit(20)
             ->all();
-
-        // if (empty($query)) {
-        //     throw new NotFoundHttpException("No customers found with Name like $name.");
-        // }
-
+            
         return $query;
     }
 }
