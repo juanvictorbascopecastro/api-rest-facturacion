@@ -60,7 +60,8 @@ $config = [
                 'POST service/categories' => 'service/category/insert',
                 'PUT,PATCH service/categories/<id:\d+>' => 'service/category/edit',
                 'DELETE service/categories' => 'service/category/remove',
-
+                'GET apiv1/customers/actionSearchByDoc/<numeroDocumento>' => 'apiv1/customer/search-by-doc',
+                'GET apiv1/customers/actionSearchByName/<name>' => 'apiv1/customer/search-by-name',
                 // ADMIN
             ],
         ],
