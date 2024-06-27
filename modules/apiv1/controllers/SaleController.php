@@ -12,6 +12,7 @@ use yii\data\ActiveDataProvider;
 use app\modules\apiv1\controllers\BaseController;
 use yii\web\NotFoundHttpException;
 use app\modules\apiv1\models\SaleForm;
+// use app\modules\apiv1\models\Productstock;
 use sizeg\jwt\Jwt;
 
 class SaleController extends BaseController
@@ -27,21 +28,11 @@ class SaleController extends BaseController
 
     public function actionListar()
     {
-        // $this->prepareData(true);
-        // Productstock::setCustomDb($db);
-
-        // return new ActiveDataProvider([
-        //     'query' => $this->modelClass::find()->orderBy(['dateCreate' => SORT_ASC]),
-        //     'pagination' => false,
-        // ]);
-
         $db = $this->prepareData(true);
         Productstock::setCustomDb($db);
 
-        $query = $this->modelClass::find()->with('productStocks')->orderBy(['dateCreate' => SORT_ASC]);
-
         return new ActiveDataProvider([
-            'query' => $query,
+            'query' => $this->modelClass::find()->with('productStocks')->orderBy(['dateCreate' => SORT_ASC]), // Asegúrate de que coincida con el nombre de la relación correcta
             'pagination' => false,
         ]);
     }

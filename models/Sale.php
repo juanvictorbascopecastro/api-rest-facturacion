@@ -23,7 +23,7 @@ class Sale extends \yii\db\ActiveRecord
         self::$customDb = $db;
     }
 
-    public function getProductstocks()
+    public function getProductStocks() // Cambiado a 'productStocks' para coincidir con el mensaje de error
     {
         return $this->hasMany(Productstock::class, ['idsale' => 'id']);
     }
@@ -40,7 +40,6 @@ class Sale extends \yii\db\ActiveRecord
         ];
     }
 
-    
     public function attributeLabels()
     {
         return [

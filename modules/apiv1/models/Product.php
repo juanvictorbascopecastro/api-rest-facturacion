@@ -30,12 +30,6 @@ class Product extends \app\models\Product {
             'price',
             'nameSource',
             'codeSource',
-            'productStocks'
         ];
-    }
-
-    public function getProductStocks()
-    {
-        return $this->hasMany(Productstock::class, ['idproduct' => 'id']);
     }
 }

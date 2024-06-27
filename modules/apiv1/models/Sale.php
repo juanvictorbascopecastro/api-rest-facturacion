@@ -54,10 +54,7 @@ class Sale extends \app\models\Sale {
             'waiter',
             'delivery',
             'delivered',
+            'productStocks' // este parametro esta declarado en su modelo base, lo hereda para usarlo
         ];
-    }
-    
-    public function getProductStocks() {
-        return $this->hasMany(Productstock::class, ['idsale' => 'id']);
     }
 }
