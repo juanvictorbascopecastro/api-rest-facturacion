@@ -27,10 +27,21 @@ class SaleController extends BaseController
 
     public function actionListar()
     {
-        $this->prepareData(true);
+        // $this->prepareData(true);
+        // Productstock::setCustomDb($db);
+
+        // return new ActiveDataProvider([
+        //     'query' => $this->modelClass::find()->orderBy(['dateCreate' => SORT_ASC]),
+        //     'pagination' => false,
+        // ]);
+
+        $db = $this->prepareData(true);
+        Productstock::setCustomDb($db);
+
+        $query = $this->modelClass::find()->with('productStocks')->orderBy(['dateCreate' => SORT_ASC]);
 
         return new ActiveDataProvider([
-            'query' => $this->modelClass::find()->orderBy(['dateCreate' => SORT_ASC]),
+            'query' => $query,
             'pagination' => false,
         ]);
     }

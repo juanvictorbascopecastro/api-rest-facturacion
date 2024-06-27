@@ -26,20 +26,13 @@ use Yii;
  */
 class Document extends \yii\db\ActiveRecord
 {
-    private static $customDb;
-    
+    public static $customDb;
+
     public static function tableName()
     {
         return 'document';
     }
 
-    /**
-     * @return \yii\db\Connection the database connection used by this AR class.
-     */
-    // public static function getDb()
-    // {
-    //     return Yii::$app->get('empresa8_sb0');
-    // }
     public static function getDb()
     {
         return self::$customDb ?: Yii::$app->db;
@@ -60,6 +53,7 @@ class Document extends \yii\db\ActiveRecord
             [['idcliente', 'idstatus', 'number', 'iddocumentType', 'idsale', 'idpurchase', 'iduser', 'iddocument', 'idorder', 'idstore', 'idproductionOrder', 'idadjustment'], 'default', 'value' => null],
             [['idcliente', 'idstatus', 'number', 'iddocumentType', 'idsale', 'idpurchase', 'iduser', 'iddocument', 'idorder', 'idstore', 'idproductionOrder', 'idadjustment'], 'integer'],
             [['comment'], 'string'],
+            [['idsale'], 'exist', 'skipOnError' => true, 'targetClass' => Sale::class, 'targetAttribute' => ['idsale' => 'id']],
         ];
     }
 

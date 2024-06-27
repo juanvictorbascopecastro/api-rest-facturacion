@@ -25,11 +25,11 @@ class CustomerController extends BaseController
     public function actionListar()
     {
         $this->prepareData();
-
-        return new ActiveDataProvider([
-            'query' => $this->modelClass::find()->orderBy(['id' => SORT_ASC]),
-            'pagination' => false,
-        ]);
+        return Yii::$app->user->identity;
+        // return new ActiveDataProvider([
+        //     'query' => $this->modelClass::find()->orderBy(['id' => SORT_ASC]),
+        //     'pagination' => false,
+        // ]);
     }
 
 

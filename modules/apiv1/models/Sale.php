@@ -2,6 +2,8 @@
 
 namespace app\modules\apiv1\models;
 
+use app\models\Productstock;
+
 class Sale extends \app\models\Sale {
 
     public function fields() {
@@ -54,5 +56,8 @@ class Sale extends \app\models\Sale {
             'delivered',
         ];
     }
-
+    
+    public function getProductStocks() {
+        return $this->hasMany(Productstock::class, ['idsale' => 'id']);
+    }
 }

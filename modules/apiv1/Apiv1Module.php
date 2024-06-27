@@ -10,9 +10,6 @@ class Apiv1Module extends \yii\base\Module
 {
     public $controllerNamespace = 'app\modules\apiv1\controllers';
 
-    /**
-     * {@inheritdoc}
-     */
     public function init()
     {
         parent::init();

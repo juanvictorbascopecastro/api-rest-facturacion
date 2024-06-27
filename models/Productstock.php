@@ -30,20 +30,13 @@ use Yii;
  */
 class Productstock extends \yii\db\ActiveRecord
 {
-    private static $customDb;
-    
+    public static $customDb;
+
     public static function tableName()
     {
         return 'productstock';
     }
 
-    /**
-     * @return \yii\db\Connection the database connection used by this AR class.
-     */
-    // public static function getDb()
-    // {
-    //     return Yii::$app->get('empresa8_sb0');
-    // }
     public static function getDb()
     {
         return self::$customDb ?: Yii::$app->db;
@@ -124,4 +117,6 @@ class Productstock extends \yii\db\ActiveRecord
     {
         return new ProductstockQuery(get_called_class());
     }
+
+    
 }
