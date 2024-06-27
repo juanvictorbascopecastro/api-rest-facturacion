@@ -15,10 +15,14 @@ class BaseController extends ActiveController
 {
     private $dbUser;
     private $dbPassword;
+    private $dbHost;
+
     public function __construct($id, $module, $config = [])
     {
         $this->dbUser = Yii::$app->params['dbUser'];
         $this->dbPassword = Yii::$app->params['dbPassword'];
+        $this->dbHost = Yii::$app->params['dbHost'];
+
         parent::__construct($id, $module, $config);
     }
 
@@ -83,9 +87,9 @@ class BaseController extends ActiveController
         }
         
         if($isSucursal == true) {
-            $db = DbConnection::getConnection($ioSystemBranch->dbidentifier, $this->dbUser, $this->dbPassword);
+            $db = DbConnection::getConnection($ioSystemBranch->dbidentifier, $this->dbUser, $this->dbPassword, $this->dbHost);
         } else {
-            $db = DbConnection::getConnection($ioSystemBranch->cfgIoSystem->dbidentifier, $this->dbUser, $this->dbPassword);
+            $db = DbConnection::getConnection($ioSystemBranch->cfgIoSystem->dbidentifier, $this->dbUser, $this->dbPassword, $this->dbHost);
         }
         
         if (!$db) {

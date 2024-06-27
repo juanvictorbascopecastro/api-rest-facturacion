@@ -12,4 +12,5 @@ return [
     ],
     'dbUser' => 'postgres',
     'dbPassword' => '12345678',
+    'dbHost' => 'localhost',
 ];
