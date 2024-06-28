@@ -52,8 +52,7 @@ class SaleController extends BaseController
     
         $saleForm = new SaleForm();
         $saleForm->attributes = Yii::$app->request->post();
-        $user = Yii::$app->user->identity;
-    
+        $user = Yii::$app->user->identity;    
         // Validar el formulario de venta
         if ($saleForm->validate()) {
             // Verificar y registrar cliente si no se proporcionó idcustomer o es vacío
