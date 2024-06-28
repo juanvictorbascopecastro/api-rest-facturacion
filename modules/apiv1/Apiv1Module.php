@@ -24,9 +24,3 @@ class Apiv1Module extends \yii\base\Module
         return $behaviors;
     }
 }
-/**
- * 
- * sincronizarListaProductosServicios
- * 
- * 
- */
