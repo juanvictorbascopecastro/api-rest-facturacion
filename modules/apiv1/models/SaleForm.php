@@ -68,38 +68,57 @@ class SaleForm extends Model
 
             // Calcular el total basado en el precio y la cantidad
             $total += $product['count'] * $product['price'];
-
-            // Verificar si el id del producto existe en la base de datos
-            if (!isset($product['id']) || $product['id'] === '' || $product['id'] === 0) {
-                $existingProduct = Product::findOne($product['id']);
-                if ($existingProduct === null) {
-                    // Si el producto no existe, registrar un nuevo producto
-                    $newProduct = new Product();
-                    $newProduct->name = $product['name'];
-                    $newProduct->price = $product['price'];
-                    $newProduct->idstatus = 1;
-                    $newProduct->iduser = $user->iduser;
-
-                    if (!$newProduct->save()) {
-                        $this->addError($attribute, "El producto en la posición $index no se pudo registrar. Errores: " . json_encode($newProduct->errors));
-                    } else {
-                        $this->$attribute[$index]['id'] = $newProduct->id;
-                    }
-                }
-            } else {
-                // Si el producto no tiene ID, registrar un nuevo producto
+            if (!isset($product['id']) || empty($product['id'])) {
+                // Si el id no está definido o está vacío, registrar un nuevo producto
                 $newProduct = new Product();
                 $newProduct->name = $product['name'];
                 $newProduct->price = $product['price'];
                 $newProduct->idstatus = 1;
                 $newProduct->iduser = $user->iduser;
-
+    
                 if (!$newProduct->save()) {
                     $this->addError($attribute, "El producto en la posición $index no se pudo registrar. Errores: " . json_encode($newProduct->errors));
                 } else {
-                    $this->$attribute[$index]['id'] = $newProduct->id;  // Actualizar el ID del producto en el array de productos
+                    // Actualizar el ID del producto en el array de productos
+                    $this->$attribute[$index]['id'] = $newProduct->id;
+                }
+            } else {
+                // Si el id está definido, buscar el producto existente
+                $existingProduct = Product::findOne($product['id']);
+                if ($existingProduct === null) {
+                    $this->addError($attribute, "El producto en la posición $index no existe en la base de datos.");
                 }
             }
+            // if (!isset($product['id']) || $product['id'] === '' || $product['id'] === 0) {
+            //     $existingProduct = Product::findOne($product['id']);
+            //     if ($existingProduct === null) {
+            //         // Si el producto no existe, registrar un nuevo producto
+            //         $newProduct = new Product();
+            //         $newProduct->name = $product['name'];
+            //         $newProduct->price = $product['price'];
+            //         $newProduct->idstatus = 1;
+            //         $newProduct->iduser = $user->iduser;
+
+            //         if (!$newProduct->save()) {
+            //             $this->addError($attribute, "El producto en la posición $index no se pudo registrar. Errores: " . json_encode($newProduct->errors));
+            //         } else {
+            //             $this->$attribute[$index]['id'] = $newProduct->id;
+            //         }
+            //     }
+            // } else {
+            //     // Si el producto no tiene ID, registrar un nuevo producto
+            //     $newProduct = new Product();
+            //     $newProduct->name = $product['name'];
+            //     $newProduct->price = $product['price'];
+            //     $newProduct->idstatus = 1;
+            //     $newProduct->iduser = $user->iduser;
+
+            //     if (!$newProduct->save()) {
+            //         $this->addError($attribute, "El producto en la posición $index no se pudo registrar. Errores: " . json_encode($newProduct->errors));
+            //     } else {
+            //         $this->$attribute[$index]['id'] = $newProduct->id;  // Actualizar el ID del producto en el array de productos
+            //     }
+            // }
         }
 
         // Asignar el total calculado al atributo total
