@@ -70,7 +70,7 @@ class SaleForm extends Model
             $total += $product['count'] * $product['price'];
 
             // Verificar si el id del producto existe en la base de datos
-            if (isset($product['id']) && $product['id'] != '') {
+            if (!isset($product['id']) || empty($product['id'])) {
                 $existingProduct = Product::findOne($product['id']);
                 if ($existingProduct === null) {
                     // Si el producto no existe, registrar un nuevo producto

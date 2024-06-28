@@ -31,10 +31,17 @@ class SaleController extends BaseController
         $db = $this->prepareData(true);
         Productstock::setCustomDb($db);
 
-        return new ActiveDataProvider([
-            'query' => $this->modelClass::find()->with('productStocks')->orderBy(['dateCreate' => SORT_ASC]), // Asegúrate de que coincida con el nombre de la relación correcta
+        $dataProvider = new ActiveDataProvider([
+            'query' => $this->modelClass::find()
+                        ->with('productStocks') // Asegúrate de que coincida con el nombre de la relación correcta
+                        ->orderBy(['dateCreate' => SORT_ASC])
+                        ->limit(250),
             'pagination' => false,
         ]);
+    
+        $sales = $dataProvider->getModels();
+
+        return $sales;
     }
 
     public function actionInsert()
@@ -102,8 +109,8 @@ class SaleController extends BaseController
     
             // Guardar los documentos y productos relacionados con la venta
             $products = [];
-            if (isset(Yii::$app->request->post()['products']) && is_array(Yii::$app->request->post()['products'])) {
-                foreach (Yii::$app->request->post()['products'] as $productData) {
+            if (isset($saleForm->attributes['products']) && is_array($saleForm->attributes['products'])) {
+                foreach ($saleForm->attributes['products'] as $productData) {
                     // Guardar el documento
                     Document::setCustomDb($db);
                     $document = new Document();
