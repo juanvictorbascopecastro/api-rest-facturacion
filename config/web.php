@@ -62,7 +62,7 @@ $config = [
                 'DELETE service/categories' => 'service/category/remove',
                 'GET apiv1/customers/actionSearchByDoc/<numeroDocumento>' => 'apiv1/customer/search-by-doc',
                 'GET apiv1/customers/actionSearchByName/<name>' => 'apiv1/customer/search-by-name',
-                // ADMIN
+                'apiv1/my-user' => 'apiv1/crugeuser/index', // ADMIN
             ],
         ],
         'jwt' => [
