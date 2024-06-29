@@ -37,7 +37,7 @@ use Yii;
  */
 class Product extends \yii\db\ActiveRecord
 {
-    private static $customDb;
+    public static $customDb;
     
     public static function tableName()
     {

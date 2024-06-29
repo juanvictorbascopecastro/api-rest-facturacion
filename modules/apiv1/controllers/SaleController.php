@@ -33,7 +33,7 @@ class SaleController extends BaseController
 
         $dataProvider = new ActiveDataProvider([
             'query' => $this->modelClass::find()
-                        ->with('productStocks') // Asegúrate de que coincida con el nombre de la relación correcta
+                        ->with('productStocks') 
                         ->orderBy(['dateCreate' => SORT_ASC])
                         ->limit(250),
             'pagination' => false,
@@ -175,5 +175,35 @@ class SaleController extends BaseController
                 'errors' => $saleForm->errors
             ];
         }
-    }   
+    }  
+    
+    public function actionProductsBySale($idsale)
+    {
+        $db = $this->prepareData(true);
+        Productstock::setCustomDb($db);
+
+        $sale = $this->modelClass::find()->where(['id' => $idsale])->with('productStocks')->one();
+
+        if (!$sale) {
+            throw new NotFoundHttpException("Sale with ID $idsale not found.");
+        }
+
+        $productIds = [];
+        foreach ($sale->productStocks as $productStock) {
+            $productIds[] = $productStock->idproduct;
+        }
+
+        $db = $this->prepareData();
+        Product::setCustomDb($db);
+
+        $query = Product::find()->where(['id' => $productIds])->orderBy(['id' => SORT_ASC]);
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => false,
+        ]);
+
+        return $dataProvider;
+    }
+
 }
