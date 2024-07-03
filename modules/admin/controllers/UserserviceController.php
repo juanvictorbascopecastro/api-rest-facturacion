@@ -57,7 +57,6 @@ class UserserviceController extends Controller
         $formModel = new FormularioModel();
         $formModel->attributes = \Yii::$app->request->post();
         if ($formModel->validate()) {
-
             $user = CrugeUser::findById($formModel->iduserActive);
             if (!$user) {
                 throw new NotFoundHttpException("User with iduserActive '$formModel->iduserActive' not found.");
@@ -139,7 +138,7 @@ class UserserviceController extends Controller
 
     private function generateJwt($id, $expiration)
     {
-        $jwt = \Yii::$app->jwt; // Acceder correctamente al objeto global Yii
+        $jwt = \Yii::$app->jwt; 
         $signer = $jwt->getSigner('HS256');
         $key = $jwt->getKey();
 

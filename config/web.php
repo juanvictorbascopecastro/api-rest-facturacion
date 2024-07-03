@@ -48,7 +48,7 @@ $config = [
         ],
         
         // conexiones a las bases de datos
-        // 'empresa8_sb0' => $db['empresa8_sb0'],
+        // 'empresa1_sb0' => $db['empresa1_sb0'],
         'iooxs_access' => $db['iooxs_access'],
         'iooxs_io' => $db['iooxs_io'],
         'urlManager' => [
