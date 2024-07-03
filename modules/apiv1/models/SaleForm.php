@@ -23,7 +23,7 @@ class SaleForm extends Model
     public function rules()
     {
         return [
-            [['idTypeDocument', 'descuento', 'idMetodoPago'], 'required'],
+            [['idTypeDocument', 'descuento', 'idMetodoPago', 'isFactura'], 'required'],
             ['idTypeDocument', 'required', 'when' => function ($model) {
                 return $model->isFactura;
             }],
@@ -35,6 +35,7 @@ class SaleForm extends Model
             ['numeroDocumento', 'required', 'when' => function ($model) {
                 return $model->isFactura;
             }],
+            ['isFactura', 'boolean'],
             ['numeroDocumento', 'string', 'max' => 20],
             ['phone', 'string', 'max' => 20],
             ['descuento', 'number', 'min' => 0],
