@@ -18,21 +18,30 @@ class SaleForm extends Model
     public $idMetodoPago;
     public $total;
     public $idcustomer;
+    public $isFactura;
 
     public function rules()
     {
         return [
-            [['idTypeDocument', 'razonSocial', 'numeroDocumento', 'descuento', 'idMetodoPago'], 'required'],
+            [['idTypeDocument', 'descuento', 'idMetodoPago'], 'required'],
+            ['idTypeDocument', 'required', 'when' => function ($model) {
+                return $model->isFactura;
+            }],
             ['idTypeDocument', 'integer'],
+            ['razonSocial', 'required', 'when' => function ($model) {
+                return $model->isFactura;
+            }],
             ['razonSocial', 'string', 'max' => 255],
+            ['numeroDocumento', 'required', 'when' => function ($model) {
+                return $model->isFactura;
+            }],
             ['numeroDocumento', 'string', 'max' => 20],
             ['phone', 'string', 'max' => 20],
             ['descuento', 'number', 'min' => 0],
             ['idMetodoPago', 'integer'],
-            ['idcustomer', 'integer'], 
+            ['idcustomer', 'integer'],
             ['products', 'required', 'message' => 'El campo Productos no puede estar vacío.'],
             ['products', 'validateProducts'],
-            // ['idcustomer', 'validateCustomer'],
             ['total', 'number', 'min' => 0, 'message' => 'El campo Total debe ser un número mayor o igual a cero.'],
         ];
     }

@@ -53,10 +53,8 @@ class SaleController extends BaseController
         $saleForm = new SaleForm();
         $saleForm->attributes = Yii::$app->request->post();
         $user = Yii::$app->user->identity;    
-        // Validar el formulario de venta
         if ($saleForm->validate()) {
-            // Verificar y registrar cliente si no se proporcionó idcustomer o es vacío
-            if (!$saleForm->idcustomer && $saleForm->idcustomer !== '') {
+            if (!$saleForm->idcustomer && $saleForm->idcustomer !== '' && !empty($saleForm->razonSocial) && !empty($saleForm->numeroDocumento)) {
                 $customer = new Customer();
                 $customer->razonSocial = $saleForm->razonSocial;
                 $customer->numeroDocumento = $saleForm->numeroDocumento;
@@ -73,8 +71,7 @@ class SaleController extends BaseController
                         'errors' => $customer->errors
                     ];
                 }
-            } else {
-                // Si se proporcionó idcustomer, verificar si existe en la base de datos
+            } else if(!empty($saleForm->idcustomer)) {
                 $existingCustomer = Customer::findOne($saleForm->idcustomer);
                 if (!$existingCustomer) {
                     return [
