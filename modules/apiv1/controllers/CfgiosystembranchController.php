@@ -10,12 +10,10 @@ use Yii;
 use app\models\CfgIoSystemBranchUser;
 use app\modules\apiv1\models\CfgIoSystemBranch;
 
-/**
- * Default controller for the `apiv1` module
- */
 class CfgIoSystemBranchController extends BaseController
 {
     public $modelClass = 'app\modules\apiv1\models\CfgIoSystemBranch';
+    
     public function actions()
     {
         $actions = parent::actions();
@@ -26,12 +24,13 @@ class CfgIoSystemBranchController extends BaseController
             $actions['delete'],
             $actions['options']
         );
-        
+
         $actions['index']['prepareDataProvider'] = function($action) {
-            $user = Yii::$app->user->identity;
-            $ioSystemBranchUser = CfgIoSystemBranchUser::findOne(['iduserActive' => $user->iduser]);
-            $ioSystemBranch = CfgIoSystemBranch::findOne(['id' => $ioSystemBranchUser->idioSystemBranch]);
-            return $ioSystemBranch;
+            $modelClass = $this->modelClass;
+            return new ActiveDataProvider([
+                'query' => $modelClass::find(),
+                'pagination' => false,
+            ]);
         };
 
         return $actions;
