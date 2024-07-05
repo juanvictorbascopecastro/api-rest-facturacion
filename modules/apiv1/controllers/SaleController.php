@@ -6,6 +6,7 @@ use app\modules\apiv1\helpers\DbConnection;
 use app\models\Sale;
 use app\models\Customer;
 use app\models\Product;
+use app\models\Unit;
 use app\models\Productstock;
 use app\models\Document;
 use yii\data\ActiveDataProvider;
@@ -49,16 +50,19 @@ class SaleController extends BaseController
         $db = $this->prepareData();
         Product::setCustomDb($db);
         Customer::setCustomDb($db);
+        Unit::setCustomDb($db);
+        // Category::::setCustomDb($db);
     
         $saleForm = new SaleForm();
         $saleForm->attributes = Yii::$app->request->post();
+        
         $user = Yii::$app->user->identity;    
         if ($saleForm->validate()) {
             if (!$saleForm->idcustomer && $saleForm->idcustomer !== '' && !empty($saleForm->razonSocial) && !empty($saleForm->numeroDocumento)) {
                 $customer = new Customer();
                 $customer->razonSocial = $saleForm->razonSocial;
                 $customer->numeroDocumento = $saleForm->numeroDocumento;
-                $customer->iddocumentNumberType = $saleForm->idTypeDocument;
+                $customer->iddocumentNumberType = $saleForm->idtypeDocument;
                 $customer->phone = $saleForm->phone;
                 $customer->iduser = $user->iduser;
     
@@ -86,14 +90,16 @@ class SaleController extends BaseController
             $sale = new Sale();
             $sale->attributes = $saleForm->attributes;
             $sale->montoTotal = $saleForm->total;
-            $sale->discountamount = $saleForm->descuento;
-            $sale->subTotal = isset($saleForm->subTotal) ? $saleForm->subTotal : $saleForm->total - $saleForm->descuento;
+            $sale->discountamount = $saleForm->discountamount;
+            $sale->subTotal = isset($saleForm->subTotal) ? $saleForm->subTotal : $saleForm->total - $saleForm->discountamount;
             $sale->montoRecibido = isset($saleForm->montoRecibido) ? $saleForm->montoRecibido : $saleForm->total;
             $sale->numeroDocumento = $saleForm->numeroDocumento;
-            $sale->iddocument = $saleForm->idTypeDocument;
+            $sale->iddocument = $saleForm->idtypeDocument;
             $sale->razonSocial = $saleForm->razonSocial;
             $sale->phone = $saleForm->phone;
             $sale->iduser = $user->iduser;
+            $sale->codigoMetodoPago = $saleForm->codigoMetodoPago;
+            $sale->codigoDocumentoSector = 1; // siat factura compra y venta
     
             if (!$sale->save()) {
                 return [
@@ -112,7 +118,7 @@ class SaleController extends BaseController
                     $document = new Document();
                     $document->attributes = $productData;
                     $document->idcliente = $saleForm->idcustomer;
-                    $document->iddocumentType = $saleForm->idTypeDocument;
+                    $document->iddocumentType = 3; // tipo de documento venta = 3
                     $document->number = $productData['count'];
                     $document->iduser = $user->iduser;
                     $document->idsale = $sale->id;

@@ -9,37 +9,36 @@ use app\models\Customer;
 
 class SaleForm extends Model
 {
-    public $idTypeDocument;
+    public $idtypeDocument;
     public $razonSocial;
     public $numeroDocumento;
     public $phone;
     public $products;  // Array de productos
-    public $descuento;
-    public $idMetodoPago;
+    public $discountamount;
     public $total;
     public $idcustomer;
-    public $isFactura;
+    public $isInvoice;
+    public $codigoMetodoPago;
 
     public function rules()
     {
         return [
-            [['idTypeDocument', 'descuento', 'idMetodoPago', 'isFactura'], 'required'],
-            ['idTypeDocument', 'required', 'when' => function ($model) {
-                return $model->isFactura;
+            [['idtypeDocument', 'discountamount', 'codigoMetodoPago', 'isInvoice'], 'required'],
+            ['idtypeDocument', 'required', 'when' => function ($model) {
+                return $model->isInvoice;
             }],
-            ['idTypeDocument', 'integer'],
+            [['idtypeDocument', 'codigoMetodoPago'], 'integer'],
             ['razonSocial', 'required', 'when' => function ($model) {
-                return $model->isFactura;
+                return $model->isInvoice;
             }],
             ['razonSocial', 'string', 'max' => 255],
             ['numeroDocumento', 'required', 'when' => function ($model) {
-                return $model->isFactura;
+                return $model->isInvoice;
             }],
-            ['isFactura', 'boolean'],
+            ['isInvoice', 'boolean'],
             ['numeroDocumento', 'string', 'max' => 20],
             ['phone', 'string', 'max' => 20],
-            ['descuento', 'number', 'min' => 0],
-            ['idMetodoPago', 'integer'],
+            ['discountamount', 'number', 'min' => 0],
             ['idcustomer', 'integer'],
             ['products', 'required', 'message' => 'El campo Productos no puede estar vacío.'],
             ['products', 'validateProducts'],
@@ -76,6 +75,10 @@ class SaleForm extends Model
                 $this->addError($attribute, "El campo 'price' del producto en la posición $index debe ser un número mayor que cero.");
             }
 
+            if (!is_numeric($product['idunit']) || $product['idunit'] <= 0) {
+                $this->addError($attribute, "El campo 'idunit' del producto en la posición $index debe ser un número mayor que cero.");
+            }
+
             // Calcular el total basado en el precio y la cantidad
             $total += $product['count'] * $product['price'];
             if (!isset($product['id']) || empty($product['id'])) {
@@ -83,6 +86,11 @@ class SaleForm extends Model
                 $newProduct = new Product();
                 $newProduct->name = $product['name'];
                 $newProduct->price = $product['price'];
+                if (isset($product['idunit'])) {
+                    $newProduct->idunit = $product['idunit'];
+                } else {
+                    $newProduct->idunit = null;
+                }
                 $newProduct->idstatus = 1;
                 $newProduct->iduser = $user->iduser;
     

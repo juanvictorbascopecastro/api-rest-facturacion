@@ -48,7 +48,7 @@ $config = [
         ],
         
         // conexiones a las bases de datos
-        // 'empresa1_sb0' => $db['empresa1_sb0'],
+        // 'empresa0_api' => $db['empresa0_api'],
         'iooxs_access' => $db['iooxs_access'],
         'iooxs_io' => $db['iooxs_io'],
         'urlManager' => [
@@ -64,7 +64,7 @@ $config = [
                 'GET apiv1/customers/actionSearchByName/<name>' => 'apiv1/customer/search-by-name',
                 'GET apiv1/sales/actionProductsBySale/<id>' => 'apiv1/sale/product-by-sale',
                 ['pattern' => 'apiv1/my-user', 'route' => 'apiv1/crugeuser/index'],
-                'GET apiv1/cfgiosystembranch' => 'apiv1/cfg-io-system-branch/index',
+                'GET apiv1/cfg-io-system-branch' => 'apiv1/cfgiosystembranch',
             ],
         ],
         'jwt' => [
