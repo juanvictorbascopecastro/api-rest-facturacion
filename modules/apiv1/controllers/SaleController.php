@@ -3,17 +3,17 @@ namespace app\modules\apiv1\controllers;
 
 use Yii;
 use app\modules\apiv1\helpers\DbConnection;
-use app\models\Sale;
 use app\models\Customer;
 use app\models\Product;
 use app\models\Unit;
-use app\models\Productstock;
 use app\models\Document;
 use yii\data\ActiveDataProvider;
 use app\modules\apiv1\controllers\BaseController;
 use yii\web\NotFoundHttpException;
 use app\modules\apiv1\models\SaleForm;
-// use app\modules\apiv1\models\Productstock;
+use app\modules\apiv1\models\Sale;
+use app\modules\apiv1\models\Productstock;
+
 use sizeg\jwt\Jwt;
 
 class SaleController extends BaseController
@@ -33,7 +33,7 @@ class SaleController extends BaseController
         Productstock::setCustomDb($db);
 
         $dataProvider = new ActiveDataProvider([
-            'query' => $this->modelClass::find()
+            'query' => Sale::find()
                         ->with('productStocks') 
                         ->orderBy(['dateCreate' => SORT_ASC])
                         ->limit(250),

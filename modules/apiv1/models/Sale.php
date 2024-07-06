@@ -1,12 +1,12 @@
 <?php
 
 namespace app\modules\apiv1\models;
+use app\modules\apiv1\models\Productstock;
 
-use app\models\Productstock;
-
-class Sale extends \app\models\Sale {
-
-    public function fields() {
+class Sale extends \app\models\Sale
+{
+    public function fields()
+    {
         return [
             'id',
             'dateCreate',
@@ -18,21 +18,37 @@ class Sale extends \app\models\Sale {
             'comment',
             'number',
             'iddocument',
-            'discountpercentage',
-            'discountamount',
-            'montoTotal',
+            'discountpercentage' => function ($model) {
+                return floatval($model->discountpercentage);
+            },
+            'discountamount' => function ($model) {
+                return floatval($model->discountamount);
+            },
+            'montoTotal' => function ($model) {
+                return floatval($model->montoTotal);
+            },
             'iduser',
             'numeroFactura',
-            'subTotal',
+            'subTotal' => function ($model) {
+                return floatval($model->subTotal);
+            },
             'idsystemPoint',
             'codigoModalidad',
             'invoice',
             'codigoMetodoPago',
             'codigoMoneda',
-            'tipoCambio',
-            'montoMoneda',
-            'montoRecibido',
-            'montoCambio',
+            'tipoCambio' => function ($model) {
+                return floatval($model->tipoCambio);
+            },
+            'montoMoneda' => function ($model) {
+                return floatval($model->montoMoneda);
+            },
+            'montoRecibido' => function ($model) {
+                return floatval($model->montoRecibido);
+            },
+            'montoCambio' => function ($model) {
+                return floatval($model->montoCambio);
+            },
             'idcash',
             'phone',
             'email',
@@ -41,7 +57,9 @@ class Sale extends \app\models\Sale {
             'idcashDocument',
             'codigoTipoDocumentoIdentidad',
             'idorder',
-            'montoGiftCard',
+            'montoGiftCard' => function ($model) {
+                return floatval($model->montoGiftCard);
+            },
             'idpriceSheet',
             'idtypeCharge',
             'codigoDocumentoSector',
@@ -54,7 +72,12 @@ class Sale extends \app\models\Sale {
             'waiter',
             'delivery',
             'delivered',
-            'productStocks' // este parametro esta declarado en su modelo base, lo hereda para usarlo
+            'productStocks'
         ];
+    }
+
+    public function getProductStocks() 
+    {
+        return $this->hasMany(Productstock::class, ['idsale' => 'id']);
     }
 }

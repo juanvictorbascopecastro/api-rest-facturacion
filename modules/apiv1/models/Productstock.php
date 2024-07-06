@@ -2,7 +2,7 @@
 
 namespace app\modules\apiv1\models;
 
-class Product extends \app\models\Product {
+class Productstock extends \app\models\Productstock {
 
     public function fields() {
         return [
@@ -13,14 +13,24 @@ class Product extends \app\models\Product {
             'idsale',
             'idpurchase',
             'idproduct',
-            'quantityinput',
-            'quantityoutput',
-            'cost',
-            'price',
+            'quantityinput' => function ($model) {
+                return floatval($model->quantityinput);
+            },
+            'quantityoutput' => function ($model) {
+                return floatval($model->quantityoutput);
+            },
+            'cost' => function ($model) {
+                return floatval($model->cost);
+            },
+            'price' => function ($model) {
+                return floatval($model->price);
+            },
             'nprocess',
             'iduser',
             'comment',
-            'montoDescuento',
+            'montoDescuento' => function ($model) {
+                return floatval($model->montoDescuento);
+            },
             'idstore',
             'idproductionOrder',
         ];
