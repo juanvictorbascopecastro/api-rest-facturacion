@@ -58,6 +58,34 @@ class SaleController extends BaseController
         
         $user = Yii::$app->user->identity;    
         if ($saleForm->validate()) {
+            foreach ($saleForm->attributes['products'] as $productData) {
+                $newProduct = new Product();
+                $newProduct->name = $productData['name'];
+                $newProduct->price = $productData['price'];
+                $newProduct->idunit = $productData['idunit'] ?? null; // Asegúrate de manejar el caso si idunit no está definido
+                $newProduct->idstatus = 1;
+                $newProduct->iduser = $user->iduser;
+    
+                // Validar y guardar el producto
+                if (!$newProduct->validate()) {
+                    return [
+                        'status' => 500,
+                        'message' => 'Validation failed for Product',
+                        'errors' => $newProduct->errors
+                    ];
+                }
+    
+                if (!$newProduct->save()) {
+                    return [
+                        'status' => 500,
+                        'message' => 'Failed to save Product',
+                        'errors' => $newProduct->errors
+                    ];
+                }
+    
+                $products[] = $newProduct;
+            }
+        
             if (!$saleForm->idcustomer && $saleForm->idcustomer !== '' && !empty($saleForm->razonSocial) && !empty($saleForm->numeroDocumento)) {
                 $customer = new Customer();
                 $customer->razonSocial = $saleForm->razonSocial;
