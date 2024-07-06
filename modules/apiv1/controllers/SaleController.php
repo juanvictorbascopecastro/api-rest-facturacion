@@ -35,7 +35,7 @@ class SaleController extends BaseController
         $dataProvider = new ActiveDataProvider([
             'query' => Sale::find()
                         ->with('productStocks') 
-                        ->orderBy(['dateCreate' => SORT_ASC])
+                        ->orderBy(['dateCreate' => SORT_DESC])
                         ->limit(250),
             'pagination' => false,
         ]);

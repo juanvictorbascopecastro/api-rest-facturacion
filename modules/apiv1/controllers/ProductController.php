@@ -86,5 +86,15 @@ class ProductController extends BaseController
         }
     }
 
-    
+    public function actionSearchByName($name)
+    {
+        $this->prepareData();
+
+        $query = Product::find()
+            ->where(['ILIKE', 'name', $name])
+            ->limit(20)
+            ->all();
+            
+        return $query;
+    }
 }
