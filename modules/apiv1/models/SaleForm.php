@@ -58,8 +58,8 @@ class SaleForm extends Model
         $user = Yii::$app->user->identity;
 
         foreach ($this->$attribute as $index => $product) {
-            if (!isset($product['name']) || !isset($product['count']) || !isset($product['price'])) {
-                $this->addError($attribute, "El producto en la posición $index debe tener los campos 'name', 'count' y 'price'.");
+            if (!isset($product['name']) || !isset($product['quantity']) || !isset($product['price'])) {
+                $this->addError($attribute, "El producto en la posición $index debe tener los campos 'name', 'quantity' y 'price'.");
                 continue;
             }
 
@@ -67,8 +67,8 @@ class SaleForm extends Model
                 $this->addError($attribute, "El campo 'name' del producto en la posición $index debe ser una cadena de texto.");
             }
 
-            if (!is_numeric($product['count']) || $product['count'] <= 0) {
-                $this->addError($attribute, "El campo 'count' del producto en la posición $index debe ser un número mayor que cero.");
+            if (!is_numeric($product['quantity']) || $product['quantity'] <= 0) {
+                $this->addError($attribute, "El campo 'quantity' del producto en la posición $index debe ser un número mayor que cero.");
             }
 
             if (!is_numeric($product['price']) || $product['price'] <= 0) {
@@ -80,14 +80,41 @@ class SaleForm extends Model
             }
 
             // Calcular el total basado en el precio y la cantidad
-            $total += $product['count'] * $product['price'];
+            $total += $product['quantity'] * $product['price'];
 
+            // validar si el id del producto enviado existe en la base de datos
             if (isset($product['id']) && !empty($product['id'])) {
                 $existingProduct = Product::findOne($product['id']);
                 if ($existingProduct === null) {
                     $this->addError($attribute, "El producto en la posición $index no existe en la base de datos.");
                 }
+                
+                $productBranch = CfgProductBranch::findOne($product['id']);
+                if ($productBranch && $productBranch->controlInventory) { // si esta activo el control de invetario
+                    // Verificar si se proporciona un idStore
+                    if (isset($product['idStore']) && !empty($product['idStore'])) {
+                        // Buscar el registro de CfgProductStore específico por id y idStore
+                        $productStore = CfgProductStore::findOne(['id' => $product['id'], 'idstore' => $product['idStore']]);
+                        if ($productStore) {
+                            if ($productStore->stock < $product['quantity']) {  // Verificar si hay suficiente stock para la cantidad solicitada
+                                $this->addError($attribute, "El stock en la tienda ID " . $product['idStore'] . " para el producto " . $product['name'] . " es de " . $productStore->stock . " y quiere registrar la cantidad de " . $product['quantity']);
+                            }
+                        } else {
+                            $this->addError($attribute, "No se encontró el registro del producto en la tienda ID " . $product['idStore']);
+                        }
+                    } else { // Si no se proporciona idStore, verificar el stock total del producto sumando todos los registros de CfgProductStore
+                        $productStores = CfgProductStore::findAll(['id' => $product['id']]);
+                        $totalStock = 0;
+                        foreach ($productStores as $productStore) {
+                            $totalStock += floatval($productStore->stock);
+                        }
+                        if ($totalStock < $product['quantity']) {
+                            $this->addError($attribute, "El stock total del producto " . $product['name'] . " es de " . $totalStock . " y quiere registrar la cantidad de " . $product['quantity']);
+                        }
+                    }
+                }
             }
+            
         }
 
         // Asignar el total calculado al atributo total

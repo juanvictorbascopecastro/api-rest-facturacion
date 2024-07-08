@@ -14,7 +14,9 @@ use app\modules\apiv1\models\SaleForm;
 use app\modules\apiv1\models\Sale;
 use app\modules\apiv1\models\Productstock;
 
-use sizeg\jwt\Jwt;
+use app\modules\apiv1\models\CfgProductStore; // stock de los productos
+use app\modules\apiv1\models\CfgProductBranch; // configuracion de los productos
+use app\models\DocumentType;
 
 class SaleController extends BaseController
 {
@@ -47,43 +49,27 @@ class SaleController extends BaseController
 
     public function actionInsert()
     {
+        // conexion a la base de dato root
         $db = $this->prepareData();
         Product::setCustomDb($db);
         Customer::setCustomDb($db);
         Unit::setCustomDb($db);
         // Category::::setCustomDb($db);
+        // para verificar el stock conexion a la base de dato sucursal
+        $db = $this->prepareData(true); 
+        CfgProductStore::setCustomDb($db);
+        CfgProductBranch::setCustomDb($db);
     
         $saleForm = new SaleForm();
         $saleForm->attributes = Yii::$app->request->post();
         
         $user = Yii::$app->user->identity;    
         if ($saleForm->validate()) {
-            foreach ($saleForm->attributes['products'] as $productData) {
-                $newProduct = new Product();
-                $newProduct->name = $productData['name'];
-                $newProduct->price = $productData['price'];
-                $newProduct->idunit = $productData['idunit'] ?? null; // Asegúrate de manejar el caso si idunit no está definido
-                $newProduct->idstatus = 1;
-                $newProduct->iduser = $user->iduser;
-    
-                // Validar y guardar el producto
-                if (!$newProduct->validate()) {
-                    return [
-                        'status' => 500,
-                        'message' => 'Validation failed for Product',
-                        'errors' => $newProduct->errors
-                    ];
-                }
-    
-                if (!$newProduct->save()) {
-                    return [
-                        'status' => 500,
-                        'message' => 'Failed to save Product',
-                        'errors' => $newProduct->errors
-                    ];
-                }
-    
-                $products[] = $newProduct;
+            // se verifica y se registra el producto;
+            $saleForm->attributes['products'] = $this->saveProducts($saleForm->attributes['products'], $user);
+
+            if (isset($products['status']) && $products['status'] == 500) {
+                return $products;
             }
         
             if (!$saleForm->idcustomer && $saleForm->idcustomer !== '' && !empty($saleForm->razonSocial) && !empty($saleForm->numeroDocumento)) {
@@ -137,6 +123,7 @@ class SaleController extends BaseController
                 ];
             }
     
+            $documentType = DocumentType::findOne(['type' => 'VENTA']); // otenemos el tipo de salida
             // Guardar los documentos y productos relacionados con la venta
             $products = [];
             if (isset($saleForm->attributes['products']) && is_array($saleForm->attributes['products'])) {
@@ -146,8 +133,8 @@ class SaleController extends BaseController
                     $document = new Document();
                     $document->attributes = $productData;
                     $document->idcliente = $saleForm->idcustomer;
-                    $document->iddocumentType = 3; // tipo de documento venta = 3
-                    $document->number = $productData['count'];
+                    $document->iddocumentType = $documentType->id; // tipo de documento venta = 3
+                    $document->number = $productData['quantity'];
                     $document->iduser = $user->iduser;
                     $document->idsale = $sale->id;
     
@@ -158,14 +145,22 @@ class SaleController extends BaseController
                             'errors' => $document->errors
                         ];
                     }
-    
+
+                    $errors = $this->updateStock($documentType, $productData); // actualizamos el stock
+                    if($errors != null) {
+                        return [
+                            'status' => 500,
+                            'message' => 'Failed to update stock',
+                            'errors' => $errors
+                        ];
+                    }
                     // Guardar el producto
                     Productstock::setCustomDb($db);
                     $product = new Productstock();
                     $product->attributes = $productData;
                     $product->nprocess = 1;
-                    $product->quantityinput = $productData['count'];
-                    $product->price = $productData['count'] * $productData['price'];
+                    $product->quantityoutput = $productData['quantity'];
+                    $product->price = $productData['quantity'] * $productData['price'];
                     $product->iduser = $user->iduser;
                     $product->idproduct = $productData['id'];
                     $product->iddocument = $document->id;  // Aquí se agrega el id del document registrado
@@ -237,4 +232,105 @@ class SaleController extends BaseController
         return $dataProvider;
     }
 
+    // metodo para verificar que no se haya enviado el id, entonces determina que es nuevo y debe registrarse
+    protected function saveProducts($productsData, $user)
+    {
+        $products = [];
+        
+        foreach ($productsData as $productData) {
+            // Verificar si 'id' está presente, es diferente de null y es numérico
+            if (isset($productData['id']) && $productData['id'] !== null && is_numeric($productData['id'])) {
+                continue; // Si cumple todas las condiciones, no guardar el producto y pasar al siguiente
+            }
+
+            $newProduct = new Product();
+            $newProduct->name = $productData['name'];
+            $newProduct->price = $productData['price'];
+            $newProduct->idunit = $productData['idunit'] ?? null; // Asegúrate de manejar el caso si idunit no está definido
+            $newProduct->idstatus = 1;
+            $newProduct->iduser = $user->iduser;
+
+            // Validar y guardar el producto
+            if (!$newProduct->validate()) {
+                return [
+                    'status' => 500,
+                    'message' => 'Validation failed for Product',
+                    'errors' => $newProduct->errors
+                ];
+            }
+
+            if (!$newProduct->save()) {
+                return [
+                    'status' => 500,
+                    'message' => 'Failed to save Product',
+                    'errors' => $newProduct->errors
+                ];
+            }
+
+            $products[] = $newProduct;
+        }
+
+        return $products;
+    }
+
+    // actualizar el stock de un producto
+    protected function updateStock($typeDocument, $product)
+    {
+        $productBranch = CfgProductBranch::findOne($product['id']);   
+        if ($productBranch && $productBranch->controlInventory) {
+            $cfgProductStores = CfgProductStore::findAll(['id' => $product['id']]);
+    
+            if (!$cfgProductStores) {
+                return 'No se encontró el registro del producto en CfgProductStore para el producto ID ' . $product['id'];
+            }
+    
+            // Verificar si se proporciona un idStore
+            if (isset($product['idStore']) && !empty($product['idStore'])) {
+                $cfgProductStore = CfgProductStore::findOne(['id' => $product['id'], 'idstore' => $product['idStore']]);
+                if ($cfgProductStore) {
+                    if ($typeDocument->action == 1) {
+                        $cfgProductStore->stock = floatval($cfgProductStore->stock) + $product['quantity'];
+                    } else if ($typeDocument->action == -1) {
+                        $cfgProductStore->stock = floatval($cfgProductStore->stock) - $product['quantity'];
+                    }
+                    if ($cfgProductStore->save()) {
+                        return null;
+                    } else {
+                        return 'Error al actualizar el stock para el producto ID ' . $product['id'] . ' en la tienda ID ' . $product['idStore'] . ': ' . json_encode($cfgProductStore->errors);
+                    }
+                } else {
+                    return 'No se encontró el registro del producto en la tienda ID ' . $product['idStore'];
+                }
+            } else { // Si no se proporciona idStore, decrementar la cantidad total entre los registros disponibles
+                $remainingQuantity = $product['quantity'];
+                foreach ($cfgProductStores as $cfgProductStore) {
+                    if ($remainingQuantity <= 0) {
+                        break; // Salir del bucle si ya se ha cubierto toda la cantidad
+                    }
+                    // Actualizar el stock segun la acción del tipo de documento
+                    if ($typeDocument->action == 1) {
+                        $cfgProductStore->stock = floatval($cfgProductStore->stock) + $remainingQuantity;
+                        $remainingQuantity = 0; // Toda la cantidad ha sido añadida
+                    } else if ($typeDocument->action == -1) {
+                        if ($cfgProductStore->stock >= $remainingQuantity) {
+                            $cfgProductStore->stock = floatval($cfgProductStore->stock) - $remainingQuantity;
+                            $remainingQuantity = 0; // Toda la cantidad ha sido restada
+                        } else {
+                            $remainingQuantity -= $cfgProductStore->stock; // Restar solo lo disponible en este registro
+                            $cfgProductStore->stock = 0;
+                        }
+                    }
+
+                    if (!$cfgProductStore->save()) {
+                        return 'Error al actualizar el stock para el producto ID ' . $product['id'] . ' en la tienda ID ' . $cfgProductStore->idstore . ': ' . json_encode($cfgProductStore->errors);
+                    }
+                }
+                return null;
+            }
+        } else {
+            return 'El producto con ID ' . $product['id'] . ' no tiene control de inventario o no existe en CfgProductBranch.';
+        }
+    }
+    
+    
 }
