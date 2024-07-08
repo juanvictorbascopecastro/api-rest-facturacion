@@ -38,3 +38,5 @@ config/params.php
 
 apuntes.txt
 vendor.tar
+
+web/index.php
