@@ -58,8 +58,8 @@ class SaleForm extends Model
         $user = Yii::$app->user->identity;
 
         foreach ($this->$attribute as $index => $product) {
-            if (!isset($product['name']) || !isset($product['quantity']) || !isset($product['price'])) {
-                $this->addError($attribute, "El producto en la posición $index debe tener los campos 'name', 'quantity' y 'price'.");
+            if (!isset($product['name']) || !isset($product['quantity']) || !isset($product['price']) || !isset($product['idunit'])) {
+                $this->addError($attribute, "El producto en la posición $index debe tener los campos 'name', 'quantity', 'price' y 'idunit'.");
                 continue;
             }
 
