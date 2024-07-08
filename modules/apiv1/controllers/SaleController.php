@@ -66,7 +66,6 @@ class SaleController extends BaseController
         if ($saleForm->validate()) {
             // Se verifica y se registra el producto
             $products = $this->saveProducts($saleForm->products, $user);
-            return $products;
             if (isset($products['status']) && $products['status'] == 500) {
                 return $products;
             }
@@ -124,9 +123,9 @@ class SaleController extends BaseController
 
             $documentType = DocumentType::findOne(['type' => 'VENTA']); // Obtener el tipo de salida
             // Guardar los documentos y productos relacionados con la venta
-            $products = [];
-            if (isset($saleForm->products) && is_array($saleForm->products)) {
-                foreach ($saleForm->products as $productData) {
+            $productsResult = [];
+            if (isset($products) && is_array($products)) {
+                foreach ($products as $productData) {
                     // Guardar el documento
                     Document::setCustomDb($db);
                     $document = new Document();
@@ -173,11 +172,11 @@ class SaleController extends BaseController
                             'errors' => $product->errors
                         ];
                     }
-                    $products[] = $product;
+                    $productsResult[] = $product;
                 }
 
                 // Guardar cada producto de la venta
-                foreach ($products as $product) {
+                foreach ($productsResult as $product) {
                     if (!$product->save()) {
                         return [
                             'status' => 500,
