@@ -267,10 +267,9 @@ class SaleController extends BaseController
                     'errors' => $newProduct->errors
                 ];
             }
-    
             // Añadir el id del producto registrado a productData
             $productData['id'] = $newProduct->id;
-            $products[] = $productData;
+            $products[] = $productData; 
         }
     
         return $products;
