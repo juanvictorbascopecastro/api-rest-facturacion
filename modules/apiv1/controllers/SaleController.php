@@ -259,7 +259,7 @@ class SaleController extends BaseController
                     'errors' => $newProduct->errors
                 ];
             }
-    
+      
             if (!$newProduct->save()) {
                 return [
                     'status' => 500,
