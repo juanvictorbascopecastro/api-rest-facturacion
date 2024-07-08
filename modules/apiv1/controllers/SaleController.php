@@ -49,29 +49,28 @@ class SaleController extends BaseController
 
     public function actionInsert()
     {
-        // conexion a la base de dato root
+        // Conexión a la base de datos raíz
         $db = $this->prepareData();
         Product::setCustomDb($db);
         Customer::setCustomDb($db);
         Unit::setCustomDb($db);
-        // Category::::setCustomDb($db);
-        // para verificar el stock conexion a la base de dato sucursal
-        $db = $this->prepareData(true); 
+        // Conexión a la base de datos de la sucursal para verificar el stock
+        $db = $this->prepareData(true);
         CfgProductStore::setCustomDb($db);
         CfgProductBranch::setCustomDb($db);
-    
+
         $saleForm = new SaleForm();
-        $saleForm->attributes = Yii::$app->request->post();
-        
-        $user = Yii::$app->user->identity;    
+        $saleForm->load(Yii::$app->request->post(), '');
+
+        $user = Yii::$app->user->identity;
         if ($saleForm->validate()) {
-            // se verifica y se registra el producto;
-            $saleForm->attributes['products'] = $this->saveProducts($saleForm->attributes['products'], $user);
+            // Se verifica y se registra el producto
+            $products = $this->saveProducts($saleForm->products, $user);
 
             if (isset($products['status']) && $products['status'] == 500) {
                 return $products;
             }
-        
+
             if (!$saleForm->idcustomer && $saleForm->idcustomer !== '' && !empty($saleForm->razonSocial) && !empty($saleForm->numeroDocumento)) {
                 $customer = new Customer();
                 $customer->razonSocial = $saleForm->razonSocial;
@@ -79,7 +78,7 @@ class SaleController extends BaseController
                 $customer->iddocumentNumberType = $saleForm->idtypeDocument;
                 $customer->phone = $saleForm->phone;
                 $customer->iduser = $user->iduser;
-    
+
                 if ($customer->save()) {
                     $saleForm->idcustomer = $customer->id;
                 } else {
@@ -89,7 +88,7 @@ class SaleController extends BaseController
                         'errors' => $customer->errors
                     ];
                 }
-            } else if(!empty($saleForm->idcustomer)) {
+            } else if (!empty($saleForm->idcustomer)) {
                 $existingCustomer = Customer::findOne($saleForm->idcustomer);
                 if (!$existingCustomer) {
                     return [
@@ -98,7 +97,7 @@ class SaleController extends BaseController
                     ];
                 }
             }
-    
+
             // Continuar con el proceso de registro de la venta
             $db = $this->prepareData(true);
             $sale = new Sale();
@@ -114,7 +113,7 @@ class SaleController extends BaseController
             $sale->iduser = $user->iduser;
             $sale->codigoMetodoPago = $saleForm->codigoMetodoPago;
             $sale->codigoDocumentoSector = 1; // siat factura compra y venta
-    
+
             if (!$sale->save()) {
                 return [
                     'status' => 500,
@@ -122,22 +121,22 @@ class SaleController extends BaseController
                     'errors' => $sale->errors
                 ];
             }
-    
-            $documentType = DocumentType::findOne(['type' => 'VENTA']); // otenemos el tipo de salida
+
+            $documentType = DocumentType::findOne(['type' => 'VENTA']); // Obtener el tipo de salida
             // Guardar los documentos y productos relacionados con la venta
             $products = [];
-            if (isset($saleForm->attributes['products']) && is_array($saleForm->attributes['products'])) {
-                foreach ($saleForm->attributes['products'] as $productData) {
+            if (isset($saleForm->products) && is_array($saleForm->products)) {
+                foreach ($saleForm->products as $productData) {
                     // Guardar el documento
                     Document::setCustomDb($db);
                     $document = new Document();
                     $document->attributes = $productData;
                     $document->idcliente = $saleForm->idcustomer;
-                    $document->iddocumentType = $documentType->id; // tipo de documento venta = 3
+                    $document->iddocumentType = $documentType->id; // Tipo de documento venta = 3
                     $document->number = $productData['quantity'];
                     $document->iduser = $user->iduser;
                     $document->idsale = $sale->id;
-    
+
                     if (!$document->save()) {
                         return [
                             'status' => 500,
@@ -146,14 +145,15 @@ class SaleController extends BaseController
                         ];
                     }
 
-                    $errors = $this->updateStock($documentType, $productData); // actualizamos el stock
-                    if($errors != null) {
+                    $errors = $this->updateStock($documentType, $productData); // Actualizamos el stock
+                    if ($errors != null) {
                         return [
                             'status' => 500,
                             'message' => 'Failed to update stock',
                             'errors' => $errors
                         ];
                     }
+
                     // Guardar el producto
                     Productstock::setCustomDb($db);
                     $product = new Productstock();
@@ -165,7 +165,7 @@ class SaleController extends BaseController
                     $product->idproduct = $productData['id'];
                     $product->iddocument = $document->id;  // Aquí se agrega el id del document registrado
                     $product->idsale = $sale->id;
-    
+
                     if (!$product->validate()) {
                         return [
                             'status' => 500,
@@ -175,7 +175,7 @@ class SaleController extends BaseController
                     }
                     $products[] = $product;
                 }
-    
+
                 // Guardar cada producto de la venta
                 foreach ($products as $product) {
                     if (!$product->save()) {
@@ -187,7 +187,7 @@ class SaleController extends BaseController
                     }
                 }
             }
-    
+
             // Todo se ha guardado exitosamente
             return [
                 'status' => 201,
@@ -201,7 +201,8 @@ class SaleController extends BaseController
                 'errors' => $saleForm->errors
             ];
         }
-    }  
+    }
+ 
     
     public function actionProductsBySale($idsale)
     {
@@ -240,16 +241,17 @@ class SaleController extends BaseController
         foreach ($productsData as $productData) {
             // Verificar si 'id' está presente, es diferente de null y es numérico
             if (isset($productData['id']) && $productData['id'] !== null && is_numeric($productData['id'])) {
+                $products[] = $productData;
                 continue; // Si cumple todas las condiciones, no guardar el producto y pasar al siguiente
             }
-
+    
             $newProduct = new Product();
             $newProduct->name = $productData['name'];
             $newProduct->price = $productData['price'];
             $newProduct->idunit = $productData['idunit'] ?? null; // Asegúrate de manejar el caso si idunit no está definido
             $newProduct->idstatus = 1;
             $newProduct->iduser = $user->iduser;
-
+    
             // Validar y guardar el producto
             if (!$newProduct->validate()) {
                 return [
@@ -258,7 +260,7 @@ class SaleController extends BaseController
                     'errors' => $newProduct->errors
                 ];
             }
-
+    
             if (!$newProduct->save()) {
                 return [
                     'status' => 500,
@@ -266,12 +268,15 @@ class SaleController extends BaseController
                     'errors' => $newProduct->errors
                 ];
             }
-
-            $products[] = $newProduct;
+    
+            // Añadir el id del producto registrado a productData
+            $productData['id'] = $newProduct->id;
+            $products[] = $productData;
         }
-
+    
         return $products;
     }
+    
 
     // actualizar el stock de un producto
     protected function updateStock($typeDocument, $product)
@@ -328,7 +333,7 @@ class SaleController extends BaseController
                 return null;
             }
         } else {
-            return 'El producto con ID ' . $product['id'] . ' no tiene control de inventario o no existe en CfgProductBranch.';
+            return null;
         }
     }
     
