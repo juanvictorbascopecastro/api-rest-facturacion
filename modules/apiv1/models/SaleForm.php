@@ -83,7 +83,7 @@ class SaleForm extends Model
             $total += $product['quantity'] * $product['price'];
 
             // validar si el id del producto enviado existe en la base de datos
-            if (isset($product['id']) && !empty($product['id'])) {
+            if (isset($product['id']) && $product['id'] != null) {
                 $existingProduct = Product::findOne($product['id']);
                 if ($existingProduct === null) {
                     $this->addError($attribute, "El producto en la posición $index no existe en la base de datos.");
@@ -91,8 +91,7 @@ class SaleForm extends Model
                 
                 $productBranch = CfgProductBranch::findOne($product['id']);
                 if ($productBranch && $productBranch->controlInventory) { // si esta activo el control de invetario
-                    // Verificar si se proporciona un idStore
-                    if (isset($product['idStore']) && !empty($product['idStore'])) {
+                    if (isset($product['idStore']) && !empty($product['idStore'])) {  // Verificar si se proporciona un idStore
                         // Buscar el registro de CfgProductStore específico por id y idStore
                         $productStore = CfgProductStore::findOne(['id' => $product['id'], 'idstore' => $product['idStore']]);
                         if ($productStore) {

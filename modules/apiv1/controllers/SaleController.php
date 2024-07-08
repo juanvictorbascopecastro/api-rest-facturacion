@@ -66,7 +66,7 @@ class SaleController extends BaseController
         if ($saleForm->validate()) {
             // Se verifica y se registra el producto
             $products = $this->saveProducts($saleForm->products, $user);
-
+            return $products;
             if (isset($products['status']) && $products['status'] == 500) {
                 return $products;
             }
@@ -240,7 +240,7 @@ class SaleController extends BaseController
         
         foreach ($productsData as $productData) {
             // Verificar si 'id' está presente, es diferente de null y es numérico
-            if (isset($productData['id']) && $productData['id'] !== null && is_numeric($productData['id'])) {
+            if (isset($productData['id']) && $productData['id'] != null) {
                 $products[] = $productData;
                 continue; // Si cumple todas las condiciones, no guardar el producto y pasar al siguiente
             }
