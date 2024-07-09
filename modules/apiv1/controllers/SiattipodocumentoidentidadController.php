@@ -10,9 +10,9 @@ use Yii;
 /**
  * Default controller for the `apiv1` module
  */
-class SiatsiattipodocumentoidentidadController extends BaseController
+class SiattipodocumentoidentidadController extends BaseController
 {
-    public $modelClass = 'app\modules\apiv1\models\SiatSiatTipoDocumentoIdentidad';
+    public $modelClass = 'app\modules\apiv1\models\SiatTipoDocumentoIdentidad';
     public function actions()
     {
         $actions = parent::actions();
