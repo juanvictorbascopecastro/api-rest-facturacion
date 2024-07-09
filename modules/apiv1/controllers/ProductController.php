@@ -8,8 +8,8 @@ use app\modules\apiv1\controllers\BaseController;
 use app\models\CfgIoSystemBranchUser;
 use app\modules\apiv1\models\CfgIoSystemBranch;
 use yii\web\NotFoundHttpException;
-use app\modules\apiv1\models\CfgProductStore; // stock de los productos
-use app\modules\apiv1\models\CfgProductBranch; // configuracion de los productos
+use app\modules\apiv1\models\ProductStore; // stock de los productos
+use app\modules\apiv1\models\ProductBranch; // configuracion de los productos
 
 use sizeg\jwt\Jwt;
 
@@ -29,20 +29,20 @@ class ProductController extends BaseController
     {
         $products = Product::find()->orderBy(['dateCreate' => SORT_ASC])->all();
     
-        $cfgProductStores = CfgProductStore::find()->all();
-        $cfgProductBranchs = CfgProductBranch::find()->all();
+        $productStoreList = ProductStore::find()->all();
+        $productBranchList = ProductBranch::find()->all();
     
         foreach ($products as $product) {
-            $product->cfgProductStores = [];
-            foreach ($cfgProductStores as $store) {
+            $product->productStores = [];
+            foreach ($productStoreList as $store) {
                 if ($product->id == $store->id) {
-                    $product->cfgProductStores[] = $store;
+                    $product->productStores[] = $store;
                 }
             }
         
-            foreach ($cfgProductBranchs as $branch) {
+            foreach ($productBranchList as $branch) {
                 if ($product->id == $branch->id) {
-                    $product->cfgProductBranch = $branch;
+                    $product->productBranch = $branch;
                     break;
                 }
             }

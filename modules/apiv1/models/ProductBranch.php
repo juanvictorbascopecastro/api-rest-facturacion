@@ -2,7 +2,7 @@
 
 namespace app\modules\apiv1\models;
 
-class CfgProductBranch extends \app\models\CfgProductBranch {
+class ProductBranch extends \app\models\ProductBranch {
 
     public function fields() {
         return [

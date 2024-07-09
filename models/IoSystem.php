@@ -40,7 +40,7 @@ use Yii;
  * @property string|null $siatUser
  * @property string|null $siatPassword
  */
-class CfgIoSystem extends \yii\db\ActiveRecord
+class IoSystem extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -126,6 +126,6 @@ class CfgIoSystem extends \yii\db\ActiveRecord
      */
     public static function find()
     {
-        return new CfgIoSystemQuery(get_called_class());
+        return new IoSystemQuery(get_called_class());
     }
 }

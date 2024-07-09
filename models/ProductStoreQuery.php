@@ -7,7 +7,7 @@ namespace app\models;
  *
  * @see CfgProductStore
  */
-class CfgProductStoreQuery extends \yii\db\ActiveQuery
+class ProductStoreQuery extends \yii\db\ActiveQuery
 {
     /*public function active()
     {

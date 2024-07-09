@@ -14,10 +14,10 @@ use app\modules\apiv1\models\SaleForm;
 use app\modules\apiv1\models\Sale;
 use app\modules\apiv1\models\Productstock;
 
-use app\modules\apiv1\models\CfgProductStore; // stock de los productos
-use app\modules\apiv1\models\CfgProductBranch; // configuracion de los productos
+use app\modules\apiv1\models\ProductStore; // stock de los productos
+use app\modules\apiv1\models\ProductBranch; // configuracion de los productos
 use app\models\DocumentType;
-use app\modules\apiv1\models\CfgStore;
+use app\modules\apiv1\models\Store;
 
 class SaleController extends BaseController
 {
@@ -47,17 +47,6 @@ class SaleController extends BaseController
 
     public function actionInsert()
     {
-        // // Conexión a la base de datos raíz
-        // $db = $this->prepareData();
-        // Product::setCustomDb($db);
-        // Customer::setCustomDb($db);
-        // Unit::setCustomDb($db);
-        // // Conexión a la base de datos de la sucursal para verificar el stock
-        // $db = $this->prepareData(true);
-        // CfgProductStore::setCustomDb($db);
-        // CfgProductBranch::setCustomDb($db);
-        // CfgStore::setCustomDb($db);
-
         $saleForm = new SaleForm();
         $saleForm->load(Yii::$app->request->post(), '');
 
@@ -260,59 +249,59 @@ class SaleController extends BaseController
             // Añadir el id del producto registrado a productData
             $productData['id'] = $newProduct->id;
     
-            $cfgProductBranch = new CfgProductBranch();
-            $cfgProductBranch->id = $newProduct->id;
-            $cfgProductBranch->iduser = $newProduct->iduser;
-            $cfgProductBranch->idstatus = 10;
-            $cfgProductBranch->priceChange = false;
-            $cfgProductBranch->price = $newProduct->price;
-            $cfgProductBranch->cost = 0;
-            $cfgProductBranch->controlInventory = false;
-            $cfgProductBranch->enableSale = true;
-            $cfgProductBranch->stockMin = 0;
-            $cfgProductBranch->stockMax = 0;
+            $productBranch = new ProductBranch();
+            $productBranch->id = $newProduct->id;
+            $productBranch->iduser = $newProduct->iduser;
+            $productBranch->idstatus = 10;
+            $productBranch->priceChange = false;
+            $productBranch->price = $newProduct->price;
+            $productBranch->cost = 0;
+            $productBranch->controlInventory = false;
+            $productBranch->enableSale = true;
+            $productBranch->stockMin = 0;
+            $productBranch->stockMax = 0;
     
-            // Validar y guardar CfgProductBranch
-            if (!$cfgProductBranch->validate()) {
+            // Validar y guardar productBranch
+            if (!$productBranch->validate()) {
                 return [
                     'status' => 500,
-                    'message' => 'Validation failed for CfgProductBranch',
-                    'errors' => $cfgProductBranch->errors
+                    'message' => 'Validation failed for ProductBranch',
+                    'errors' => $productBranch->errors
                 ];
             }
     
-            if (!$cfgProductBranch->save()) {
+            if (!$productBranch->save()) {
                 return [
                     'status' => 500,
-                    'message' => 'Failed to save CfgProductBranch',
-                    'errors' => $cfgProductBranch->errors
+                    'message' => 'Failed to save ProductBranch',
+                    'errors' => $productBranch->errors
                 ];
             }
     
-            $cfgStores = CfgStore::find()->all(); // Obtener todos los registros de CfgStore
+            $cfgStores = Store::find()->all(); // Obtener todos los registros de CfgStore
             foreach($cfgStores as $store){
-                $cfgProductStore = new CfgProductStore();
-                $cfgProductStore->id = $newProduct->id;
-                $cfgProductStore->iduser = $newProduct->iduser;
-                $cfgProductStore->stock = 0;
-                $cfgProductStore->idstore = $store->id;
-                $cfgProductStore->stockReserved = 0;
-                $cfgProductStore->allow = true;
+                $productStore = new ProductStore();
+                $productStore->id = $newProduct->id;
+                $productStore->iduser = $newProduct->iduser;
+                $productStore->stock = 0;
+                $productStore->idstore = $store->id;
+                $productStore->stockReserved = 0;
+                $productStore->allow = true;
     
-                // Validar y guardar CfgProductStore
-                if (!$cfgProductStore->validate()) {
+                // Validar y guardar productStore
+                if (!$productStore->validate()) {
                     return [
                         'status' => 500,
-                        'message' => 'Validation failed for CfgProductStore for store ID ' . $store->id,
-                        'errors' => $cfgProductStore->errors
+                        'message' => 'Validation failed for productStore for store ID ' . $store->id,
+                        'errors' => $productStore->errors
                     ];
                 }
     
-                if (!$cfgProductStore->save()) {
+                if (!$productStore->save()) {
                     return [
                         'status' => 500,
-                        'message' => 'Failed to save CfgProductStore for store ID ' . $store->id,
-                        'errors' => $cfgProductStore->errors
+                        'message' => 'Failed to save productStore for store ID ' . $store->id,
+                        'errors' => $productStore->errors
                     ];
                 }
             }
@@ -324,53 +313,53 @@ class SaleController extends BaseController
     // actualizar el stock de un producto
     protected function updateStock($typeDocument, $product)
     {
-        $productBranch = CfgProductBranch::findOne($product['id']);   
+        $productBranch = ProductBranch::findOne($product['id']);   
         if ($productBranch && $productBranch->controlInventory) {
-            $cfgProductStores = CfgProductStore::findAll(['id' => $product['id']]);
+            $productStores = ProductStore::findAll(['id' => $product['id']]);
     
-            if (!$cfgProductStores) {
-                return 'No se encontró el registro del producto en CfgProductStore para el producto ID ' . $product['id'];
+            if (!$productStores) {
+                return 'No se encontró el registro del producto en ProductStore para el producto ID ' . $product['id'];
             }
     
             // Verificar si se proporciona un idStore
             if (isset($product['idStore']) && !empty($product['idStore'])) {
-                $cfgProductStore = CfgProductStore::findOne(['id' => $product['id'], 'idstore' => $product['idStore']]);
-                if ($cfgProductStore) {
+                $productStore = ProductStore::findOne(['id' => $product['id'], 'idstore' => $product['idStore']]);
+                if ($productStore) {
                     if ($typeDocument->action == 1) {
-                        $cfgProductStore->stock = floatval($cfgProductStore->stock) + $product['quantity'];
+                        $productStore->stock = floatval($productStore->stock) + $product['quantity'];
                     } else if ($typeDocument->action == -1) {
-                        $cfgProductStore->stock = floatval($cfgProductStore->stock) - $product['quantity'];
+                        $productStore->stock = floatval($productStore->stock) - $product['quantity'];
                     }
-                    if ($cfgProductStore->save()) {
+                    if ($productStore->save()) {
                         return null;
                     } else {
-                        return 'Error al actualizar el stock para el producto ID ' . $product['id'] . ' en la tienda ID ' . $product['idStore'] . ': ' . json_encode($cfgProductStore->errors);
+                        return 'Error al actualizar el stock para el producto ID ' . $product['id'] . ' en la tienda ID ' . $product['idStore'] . ': ' . json_encode($productStore->errors);
                     }
                 } else {
                     return 'No se encontró el registro del producto en la tienda ID ' . $product['idStore'];
                 }
             } else { // Si no se proporciona idStore, decrementar la cantidad total entre los registros disponibles
                 $remainingQuantity = $product['quantity'];
-                foreach ($cfgProductStores as $cfgProductStore) {
+                foreach ($productStores as $productStore) {
                     if ($remainingQuantity <= 0) {
                         break; // Salir del bucle si ya se ha cubierto toda la cantidad
                     }
                     // Actualizar el stock segun la acción del tipo de documento
                     if ($typeDocument->action == 1) {
-                        $cfgProductStore->stock = floatval($cfgProductStore->stock) + $remainingQuantity;
+                        $productStore->stock = floatval($productStore->stock) + $remainingQuantity;
                         $remainingQuantity = 0; // Toda la cantidad ha sido añadida
                     } else if ($typeDocument->action == -1) {
-                        if ($cfgProductStore->stock >= $remainingQuantity) {
-                            $cfgProductStore->stock = floatval($cfgProductStore->stock) - $remainingQuantity;
+                        if ($productStore->stock >= $remainingQuantity) {
+                            $productStore->stock = floatval($productStore->stock) - $remainingQuantity;
                             $remainingQuantity = 0; // Toda la cantidad ha sido restada
                         } else {
-                            $remainingQuantity -= $cfgProductStore->stock; // Restar solo lo disponible en este registro
-                            $cfgProductStore->stock = 0;
+                            $remainingQuantity -= $productStore->stock; // Restar solo lo disponible en este registro
+                            $productStore->stock = 0;
                         }
                     }
 
-                    if (!$cfgProductStore->save()) {
-                        return 'Error al actualizar el stock para el producto ID ' . $product['id'] . ' en la tienda ID ' . $cfgProductStore->idstore . ': ' . json_encode($cfgProductStore->errors);
+                    if (!$productStore->save()) {
+                        return 'Error al actualizar el stock para el producto ID ' . $product['id'] . ' en la tienda ID ' . $productStore->idstore . ': ' . json_encode($productStore->errors);
                     }
                 }
                 return null;

@@ -3,11 +3,11 @@
 namespace app\models;
 
 /**
- * This is the ActiveQuery class for [[SiatSiatTipoDocumentoIdentidad]].
+ * This is the ActiveQuery class for [[SiatUnidadMedida]].
  *
- * @see SiatSiatTipoDocumentoIdentidad
+ * @see SiatUnidadMedida
  */
-class SiatSiatTipoDocumentoIdentidadQuery extends \yii\db\ActiveQuery
+class UnidadMedidaQuery extends \yii\db\ActiveQuery
 {
     /*public function active()
     {
@@ -16,7 +16,7 @@ class SiatSiatTipoDocumentoIdentidadQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return SiatSiatTipoDocumentoIdentidad[]|array
+     * @return SiatUnidadMedida[]|array
      */
     public function all($db = null)
     {
@@ -25,7 +25,7 @@ class SiatSiatTipoDocumentoIdentidadQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return SiatSiatTipoDocumentoIdentidad|array|null
+     * @return SiatUnidadMedida|array|null
      */
     public function one($db = null)
     {

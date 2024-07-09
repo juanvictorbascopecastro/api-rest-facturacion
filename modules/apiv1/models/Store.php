@@ -2,7 +2,7 @@
 
 namespace app\modules\apiv1\models;
 
-class CfgStore extends \app\models\CfgStore {
+class Store extends \app\models\Store {
 
     public function fields() {
         return [

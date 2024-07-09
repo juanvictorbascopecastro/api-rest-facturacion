@@ -17,7 +17,7 @@ use Yii;
  * @property int $iduserActive
  * @property int $idioSystem
  */
-class CfgIoSystemBranchService extends \yii\db\ActiveRecord
+class IoSystemBranchService extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -76,6 +76,6 @@ class CfgIoSystemBranchService extends \yii\db\ActiveRecord
      */
     public static function find()
     {
-        return new CfgIoSystemBranchServiceQuery(get_called_class());
+        return new IoSystemBranchServiceQuery(get_called_class());
     }
 }

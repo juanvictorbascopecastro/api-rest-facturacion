@@ -89,11 +89,11 @@ class SaleForm extends Model
                     $this->addError($attribute, "El producto en la posición $index no existe en la base de datos.");
                 }
                 
-                $productBranch = CfgProductBranch::findOne($product['id']);
+                $productBranch = ProductBranch::findOne($product['id']);
                 if ($productBranch && $productBranch->controlInventory) { // si esta activo el control de invetario
                     if (isset($product['idStore']) && !empty($product['idStore'])) {  // Verificar si se proporciona un idStore
-                        // Buscar el registro de CfgProductStore específico por id y idStore
-                        $productStore = CfgProductStore::findOne(['id' => $product['id'], 'idstore' => $product['idStore']]);
+                        // Buscar el registro de ProductStore específico por id y idStore
+                        $productStore = ProductStore::findOne(['id' => $product['id'], 'idstore' => $product['idStore']]);
                         if ($productStore) {
                             if ($productStore->stock < $product['quantity']) {  // Verificar si hay suficiente stock para la cantidad solicitada
                                 $this->addError($attribute, "El stock en la tienda ID " . $product['idStore'] . " para el producto " . $product['name'] . " es de " . $productStore->stock . " y quiere registrar la cantidad de " . $product['quantity']);
@@ -101,8 +101,8 @@ class SaleForm extends Model
                         } else {
                             $this->addError($attribute, "No se encontró el registro del producto en la tienda ID " . $product['idStore']);
                         }
-                    } else { // Si no se proporciona idStore, verificar el stock total del producto sumando todos los registros de CfgProductStore
-                        $productStores = CfgProductStore::findAll(['id' => $product['id']]);
+                    } else { // Si no se proporciona idStore, verificar el stock total del producto sumando todos los registros de ProductStore
+                        $productStores = ProductStore::findAll(['id' => $product['id']]);
                         $totalStock = 0;
                         foreach ($productStores as $productStore) {
                             $totalStock += floatval($productStore->stock);
