@@ -14,7 +14,7 @@ use Yii;
  * @property string|null $descripcion
  * @property int|null $codigoClasificador
  */
-class SiatUnidadMedida extends \yii\db\ActiveRecord
+class UnidadMedida extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
