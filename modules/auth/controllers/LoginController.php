@@ -8,7 +8,7 @@ use app\models\CrugeUser;
 use sizeg\jwt\Jwt;
 
 use app\modules\auth\models\LoginForm;
-use app\models\CfgIoSystemBranchUser;
+use app\models\IoSystemBranchUser;
 /**
  * Login controller for the `auth` module
  */
@@ -25,7 +25,7 @@ class LoginController extends BaseController
             else $user = CrugeUser::findOne(['username' => $loginForm->username]);
 
             if ($user && $user->validatePassword($loginForm->password)) {
-                $dataActive = CfgIoSystemBranchUser::findOne(['iduserActive' => $user->iduser]);
+                $dataActive = IoSystemBranchUser::findOne(['iduserActive' => $user->iduser]);
 
                 if(!$dataActive) {
                     return [
