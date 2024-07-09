@@ -67,7 +67,7 @@ $config = [
                 'GET apiv1/customers/actionSearchByName/<name>' => 'apiv1/customer/search-by-name',
                 'GET apiv1/sales/actionProductsBySale/<id>' => 'apiv1/sale/product-by-sale',
                 ['pattern' => 'apiv1/my-user', 'route' => 'apiv1/crugeuser/index'],
-                'GET apiv1/cfg-io-system-branch' => 'apiv1/cfgiosystembranch',
+                'GET apiv1/io-system-branch' => 'apiv1/iosystembranch',
                 'GET apiv1/product/actionSearchByName/<name>' => 'apiv1/product/search-by-doc',
             ],
         ],
