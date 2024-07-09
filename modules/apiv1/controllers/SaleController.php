@@ -32,9 +32,6 @@ class SaleController extends BaseController
 
     public function actionListar()
     {
-        $db = $this->prepareData(true);
-        Productstock::setCustomDb($db);
-
         $dataProvider = new ActiveDataProvider([
             'query' => Sale::find()
                         ->with('productStocks') 
@@ -72,7 +69,7 @@ class SaleController extends BaseController
                 return $products;
             }
 
-            if (!$saleForm->idcustomer && $saleForm->idcustomer != null && !empty($saleForm->razonSocial) && !empty($saleForm->numeroDocumento)) {
+            if (!$saleForm->idcustomer || $saleForm->idcustomer == null) {
                 $customer = new Customer();
                 $customer->razonSocial = $saleForm->razonSocial;
                 $customer->numeroDocumento = $saleForm->numeroDocumento;
@@ -94,13 +91,12 @@ class SaleController extends BaseController
                 if (!$existingCustomer) {
                     return [
                         'status' => 500,
-                        'message' => 'Customer specified does not exist.',
+                        'message' => 'Customer with id ' . $saleForm->idcustomer . ' does not exist.',
                     ];
                 }
             }
 
             // Continuar con el proceso de registro de la venta
-            $db = $this->prepareData(true);
             $sale = new Sale();
             $sale->attributes = $saleForm->attributes;
             $sale->montoTotal = $saleForm->total;
@@ -129,7 +125,6 @@ class SaleController extends BaseController
             if (isset($products) && is_array($products)) {
                 foreach ($products as $productData) {
                     // Guardar el documento
-                    Document::setCustomDb($db);
                     $document = new Document();
                     $document->attributes = $productData;
                     $document->idcliente = $saleForm->idcustomer;
@@ -156,7 +151,6 @@ class SaleController extends BaseController
                     }
 
                     // Guardar el producto
-                    Productstock::setCustomDb($db);
                     $product = new Productstock();
                     $product->attributes = $productData;
                     $product->nprocess = 1;
@@ -207,9 +201,6 @@ class SaleController extends BaseController
     
     public function actionProductsBySale($idsale)
     {
-        $db = $this->prepareData(true);
-        Productstock::setCustomDb($db);
-
         $sale = $this->modelClass::find()->where(['id' => $idsale])->with('productStocks')->one();
 
         if (!$sale) {
@@ -220,9 +211,6 @@ class SaleController extends BaseController
         foreach ($sale->productStocks as $productStock) {
             $productIds[] = $productStock->idproduct;
         }
-
-        $db = $this->prepareData();
-        Product::setCustomDb($db);
 
         $query = Product::find()->where(['id' => $productIds])->orderBy(['id' => SORT_ASC]);
 

@@ -24,7 +24,6 @@ class CustomerController extends BaseController
 
     public function actionListar()
     {
-        $this->prepareData();
         return new ActiveDataProvider([
             'query' => $this->modelClass::find()->orderBy(['id' => SORT_ASC]),
             'pagination' => false,
@@ -34,8 +33,6 @@ class CustomerController extends BaseController
 
     public function actionInsert()
     {
-        $this->prepareData();
-
         $user = Yii::$app->user->identity;
         $customer = new Customer();
         $customer->attributes = Yii::$app->request->post();
@@ -50,8 +47,6 @@ class CustomerController extends BaseController
 
     public function actionEdit($id)
     {
-        $this->prepareData();
-
         $customer = Customer::findOne($id);
         if (!$customer) {
             throw new NotFoundHttpException("Customer with ID $id not found.");
@@ -71,8 +66,6 @@ class CustomerController extends BaseController
 
     public function actionRemove($id)
     {
-        $this->prepareData();
-
         $customer = Customer::findOne($id);
         if (!$customer) {
             throw new NotFoundHttpException("Customer with ID $id not found.");
@@ -86,8 +79,6 @@ class CustomerController extends BaseController
     }
     public function actionSearchByDoc($doc)
     {
-        $this->prepareData();
-
         $query = Customer::find()
             ->where(['ILIKE', 'numeroDocumento', $doc])
             ->limit(20)
@@ -98,8 +89,6 @@ class CustomerController extends BaseController
 
     public function actionSearchByName($name)
     {
-        $this->prepareData();
-
         $query = Customer::find()
             ->where(['ILIKE', 'razonSocial', $name])
             ->limit(20)

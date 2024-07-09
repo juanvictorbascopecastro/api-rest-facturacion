@@ -27,8 +27,6 @@ class MetodopagoController extends BaseController
 
     public function actionListar()
     {
-        $this->prepareData(); 
-
         return new ActiveDataProvider([
             'query' => $this->modelClass::find()->where(['actived' => true])->orderBy(['id' => SORT_ASC]),
             'pagination' => false,

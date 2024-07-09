@@ -25,8 +25,6 @@ class UnitController extends BaseController
 
     public function actionListar()
     {
-        $this->prepareData();
-
         return new ActiveDataProvider([
             'query' => $this->modelClass::find()->orderBy(['order' => SORT_ASC]),
             'pagination' => false,

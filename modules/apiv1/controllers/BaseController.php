@@ -69,36 +69,7 @@ class BaseController extends ActiveController
         $response->setStatusCodeByException($exception);
         $response->send();
     }
-
-    // metodos para conexion a la base de dato respectiva
-    protected function prepareData($isSucursal = false)
-    {
-        $user = Yii::$app->user->identity;
-        $ioSystemBranchUser = CfgIoSystemBranchUser::findOne(['iduserActive' => $user->iduser]);
-
-        if (!$ioSystemBranchUser) {
-            throw new \yii\web\NotFoundHttpException("El usuario con el ID " . $user->iduser . " no tiene habilitación para esta función!");
-        }
-
-        $ioSystemBranch = CfgIoSystemBranch::findOne(['id' => $ioSystemBranchUser->idioSystemBranch]);
-        
-        if (!$ioSystemBranch) {
-            throw new \yii\web\NotFoundHttpException("Service with idioSystemBranch from iduserActive" . $user->iduser . " not found.");
-        }
-        
-        if($isSucursal == true) {
-            $db = DbConnection::getConnection($ioSystemBranch->dbidentifier, $this->dbUser, $this->dbPassword, $this->dbHost);
-        } else {
-            $db = DbConnection::getConnection($ioSystemBranch->cfgIoSystem->dbidentifier, $this->dbUser, $this->dbPassword, $this->dbHost);
-        }
-        
-        if (!$db) {
-            throw new \yii\base\InvalidConfigException("No se pudo establecer la conexión a la base de datos.");
-        }
-
-        $this->modelClass::setCustomDb($db); // Asignar la conexión personalizada al modelo
-        return $db; // retornamos la conexion
-    }
+    
     // metodo para obtener el token
     protected function getAuthToken()
     {

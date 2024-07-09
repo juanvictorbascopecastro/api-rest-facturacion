@@ -27,14 +27,9 @@ class ProductController extends BaseController
 
     public function actionListar()
     {
-        // $this->prepareData(false); 
         $products = Product::find()->orderBy(['dateCreate' => SORT_ASC])->all();
     
-        // $db = $this->prepareData(true); 
-        // CfgProductStore::setCustomDb($db);
         $cfgProductStores = CfgProductStore::find()->all();
-
-        // CfgProductBranch::setCustomDb($db);
         $cfgProductBranchs = CfgProductBranch::find()->all();
     
         foreach ($products as $product) {
@@ -74,8 +69,6 @@ class ProductController extends BaseController
 
     public function actionEdit($id)
     {
-        $this->prepareData();
-
         $product = Product::findOne($id);
         if (!$product) {
             throw new NotFoundHttpException("product with ID $id not found.");
@@ -95,8 +88,6 @@ class ProductController extends BaseController
 
     public function actionRemove($id)
     {
-        $this->prepareData();
-
         $product = Product::findOne($id);
         if (!$product) {
             throw new NotFoundHttpException("product with ID $id not found.");
@@ -111,8 +102,6 @@ class ProductController extends BaseController
 
     public function actionSearchByName($name)
     {
-        $this->prepareData();
-
         $query = Product::find()
             ->where(['ILIKE', 'name', $name])
             ->limit(20)

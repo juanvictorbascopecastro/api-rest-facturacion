@@ -24,8 +24,6 @@ class CategoryController extends BaseController
 
     public function actionListar()
     {
-        $this->prepareData();
-
         return new ActiveDataProvider([
             'query' => $this->modelClass::find()->orderBy(['id' => SORT_ASC]),
             'pagination' => false,
@@ -35,8 +33,6 @@ class CategoryController extends BaseController
 
     public function actionInsert()
     {
-        $this->prepareData();
-
         $user = Yii::$app->user->identity;
         $category = new Category();
         $category->attributes = Yii::$app->request->post();
@@ -51,8 +47,6 @@ class CategoryController extends BaseController
 
     public function actionEdit($id)
     {
-        $this->prepareData();
-
         $category = Category::findOne($id);
         if (!$category) {
             throw new NotFoundHttpException("Category with ID $id not found.");
@@ -72,8 +66,6 @@ class CategoryController extends BaseController
 
     public function actionRemove($id)
     {
-        $this->prepareData();
-
         $category = Category::findOne($id);
         if (!$category) {
             throw new NotFoundHttpException("Category with ID $id not found.");
