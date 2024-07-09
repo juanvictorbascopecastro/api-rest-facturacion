@@ -50,16 +50,16 @@ class SaleController extends BaseController
 
     public function actionInsert()
     {
-        // Conexión a la base de datos raíz
-        $db = $this->prepareData();
-        Product::setCustomDb($db);
-        Customer::setCustomDb($db);
-        Unit::setCustomDb($db);
-        // Conexión a la base de datos de la sucursal para verificar el stock
-        $db = $this->prepareData(true);
-        CfgProductStore::setCustomDb($db);
-        CfgProductBranch::setCustomDb($db);
-        CfgStore::setCustomDb($db);
+        // // Conexión a la base de datos raíz
+        // $db = $this->prepareData();
+        // Product::setCustomDb($db);
+        // Customer::setCustomDb($db);
+        // Unit::setCustomDb($db);
+        // // Conexión a la base de datos de la sucursal para verificar el stock
+        // $db = $this->prepareData(true);
+        // CfgProductStore::setCustomDb($db);
+        // CfgProductBranch::setCustomDb($db);
+        // CfgStore::setCustomDb($db);
 
         $saleForm = new SaleForm();
         $saleForm->load(Yii::$app->request->post(), '');

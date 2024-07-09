@@ -27,14 +27,14 @@ class ProductController extends BaseController
 
     public function actionListar()
     {
-        $this->prepareData(false); 
+        // $this->prepareData(false); 
         $products = Product::find()->orderBy(['dateCreate' => SORT_ASC])->all();
     
-        $db = $this->prepareData(true); 
-        CfgProductStore::setCustomDb($db);
+        // $db = $this->prepareData(true); 
+        // CfgProductStore::setCustomDb($db);
         $cfgProductStores = CfgProductStore::find()->all();
 
-        CfgProductBranch::setCustomDb($db);
+        // CfgProductBranch::setCustomDb($db);
         $cfgProductBranchs = CfgProductBranch::find()->all();
     
         foreach ($products as $product) {
