@@ -2,6 +2,7 @@
 
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
+//echo $keyJWT;
 
 $config = [
     'id' => 'basic',
@@ -51,6 +52,8 @@ $config = [
         // 'empresa0_api' => $db['empresa0_api'],
         'iooxs_access' => $db['iooxs_access'],
         'iooxs_io' => $db['iooxs_io'],
+        'iooxsRoot' => $db['iooxsRoot'],
+        'iooxsBranch' => $db['iooxsBranch'],
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
@@ -70,7 +73,7 @@ $config = [
         ],
         'jwt' => [
             'class' => \sizeg\jwt\Jwt::class,
-            'key' => 'CLAVE-SECRETA',  // Cambia esto por tu clave secreta
+            'key' => $keyJWT,  // Cambia esto por tu clave secreta
             'jwtValidationData' => \app\modules\auth\components\JwtValidationData::class,
         ],
         // 'jwtToken' => [

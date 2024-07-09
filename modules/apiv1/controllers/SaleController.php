@@ -17,6 +17,7 @@ use app\modules\apiv1\models\Productstock;
 use app\modules\apiv1\models\CfgProductStore; // stock de los productos
 use app\modules\apiv1\models\CfgProductBranch; // configuracion de los productos
 use app\models\DocumentType;
+use app\modules\apiv1\models\CfgStore;
 
 class SaleController extends BaseController
 {
@@ -58,6 +59,7 @@ class SaleController extends BaseController
         $db = $this->prepareData(true);
         CfgProductStore::setCustomDb($db);
         CfgProductBranch::setCustomDb($db);
+        CfgStore::setCustomDb($db);
 
         $saleForm = new SaleForm();
         $saleForm->load(Yii::$app->request->post(), '');
@@ -70,7 +72,7 @@ class SaleController extends BaseController
                 return $products;
             }
 
-            if (!$saleForm->idcustomer && $saleForm->idcustomer !== '' && !empty($saleForm->razonSocial) && !empty($saleForm->numeroDocumento)) {
+            if (!$saleForm->idcustomer && $saleForm->idcustomer != null && !empty($saleForm->razonSocial) && !empty($saleForm->numeroDocumento)) {
                 $customer = new Customer();
                 $customer->razonSocial = $saleForm->razonSocial;
                 $customer->numeroDocumento = $saleForm->numeroDocumento;
@@ -259,7 +261,7 @@ class SaleController extends BaseController
                     'errors' => $newProduct->errors
                 ];
             }
-    
+      
             if (!$newProduct->save()) {
                 return [
                     'status' => 500,
@@ -267,16 +269,70 @@ class SaleController extends BaseController
                     'errors' => $newProduct->errors
                 ];
             }
-    
             // Añadir el id del producto registrado a productData
             $productData['id'] = $newProduct->id;
-            $products[] = $productData;
+    
+            $cfgProductBranch = new CfgProductBranch();
+            $cfgProductBranch->id = $newProduct->id;
+            $cfgProductBranch->iduser = $newProduct->iduser;
+            $cfgProductBranch->idstatus = 10;
+            $cfgProductBranch->priceChange = false;
+            $cfgProductBranch->price = $newProduct->price;
+            $cfgProductBranch->cost = 0;
+            $cfgProductBranch->controlInventory = false;
+            $cfgProductBranch->enableSale = true;
+            $cfgProductBranch->stockMin = 0;
+            $cfgProductBranch->stockMax = 0;
+    
+            // Validar y guardar CfgProductBranch
+            if (!$cfgProductBranch->validate()) {
+                return [
+                    'status' => 500,
+                    'message' => 'Validation failed for CfgProductBranch',
+                    'errors' => $cfgProductBranch->errors
+                ];
+            }
+    
+            if (!$cfgProductBranch->save()) {
+                return [
+                    'status' => 500,
+                    'message' => 'Failed to save CfgProductBranch',
+                    'errors' => $cfgProductBranch->errors
+                ];
+            }
+    
+            $cfgStores = CfgStore::find()->all(); // Obtener todos los registros de CfgStore
+            foreach($cfgStores as $store){
+                $cfgProductStore = new CfgProductStore();
+                $cfgProductStore->id = $newProduct->id;
+                $cfgProductStore->iduser = $newProduct->iduser;
+                $cfgProductStore->stock = 0;
+                $cfgProductStore->idstore = $store->id;
+                $cfgProductStore->stockReserved = 0;
+                $cfgProductStore->allow = true;
+    
+                // Validar y guardar CfgProductStore
+                if (!$cfgProductStore->validate()) {
+                    return [
+                        'status' => 500,
+                        'message' => 'Validation failed for CfgProductStore for store ID ' . $store->id,
+                        'errors' => $cfgProductStore->errors
+                    ];
+                }
+    
+                if (!$cfgProductStore->save()) {
+                    return [
+                        'status' => 500,
+                        'message' => 'Failed to save CfgProductStore for store ID ' . $store->id,
+                        'errors' => $cfgProductStore->errors
+                    ];
+                }
+            }
+            $products[] = $productData; 
         }
     
         return $products;
     }
-    
-
     // actualizar el stock de un producto
     protected function updateStock($typeDocument, $product)
     {
@@ -334,7 +390,5 @@ class SaleController extends BaseController
         } else {
             return null;
         }
-    }
-    
-    
+    }    
 }

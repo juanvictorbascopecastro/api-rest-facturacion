@@ -47,7 +47,7 @@ class Customer extends \yii\db\ActiveRecord
     // }
     public static function getDb()
     {
-        return self::$customDb ?: Yii::$app->db;
+        return Yii::$app->iooxsRoot;
     }
 
     public static function setCustomDb($db)

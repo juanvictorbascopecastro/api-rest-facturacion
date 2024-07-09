@@ -39,7 +39,7 @@ class Productstock extends \yii\db\ActiveRecord
 
     public static function getDb()
     {
-        return self::$customDb ?: Yii::$app->db;
+        return Yii::$app->iooxsBranch;
     }
 
     public static function setCustomDb($db)
