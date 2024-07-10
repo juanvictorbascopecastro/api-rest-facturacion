@@ -40,6 +40,6 @@ class Store extends \yii\db\ActiveRecord
 
     public static function find()
     {
-        return new CfgStoreQuery(get_called_class());
+        return new StoreQuery(get_called_class());
     }
 }
