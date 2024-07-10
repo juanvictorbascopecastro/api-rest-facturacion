@@ -1,14 +1,17 @@
 <?php
+use yii\web\Request;
+$request = new Request();
 
-$headers = getallheaders();
-$keyJWT='CLAVE-SECRETA';
-$Authorization = isset($headers['Authorization']) ? $headers['Authorization'] : null;
+$Authorization = $request->getHeaders()->get('Authorization');
+$keyJWT = "IO-SOFTWARE-LLAVE-SECRETA";
+// $Authorization = $headers['Authorization'];
 
-$dbAccess='00_iooxs_access';
-$DBiooxsRoot='';
-$DBiooxsBranch='';
-
-if($Authorization != null) {
+$dbAccess='0_iooxs_access';
+$DBiooxsRoot = null;
+$DBiooxsBranch = null;
+// echo '..' . $Authorization;
+if(!empty($Authorization)) {
+    
     $token = str_replace('Bearer ', '', $Authorization);
 
     function base64UrlDecode($input) {
@@ -65,10 +68,9 @@ if($Authorization != null) {
           where "iduserActive"='.$iduser;
     
     $result = pg_query($conn, $sql);
-    
+  
     while ($row = pg_fetch_assoc($result)) {
         $DBiooxsRoot = $row['BDiooxsRoot'];
-
         $DBiooxsBranch = $row['DBiooxsBranch'];
         break;
     }
@@ -77,36 +79,41 @@ if($Authorization != null) {
 
 //echo $DBiooxsRoot.','.$DBiooxsBranch;
 
-
-
-return [
-    'iooxs_access' => array(
+$connections = [
+    'iooxs_access' => [
         'class' => 'yii\db\Connection',
-        'dsn' => 'pgsql:host=localhost;dbname='.$dbAccess,
+        'dsn' => 'pgsql:host=localhost;dbname=' . $dbAccess,
         'username' => 'postgres',
         'password' => '12345678',
         'charset' => 'utf8',
-    ),
-    'iooxs_io' => array(
+    ],
+    'iooxs_io' => [
         'class' => 'yii\db\Connection',
         'dsn' => 'pgsql:host=localhost;dbname=0_iooxs_io',
         'username' => 'postgres',
         'password' => '12345678',
         'charset' => 'utf8',
-    ),
-   'iooxsRoot' => array(
-        'class' => 'yii\db\Connection',
-        'dsn' => 'pgsql:host=localhost;dbname='.$DBiooxsRoot,
-        'username' => 'postgres',
-        'password' => '12345678',
-        'charset' => 'utf8',
-    ),
-
-   'iooxsBranch' => array(
-        'class' => 'yii\db\Connection',
-        'dsn' => 'pgsql:host=localhost;dbname='.$DBiooxsBranch,
-        'username' => 'postgres',
-        'password' => '12345678',
-        'charset' => 'utf8',
-    ),
+    ],
 ];
+
+if ($DBiooxsRoot !== null) {
+    $connections['iooxsRoot'] = [
+        'class' => 'yii\db\Connection',
+        'dsn' => 'pgsql:host=localhost;dbname=' . $DBiooxsRoot,
+        'username' => 'postgres',
+        'password' => '12345678',
+        'charset' => 'utf8',
+    ];
+}
+
+if ($DBiooxsBranch !== null) {
+    $connections['iooxsBranch'] = [
+        'class' => 'yii\db\Connection',
+        'dsn' => 'pgsql:host=localhost;dbname=' . $DBiooxsBranch,
+        'username' => 'postgres',
+        'password' => '12345678',
+        'charset' => 'utf8',
+    ];
+}
+
+return $connections;

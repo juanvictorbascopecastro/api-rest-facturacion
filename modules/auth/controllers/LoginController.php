@@ -79,7 +79,6 @@ class LoginController extends BaseController
 		$jwt = Yii::$app->jwt;
 		$signer = $jwt->getSigner('HS256');
 		$key = $jwt->getKey();
-        
 		$time = time();
 
 		$jwtParams = Yii::$app->params['jwt'];
@@ -92,8 +91,5 @@ class LoginController extends BaseController
 			->expiresAt($time + $jwtParams['expire'])
 			->withClaim('uid', $user->iduser)
 			->getToken($signer, $key);
-	}
-
-
-   
+	}   
 }
