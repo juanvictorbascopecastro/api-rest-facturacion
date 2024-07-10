@@ -128,7 +128,7 @@ class SaleController extends BaseController
                             'message' => 'Failed to save Document',
                             'errors' => $document->errors
                         ]);
-                    }
+                    }  
 
                     $errors = $this->updateStock($documentType, $productData); // Actualizamos el stock
                     if ($errors != null) {
