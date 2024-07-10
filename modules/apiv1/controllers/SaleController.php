@@ -230,7 +230,7 @@ class SaleController extends BaseController
             $newProduct->name = $productData['name'];
             $newProduct->price = $productData['price'];
             $newProduct->idunit = $productData['idunit'] ?? null; // Asegúrate de manejar el caso si idunit no está definido
-            $newProduct->idstatusCode = 1;
+            $newProduct->idstatus = 1;
             $newProduct->iduser = $user->iduser;
     
             // Validar y guardar el producto
