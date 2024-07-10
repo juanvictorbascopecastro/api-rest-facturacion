@@ -3,11 +3,11 @@
 namespace app\models;
 
 /**
- * This is the ActiveQuery class for [[CfgProductBranch]].
+ * This is the ActiveQuery class for [[SiatSiatTipoDocumentoIdentidad]].
  *
- * @see CfgProductBranch
+ * @see SiatSiatTipoDocumentoIdentidad
  */
-class CfgProductBranchQuery extends \yii\db\ActiveQuery
+class SiatTipoDocumentoIdentidadQuery extends \yii\db\ActiveQuery
 {
     /*public function active()
     {
@@ -16,7 +16,7 @@ class CfgProductBranchQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return CfgProductBranch[]|array
+     * @return SiatSiatTipoDocumentoIdentidad[]|array
      */
     public function all($db = null)
     {
@@ -25,7 +25,7 @@ class CfgProductBranchQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return CfgProductBranch|array|null
+     * @return SiatSiatTipoDocumentoIdentidad|array|null
      */
     public function one($db = null)
     {

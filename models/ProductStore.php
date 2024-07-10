@@ -4,9 +4,8 @@ namespace app\models;
 
 use Yii;
 
-class CfgProductStore extends \yii\db\ActiveRecord
+class ProductStore extends \yii\db\ActiveRecord
 {
-    public static $customDb;
     public static function tableName()
     {
         return 'cfg.productStore';
@@ -14,12 +13,7 @@ class CfgProductStore extends \yii\db\ActiveRecord
 
     public static function getDb()
     {
-        return self::$customDb ?: Yii::$app->db;
-    }
-
-    public static function setCustomDb($db)
-    {
-        self::$customDb = $db;
+        return Yii::$app->iooxsBranch;;
     }
 
     public function rules()
@@ -58,6 +52,6 @@ class CfgProductStore extends \yii\db\ActiveRecord
      */
     public static function find()
     {
-        return new CfgProductStoreQuery(get_called_class());
+        return new ProductStoreQuery(get_called_class());
     }
 }

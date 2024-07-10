@@ -4,18 +4,17 @@ namespace app\modules\apiv1\controllers;
 
 
 use yii\data\ActiveDataProvider;
-use yii\web\NotFoundHttpException;
 use Yii;
 
-use app\models\CfgIoSystemBranchUser;
-use app\modules\apiv1\models\CfgIoSystemBranch;
+use app\models\IoSystemBranchUser;
+use app\modules\apiv1\models\IoSystemBranch;
 
 /**
  * Default controller for the `apiv1` module
  */
-class CfgiosystembranchController extends BaseController
+class IosystembranchController extends BaseController
 {
-    public $modelClass = 'app\modules\apiv1\models\CfgIoSystemBranch';
+    public $modelClass = 'app\modules\apiv1\models\IoSystemBranch';
     public function actions()
     {
         $actions = parent::actions();
@@ -29,8 +28,8 @@ class CfgiosystembranchController extends BaseController
         
         $actions['index']['prepareDataProvider'] = function($action) {
             $user = Yii::$app->user->identity;
-            $ioSystemBranchUser = CfgIoSystemBranchUser::findOne(['iduserActive' => $user->iduser]);
-            $ioSystemBranch = CfgIoSystemBranch::findOne(['id' => $ioSystemBranchUser->idioSystemBranch]);
+            $ioSystemBranchUser = IoSystemBranchUser::findOne(['iduserActive' => $user->iduser]);
+            $ioSystemBranch = IoSystemBranch::findOne(['id' => $ioSystemBranchUser->idioSystemBranch]);
             return $ioSystemBranch;
         };
 
@@ -40,7 +39,7 @@ class CfgiosystembranchController extends BaseController
     public function beforeAction($action)
     {
         if (!in_array($action->id, ['index'])) {
-            throw new NotFoundHttpException('The requested page does not exist.');
+            return parent::sendResponse(['statusCode' => 404, 'message' => 'The requested page does not exist.']);
         }
         return parent::beforeAction($action);
     }

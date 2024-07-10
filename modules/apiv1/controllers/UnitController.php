@@ -7,7 +7,6 @@ use yii\data\ActiveDataProvider;
 use app\modules\apiv1\controllers\BaseController; 
 use app\models\CfgIoSystemBranchUser;
 use app\modules\apiv1\models\CfgIoSystemBranch;
-use yii\web\NotFoundHttpException;
 
 use sizeg\jwt\Jwt;
 
@@ -25,8 +24,6 @@ class UnitController extends BaseController
 
     public function actionListar()
     {
-        $this->prepareData();
-
         return new ActiveDataProvider([
             'query' => $this->modelClass::find()->orderBy(['order' => SORT_ASC]),
             'pagination' => false,

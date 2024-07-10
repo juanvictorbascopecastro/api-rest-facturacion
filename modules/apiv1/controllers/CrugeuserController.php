@@ -2,16 +2,20 @@
 
 namespace app\modules\apiv1\controllers;
 
-use yii\data\ActiveDataProvider;
 use Yii;
+use app\modules\apiv1\controllers\BaseController; 
+use yii\data\ActiveDataProvider;
+use yii\web\NotFoundHttpException;
 
-class SiatunidadmedidaController extends BaseController
+class CrugeuserController extends BaseController
 {
-    public $modelClass = 'app\modules\apiv1\models\UnidadMedida';
+    public $modelClass = 'app\modules\apiv1\models\CrugeUser';
+
     public function actions()
     {
         $actions = parent::actions();
         unset(
+            // $actions['index'],
             $actions['view'],
             $actions['create'],
             $actions['update'],
@@ -20,11 +24,11 @@ class SiatunidadmedidaController extends BaseController
         );
         
         $actions['index']['prepareDataProvider'] = function($action) {
-            $modelClass = $this->modelClass;
-            return new ActiveDataProvider([
-                'query' => $modelClass::find(),
-                'pagination' => false,
-            ]);
+            $user = Yii::$app->user->identity;
+            $userArray = $user->toArray(); 
+            unset($userArray['password']);
+
+            return $userArray;
         };
 
         return $actions;
@@ -33,7 +37,10 @@ class SiatunidadmedidaController extends BaseController
     public function beforeAction($action)
     {
         if (!in_array($action->id, ['index'])) {
-            return parent::sendResponse(['statusCode' => 404, 'message' => 'The requested page does not exist.']);
+            return parent::sendResponse([
+                'message' => 'The requested page does not exist.',
+                'statusCode' => 404
+            ]);
         }
         return parent::beforeAction($action);
     }

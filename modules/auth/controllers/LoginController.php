@@ -8,7 +8,7 @@ use app\models\CrugeUser;
 use sizeg\jwt\Jwt;
 
 use app\modules\auth\models\LoginForm;
-use app\models\CfgIoSystemBranchUser;
+use app\models\IoSystemBranchUser;
 /**
  * Login controller for the `auth` module
  */
@@ -25,53 +25,38 @@ class LoginController extends BaseController
             else $user = CrugeUser::findOne(['username' => $loginForm->username]);
 
             if ($user && $user->validatePassword($loginForm->password)) {
-                $dataActive = CfgIoSystemBranchUser::findOne(['iduserActive' => $user->iduser]);
+                $dataActive = IoSystemBranchUser::findOne(['iduserActive' => $user->iduser]);
 
                 if(!$dataActive) {
-                    return [
-                        "message" => "este usuario no esta habilitado para el uso de la API-REST!",
-                        "status" => 401,
-                    ];
+                    return parent::sendResponse("Este usuario no está habilitado para el uso de la API-REST!", 401);
                 }
-
                 $token = $this->generateJwt($user);
                 return [
-                    "data" => [
-                        "user" => [
-                            "iduser" => $user->iduser,
-                            "regdate" => $user->regdate,
-                            "actdate" => $user->actdate,
-                            "logondate" => $user->logondate,
-                            "username" => $user->username,
-                            "email" => $user->email,
-                            "authkey" => $user->authkey,
-                            "state" => $user->state,
-                            "totalsessioncounter" => $user->totalsessioncounter,
-                            "currentsessioncounter" => $user->currentsessioncounter,
-                            "temporal" => $user->temporal,
-                            "fullname" => $user->fullname,
-                            "name" => $user->name,
-                            "lastname" => $user->lastname,
-                            "surname" => $user->surname,
-                        ],
-                        "token" => (string) $token,
+                   "user" => [
+                        "iduser" => $user->iduser,
+                        "regdate" => $user->regdate,
+                        "actdate" => $user->actdate,
+                        "logondate" => $user->logondate,
+                        "username" => $user->username,
+                        "email" => $user->email,
+                        "authkey" => $user->authkey,
+                        "state" => $user->state,
+                        "totalsessioncounter" => $user->totalsessioncounter,
+                        "currentsessioncounter" => $user->currentsessioncounter,
+                        "temporal" => $user->temporal,
+                        "fullname" => $user->fullname,
+                        "name" => $user->name,
+                        "lastname" => $user->lastname,
+                        "surname" => $user->surname,
                     ],
-                    "status" => 201
+                    "token" => (string) $token,
                 ];
                                
             } else {
-                return [
-                    "message" => "Invalid username or password",
-                    "status" => 401,
-                    
-                ];
+                return parent::sendResponse("Invalid username or password", 401, "Unauthorized");
             }
         } else {
-            return [
-                'status' => 500,
-                'message' => 'Validation failed',
-                'errors' => $loginForm->errors
-            ];
+            return parent::sendResponse("Validation failed", 422, null, $loginForm->errors);
         }
     }
 
@@ -79,7 +64,6 @@ class LoginController extends BaseController
 		$jwt = Yii::$app->jwt;
 		$signer = $jwt->getSigner('HS256');
 		$key = $jwt->getKey();
-        
 		$time = time();
 
 		$jwtParams = Yii::$app->params['jwt'];
@@ -92,8 +76,5 @@ class LoginController extends BaseController
 			->expiresAt($time + $jwtParams['expire'])
 			->withClaim('uid', $user->iduser)
 			->getToken($signer, $key);
-	}
-
-
-   
+	}   
 }

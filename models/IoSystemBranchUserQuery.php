@@ -3,11 +3,11 @@
 namespace app\models;
 
 /**
- * This is the ActiveQuery class for [[CfgIoSystem]].
+ * This is the ActiveQuery class for [[CfgIoSystemBranchUser]].
  *
- * @see CfgIoSystem
+ * @see CfgIoSystemBranchUser
  */
-class CfgIoSystemQuery extends \yii\db\ActiveQuery
+class IoSystemBranchUserQuery extends \yii\db\ActiveQuery
 {
     /*public function active()
     {
@@ -16,7 +16,7 @@ class CfgIoSystemQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return CfgIoSystem[]|array
+     * @return CfgIoSystemBranchUser[]|array
      */
     public function all($db = null)
     {
@@ -25,7 +25,7 @@ class CfgIoSystemQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return CfgIoSystem|array|null
+     * @return CfgIoSystemBranchUser|array|null
      */
     public function one($db = null)
     {

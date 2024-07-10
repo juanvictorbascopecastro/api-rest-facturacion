@@ -17,7 +17,7 @@ use Yii;
  * @property string|null $commandVerified
  * @property int|null $codigoExcepcion
  */
-class SiatSiatTipoDocumentoIdentidad extends \yii\db\ActiveRecord
+class SiatTipoDocumentoIdentidad extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -75,6 +75,6 @@ class SiatSiatTipoDocumentoIdentidad extends \yii\db\ActiveRecord
      */
     public static function find()
     {
-        return new SiatSiatTipoDocumentoIdentidadQuery(get_called_class());
+        return new SiatTipoDocumentoIdentidadQuery(get_called_class());
     }
 }

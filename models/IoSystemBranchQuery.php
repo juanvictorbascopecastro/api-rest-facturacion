@@ -3,11 +3,11 @@
 namespace app\models;
 
 /**
- * This is the ActiveQuery class for [[SiatUnidadMedida]].
+ * This is the ActiveQuery class for [[CfgIoSystemBranch]].
  *
- * @see SiatUnidadMedida
+ * @see CfgIoSystemBranch
  */
-class SiatUnidadMedidaQuery extends \yii\db\ActiveQuery
+class IoSystemBranchQuery extends \yii\db\ActiveQuery
 {
     /*public function active()
     {
@@ -16,7 +16,7 @@ class SiatUnidadMedidaQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return SiatUnidadMedida[]|array
+     * @return CfgIoSystemBranch[]|array
      */
     public function all($db = null)
     {
@@ -25,7 +25,7 @@ class SiatUnidadMedidaQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return SiatUnidadMedida|array|null
+     * @return CfgIoSystemBranch|array|null
      */
     public function one($db = null)
     {

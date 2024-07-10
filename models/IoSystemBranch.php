@@ -59,7 +59,7 @@ use Yii;
  * @property int|null $numPrintPrinterSilence numero de impresiones silenciosas
  * @property bool|null $batchs ORES
  */
-class CfgIoSystemBranch extends \yii\db\ActiveRecord
+class IoSystemBranch extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -94,7 +94,7 @@ class CfgIoSystemBranch extends \yii\db\ActiveRecord
             [['numberPhone2'], 'string', 'max' => 18],
             [['codeCountry'], 'string', 'max' => 3],
             [['ipPrinter'], 'string', 'max' => 27],
-            [['idioSystem'], 'exist', 'skipOnError' => true, 'targetClass' => CfgIoSystem::class, 'targetAttribute' => ['idioSystem' => 'id']],
+            [['idioSystem'], 'exist', 'skipOnError' => true, 'targetClass' => IoSystem::class, 'targetAttribute' => ['idioSystem' => 'id']],
             [['idstatus'], 'exist', 'skipOnError' => true, 'targetClass' => CfgStatus::class, 'targetAttribute' => ['idstatus' => 'id']],
             [['idstatus'], 'exist', 'skipOnError' => true, 'targetClass' => CfgStatus::class, 'targetAttribute' => ['idstatus' => 'id']],
         ];
@@ -166,11 +166,11 @@ class CfgIoSystemBranch extends \yii\db\ActiveRecord
      */
     public static function find()
     {
-        return new CfgIoSystemBranchQuery(get_called_class());
+        return new IoSystemBranchQuery(get_called_class());
     }
 
     public function getCfgIoSystem()
     {
-        return $this->hasOne(CfgIoSystem::class, ['id' => 'idioSystem']);
+        return $this->hasOne(IoSystem::class, ['id' => 'idioSystem']);
     }
 }

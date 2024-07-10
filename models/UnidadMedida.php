@@ -14,7 +14,7 @@ use Yii;
  * @property string|null $descripcion
  * @property int|null $codigoClasificador
  */
-class SiatUnidadMedida extends \yii\db\ActiveRecord
+class UnidadMedida extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -68,6 +68,6 @@ class SiatUnidadMedida extends \yii\db\ActiveRecord
      */
     public static function find()
     {
-        return new SiatUnidadMedidaQuery(get_called_class());
+        return new UnidadMedidaQuery(get_called_class());
     }
 }

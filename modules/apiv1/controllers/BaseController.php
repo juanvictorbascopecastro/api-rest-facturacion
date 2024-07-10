@@ -58,57 +58,49 @@ class BaseController extends ActiveController
         Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
     }
 
-    protected function renderException($exception)
+    // protected function renderException($exception)
+    // {
+    //     $response = Yii::$app->getResponse();
+    //     $response->data = [
+    //         'success' => false,
+    //         'error' => $exception->getMessage(),
+    //         'code' => $exception instanceof \yii\web\HttpException ? $exception->statusCode : $exception->getCode(),
+    //     ];
+    //     $response->setStatusCodeByException($exception);
+    //     $response->send();
+    // }
+    
+    // metodo para retornar el tipo de respuestas
+    protected function sendResponse($response)
     {
-        $response = Yii::$app->getResponse();
-        $response->data = [
-            'success' => false,
-            'error' => $exception->getMessage(),
-            'code' => $exception instanceof \yii\web\HttpException ? $exception->statusCode : $exception->getCode(),
-        ];
-        $response->setStatusCodeByException($exception);
-        $response->send();
-    }
+        Yii::$app->response->statusCode = $response['statusCode'];
 
-    // metodos para conexion a la base de dato respectiva
-    protected function prepareData($isSucursal = false)
-    {
-        $user = Yii::$app->user->identity;
-        $ioSystemBranchUser = CfgIoSystemBranchUser::findOne(['iduserActive' => $user->iduser]);
+        $responseData = ['message' => $response['message']];
 
-        if (!$ioSystemBranchUser) {
-            throw new \yii\web\NotFoundHttpException("El usuario con el ID " . $user->iduser . " no tiene habilitación para esta función!");
+        if (isset($response['name'])) {
+            $responseData['name'] = $response['name'];
         }
 
-        $ioSystemBranch = CfgIoSystemBranch::findOne(['id' => $ioSystemBranchUser->idioSystemBranch]);
-        
-        if (!$ioSystemBranch) {
-            throw new \yii\web\NotFoundHttpException("Service with idioSystemBranch from iduserActive" . $user->iduser . " not found.");
-        }
-        
-        if($isSucursal == true) {
-            $db = DbConnection::getConnection($ioSystemBranch->dbidentifier, $this->dbUser, $this->dbPassword, $this->dbHost);
-        } else {
-            $db = DbConnection::getConnection($ioSystemBranch->cfgIoSystem->dbidentifier, $this->dbUser, $this->dbPassword, $this->dbHost);
-        }
-        
-        if (!$db) {
-            throw new \yii\base\InvalidConfigException("No se pudo establecer la conexión a la base de datos.");
+        if (isset($response['errors'])) {
+            $responseData['errors'] = $response['errors'];
         }
 
-        $this->modelClass::setCustomDb($db); // Asignar la conexión personalizada al modelo
-        return $db; // retornamos la conexion
+        if (isset($response['data'])) {
+            $responseData['data'] = $response['data'];
+        }
+
+        return $responseData;
     }
     // metodo para obtener el token
-    protected function getAuthToken()
-    {
-        $jwt = new Jwt();
-        $token = Yii::$app->request->headers->get('Authorization');
+    // protected function getAuthToken()
+    // {
+    //     $jwt = new Jwt();
+    //     $token = Yii::$app->request->headers->get('Authorization');
         
-        if ($token !== null) {
-            $token = str_replace('Bearer ', '', $token);
-        }
+    //     if ($token !== null) {
+    //         $token = str_replace('Bearer ', '', $token);
+    //     }
         
-        return $token;
-    }  
+    //     return $token;
+    // }  
 }

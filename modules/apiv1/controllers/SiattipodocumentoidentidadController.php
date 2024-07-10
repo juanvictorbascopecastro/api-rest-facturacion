@@ -4,15 +4,14 @@ namespace app\modules\apiv1\controllers;
 
 
 use yii\data\ActiveDataProvider;
-use yii\web\NotFoundHttpException;
 use Yii;
 
 /**
  * Default controller for the `apiv1` module
  */
-class SiatsiattipodocumentoidentidadController extends BaseController
+class SiattipodocumentoidentidadController extends BaseController
 {
-    public $modelClass = 'app\modules\apiv1\models\SiatSiatTipoDocumentoIdentidad';
+    public $modelClass = 'app\modules\apiv1\models\SiatTipoDocumentoIdentidad';
     public function actions()
     {
         $actions = parent::actions();
@@ -38,7 +37,7 @@ class SiatsiattipodocumentoidentidadController extends BaseController
     public function beforeAction($action)
     {
         if (!in_array($action->id, ['index'])) {
-            throw new NotFoundHttpException('The requested page does not exist.');
+            return parent::sendResponse(['statusCode' => 404, 'message' => 'The requested page does not exist.']);
         }
         return parent::beforeAction($action);
     }
