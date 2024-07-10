@@ -4,7 +4,6 @@ $request = new Request();
 
 $Authorization = $request->getHeaders()->get('Authorization');
 $keyJWT = "IO-SOFTWARE-LLAVE-SECRETA";
-// $Authorization = $headers['Authorization'];
 
 $dbAccess='0_iooxs_access';
 $DBiooxsRoot = null;
