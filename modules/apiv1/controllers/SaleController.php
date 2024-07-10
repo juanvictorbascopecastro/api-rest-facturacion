@@ -256,7 +256,7 @@ class SaleController extends BaseController
             $productBranch = new ProductBranch();
             $productBranch->id = $newProduct->id;
             $productBranch->iduser = $newProduct->iduser;
-            $productBranch->idstatusCode = 10;
+            $productBranch->idstatus = 10;
             $productBranch->priceChange = false;
             $productBranch->price = $newProduct->price;
             $productBranch->cost = 0;
