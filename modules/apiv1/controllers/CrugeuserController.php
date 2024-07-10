@@ -37,7 +37,10 @@ class CrugeuserController extends BaseController
     public function beforeAction($action)
     {
         if (!in_array($action->id, ['index'])) {
-            throw new NotFoundHttpException('The requested page does not exist.');
+            return parent::sendResponse([
+                'message' => 'The requested page does not exist.',
+                'statusCode' => 404
+            ]);
         }
         return parent::beforeAction($action);
     }

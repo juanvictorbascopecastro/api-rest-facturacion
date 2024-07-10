@@ -39,9 +39,17 @@ class CategoryController extends BaseController
         $category->iduser = $user->iduser; 
         if ($category->save()) {
             $category = Category::findOne($category->id);
-            return ['status' => 201, 'message' => 'Category created successfully', 'data' => $category];
+            return parent::sendResponse([
+                'statusCode' => 201,
+                'message' => 'Category created successfully',
+                'data' => $category,
+            ]);
         } else {
-            return ['status' => 400, 'message' => 'Failed to create category', 'errors' => $category->errors];
+            return parent::sendResponse([
+                'statusCode' => 400,
+                'message' => 'Failed to create category',
+                'errors' => $category->errors,
+            ]);
         }
     }
 
@@ -49,18 +57,33 @@ class CategoryController extends BaseController
     {
         $category = Category::findOne($id);
         if (!$category) {
-            throw new NotFoundHttpException("Category with ID $id not found.");
+            return parent::sendResponse([
+                'statusCode' => 404,
+                'message' => "Category with ID $id not found.",
+            ]);
         }
 
         $category->attributes = Yii::$app->request->post();
         if ($category->validate()) {
             if ($category->save()) {
-                return ['status' => 201, 'message' => 'Category updated successfully', 'data' => $category];
+                return parent::sendResponse([
+                    'statusCode' => 200,
+                    'message' => 'Category updated successfully',
+                    'data' => $category,
+                ]);
             } else {
-                return ['status' => 400, 'message' => 'Failed to update category', 'errors' => $category->errors];
+                return parent::sendResponse([
+                    'statusCode' => 400,
+                    'message' => 'Failed to update category',
+                    'errors' => $category->errors,
+                ]);
             }
         } else {
-            return ['status' => 400, 'message' => 'Validation failed', 'errors' => $category->errors];
+            return parent::sendResponse([
+                'statusCode' => 400,
+                'message' => 'Validation failed',
+                'errors' => $category->errors,
+            ]);
         }
     }
 
@@ -68,13 +91,22 @@ class CategoryController extends BaseController
     {
         $category = Category::findOne($id);
         if (!$category) {
-            throw new NotFoundHttpException("Category with ID $id not found.");
+            return parent::sendResponse([
+                'statusCode' => 404,
+                'message' => "Category with ID $id not found.",
+            ]);
         }
 
         if ($category->delete()) {
-            return ['status' => 201, 'message' => 'Category deleted successfully'];
+            return parent::sendResponse([
+                'statusCode' => 200,
+                'message' => 'Category deleted successfully',
+            ]);
         } else {
-            return ['status' => 400, 'message' => 'Failed to delete category'];
+            return parent::sendResponse([
+                'statusCode' => 400,
+                'message' => 'Failed to delete category',
+            ]);
         }
     }
 

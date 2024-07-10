@@ -28,14 +28,10 @@ class LoginController extends BaseController
                 $dataActive = IoSystemBranchUser::findOne(['iduserActive' => $user->iduser]);
 
                 if(!$dataActive) {
-                    return [
-                        "message" => "este usuario no esta habilitado para el uso de la API-REST!",
-                        "status" => 401,
-                    ];
+                    return parent::sendResponse("Este usuario no está habilitado para el uso de la API-REST!", 401);
                 }
 
-                $token = $this->generateJwt($user);
-                return [
+                $responseData = [
                     "data" => [
                         "user" => [
                             "iduser" => $user->iduser,
@@ -56,22 +52,15 @@ class LoginController extends BaseController
                         ],
                         "token" => (string) $token,
                     ],
-                    "status" => 201
                 ];
+
+                return parent::sendResponse($responseData, 201);
                                
             } else {
-                return [
-                    "message" => "Invalid username or password",
-                    "status" => 401,
-                    
-                ];
+                return parent::sendResponse("Invalid username or password", 401, "Unauthorized");
             }
         } else {
-            return [
-                'status' => 500,
-                'message' => 'Validation failed',
-                'errors' => $loginForm->errors
-            ];
+            return parent::sendResponse("Validation failed", 422, null, $loginForm->errors);
         }
     }
 

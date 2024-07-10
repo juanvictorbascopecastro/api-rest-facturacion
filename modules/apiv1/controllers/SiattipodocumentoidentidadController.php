@@ -4,7 +4,6 @@ namespace app\modules\apiv1\controllers;
 
 
 use yii\data\ActiveDataProvider;
-use yii\web\NotFoundHttpException;
 use Yii;
 
 /**
@@ -38,7 +37,7 @@ class SiattipodocumentoidentidadController extends BaseController
     public function beforeAction($action)
     {
         if (!in_array($action->id, ['index'])) {
-            throw new NotFoundHttpException('The requested page does not exist.');
+            return parent::sendResponse(['statusCode' => 404, 'message' => 'The requested page does not exist.']);
         }
         return parent::beforeAction($action);
     }

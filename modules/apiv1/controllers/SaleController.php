@@ -54,8 +54,8 @@ class SaleController extends BaseController
         if ($saleForm->validate()) {
             // Se verifica y se registra el producto
             $products = $this->saveProducts($saleForm->products, $user);
-            if (isset($products['status']) && $products['status'] == 500) {
-                return $products;
+            if (isset($products['statusCode']) && $products['statusCode'] == 500) {
+                return parent::sendResponse($products);
             }
 
             if (!$saleForm->idcustomer || $saleForm->idcustomer == null) {
@@ -69,19 +69,19 @@ class SaleController extends BaseController
                 if ($customer->save()) {
                     $saleForm->idcustomer = $customer->id;
                 } else {
-                    return [
-                        'status' => 500,
+                    return parent::sendResponse([
+                        'statusCode' => 500,
                         'message' => 'Failed to save customer',
                         'errors' => $customer->errors
-                    ];
+                    ]);
                 }
             } else if (!empty($saleForm->idcustomer)) {
                 $existingCustomer = Customer::findOne($saleForm->idcustomer);
                 if (!$existingCustomer) {
-                    return [
-                        'status' => 500,
+                    return parent::sendResponse([
+                        'statusCode' => 404,
                         'message' => 'Customer with id ' . $saleForm->idcustomer . ' does not exist.',
-                    ];
+                    ]);
                 }
             }
 
@@ -101,11 +101,11 @@ class SaleController extends BaseController
             $sale->codigoDocumentoSector = 1; // siat factura compra y venta
 
             if (!$sale->save()) {
-                return [
-                    'status' => 500,
+                return parent::sendResponse([
+                    'statusCode' => 500,
                     'message' => 'Failed to save sale',
                     'errors' => $sale->errors
-                ];
+                ]);
             }
 
             $documentType = DocumentType::findOne(['type' => 'VENTA']); // Obtener el tipo de salida
@@ -123,20 +123,20 @@ class SaleController extends BaseController
                     $document->idsale = $sale->id;
 
                     if (!$document->save()) {
-                        return [
-                            'status' => 500,
+                        return parent::sendResponse([
+                            'statusCode' => 500,
                             'message' => 'Failed to save Document',
                             'errors' => $document->errors
-                        ];
+                        ]);
                     }
 
                     $errors = $this->updateStock($documentType, $productData); // Actualizamos el stock
                     if ($errors != null) {
-                        return [
-                            'status' => 500,
+                        return parent::sendResponse([
+                            'statusCode' => 500,
                             'message' => 'Failed to update stock',
                             'errors' => $errors
-                        ];
+                        ]);
                     }
 
                     // Guardar el producto
@@ -151,11 +151,11 @@ class SaleController extends BaseController
                     $product->idsale = $sale->id;
 
                     if (!$product->validate()) {
-                        return [
-                            'status' => 500,
+                        return parent::sendResponse([
+                            'statusCode' => 500,
                             'message' => 'Validation failed for Product',
                             'errors' => $product->errors
-                        ];
+                        ]);
                     }
                     $productsResult[] = $product;
                 }
@@ -163,27 +163,27 @@ class SaleController extends BaseController
                 // Guardar cada producto de la venta
                 foreach ($productsResult as $product) {
                     if (!$product->save()) {
-                        return [
-                            'status' => 500,
+                        return parent::sendResponse([
+                            'statusCode' => 500,
                             'message' => 'Failed to save Product',
                             'errors' => $product->errors
-                        ];
+                        ]);
                     }
                 }
             }
 
             // Todo se ha guardado exitosamente
-            return [
-                'status' => 201,
+            return parent::sendResponse([
+                'statusCode' => 201,
                 'message' => 'Invoice created successfully',
-            ];
+            ]);
         } else {
             // Si la validación del formulario de venta falla, retornar errores
-            return [
-                'status' => 500,
+            return parent::sendResponse([
+                'statusCode' => 500,
                 'message' => 'Validation failed',
                 'errors' => $saleForm->errors
-            ];
+            ]);
         }
     }
  
@@ -193,7 +193,10 @@ class SaleController extends BaseController
         $sale = $this->modelClass::find()->where(['id' => $idsale])->with('productStocks')->one();
 
         if (!$sale) {
-            throw new NotFoundHttpException("Sale with ID $idsale not found.");
+            return parent::sendResponse([
+                'statusCode' => 404,
+                'message' => "Sale with ID $idsale not found.",
+            ]);
         }
 
         $productIds = [];
@@ -227,13 +230,14 @@ class SaleController extends BaseController
             $newProduct->name = $productData['name'];
             $newProduct->price = $productData['price'];
             $newProduct->idunit = $productData['idunit'] ?? null; // Asegúrate de manejar el caso si idunit no está definido
-            $newProduct->idstatus = 1;
+            $newProduct->idstatusCode = 1;
             $newProduct->iduser = $user->iduser;
     
             // Validar y guardar el producto
             if (!$newProduct->validate()) {
+                
                 return [
-                    'status' => 500,
+                    'statusCode' => 500,
                     'message' => 'Validation failed for Product',
                     'errors' => $newProduct->errors
                 ];
@@ -241,7 +245,7 @@ class SaleController extends BaseController
       
             if (!$newProduct->save()) {
                 return [
-                    'status' => 500,
+                    'statusCode' => 500,
                     'message' => 'Failed to save Product',
                     'errors' => $newProduct->errors
                 ];
@@ -252,7 +256,7 @@ class SaleController extends BaseController
             $productBranch = new ProductBranch();
             $productBranch->id = $newProduct->id;
             $productBranch->iduser = $newProduct->iduser;
-            $productBranch->idstatus = 10;
+            $productBranch->idstatusCode = 10;
             $productBranch->priceChange = false;
             $productBranch->price = $newProduct->price;
             $productBranch->cost = 0;
@@ -264,7 +268,7 @@ class SaleController extends BaseController
             // Validar y guardar productBranch
             if (!$productBranch->validate()) {
                 return [
-                    'status' => 500,
+                    'statusCode' => 500,
                     'message' => 'Validation failed for ProductBranch',
                     'errors' => $productBranch->errors
                 ];
@@ -272,7 +276,7 @@ class SaleController extends BaseController
     
             if (!$productBranch->save()) {
                 return [
-                    'status' => 500,
+                    'statusCode' => 500,
                     'message' => 'Failed to save ProductBranch',
                     'errors' => $productBranch->errors
                 ];
@@ -291,7 +295,7 @@ class SaleController extends BaseController
                 // Validar y guardar productStore
                 if (!$productStore->validate()) {
                     return [
-                        'status' => 500,
+                        'statusCode' => 500,
                         'message' => 'Validation failed for productStore for store ID ' . $store->id,
                         'errors' => $productStore->errors
                     ];
@@ -299,7 +303,7 @@ class SaleController extends BaseController
     
                 if (!$productStore->save()) {
                     return [
-                        'status' => 500,
+                        'statusCode' => 500,
                         'message' => 'Failed to save productStore for store ID ' . $store->id,
                         'errors' => $productStore->errors
                     ];

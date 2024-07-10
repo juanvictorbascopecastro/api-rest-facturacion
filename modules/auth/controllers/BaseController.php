@@ -2,6 +2,7 @@
 
 namespace app\modules\auth\controllers;
 
+use Yii;
 use yii\web\Controller; 
 use yii\web\Response;
 use yii\filters\ContentNegotiator;
@@ -34,4 +35,22 @@ class BaseController extends Controller
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         return parent::beforeAction($action);
     }
+
+    protected function sendResponse($message, $statusCode, $name = null, $errors = null)
+    {
+        Yii::$app->response->statusCode = $statusCode;
+
+        $response = ['message' => $message];
+
+        if ($name !== null) {
+            $response['name'] = $name;
+        }
+
+        if ($errors !== null) {
+            $response['errors'] = $errors;
+        }
+
+        return $response;
+    }
+
 }

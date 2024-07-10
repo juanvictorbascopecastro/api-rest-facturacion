@@ -58,28 +58,49 @@ class BaseController extends ActiveController
         Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
     }
 
-    protected function renderException($exception)
-    {
-        $response = Yii::$app->getResponse();
-        $response->data = [
-            'success' => false,
-            'error' => $exception->getMessage(),
-            'code' => $exception instanceof \yii\web\HttpException ? $exception->statusCode : $exception->getCode(),
-        ];
-        $response->setStatusCodeByException($exception);
-        $response->send();
-    }
+    // protected function renderException($exception)
+    // {
+    //     $response = Yii::$app->getResponse();
+    //     $response->data = [
+    //         'success' => false,
+    //         'error' => $exception->getMessage(),
+    //         'code' => $exception instanceof \yii\web\HttpException ? $exception->statusCode : $exception->getCode(),
+    //     ];
+    //     $response->setStatusCodeByException($exception);
+    //     $response->send();
+    // }
     
-    // metodo para obtener el token
-    protected function getAuthToken()
+    // metodo para retornar el tipo de respuestas
+    protected function sendResponse($response)
     {
-        $jwt = new Jwt();
-        $token = Yii::$app->request->headers->get('Authorization');
-        
-        if ($token !== null) {
-            $token = str_replace('Bearer ', '', $token);
+        Yii::$app->response->statusCode = $response['statusCode'];
+
+        $responseData = ['message' => $response['message']];
+
+        if (isset($response['name'])) {
+            $responseData['name'] = $response['name'];
         }
+
+        if (isset($response['errors'])) {
+            $responseData['errors'] = $response['errors'];
+        }
+
+        if (isset($response['data'])) {
+            $responseData['data'] = $response['data'];
+        }
+
+        return $responseData;
+    }
+    // metodo para obtener el token
+    // protected function getAuthToken()
+    // {
+    //     $jwt = new Jwt();
+    //     $token = Yii::$app->request->headers->get('Authorization');
         
-        return $token;
-    }  
+    //     if ($token !== null) {
+    //         $token = str_replace('Bearer ', '', $token);
+    //     }
+        
+    //     return $token;
+    // }  
 }
