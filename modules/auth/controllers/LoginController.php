@@ -30,31 +30,27 @@ class LoginController extends BaseController
                 if(!$dataActive) {
                     return parent::sendResponse("Este usuario no está habilitado para el uso de la API-REST!", 401);
                 }
-
-                $responseData = [
-                    "data" => [
-                        "user" => [
-                            "iduser" => $user->iduser,
-                            "regdate" => $user->regdate,
-                            "actdate" => $user->actdate,
-                            "logondate" => $user->logondate,
-                            "username" => $user->username,
-                            "email" => $user->email,
-                            "authkey" => $user->authkey,
-                            "state" => $user->state,
-                            "totalsessioncounter" => $user->totalsessioncounter,
-                            "currentsessioncounter" => $user->currentsessioncounter,
-                            "temporal" => $user->temporal,
-                            "fullname" => $user->fullname,
-                            "name" => $user->name,
-                            "lastname" => $user->lastname,
-                            "surname" => $user->surname,
-                        ],
-                        "token" => (string) $token,
+                $token = $this->generateJwt($user);
+                return [
+                   "user" => [
+                        "iduser" => $user->iduser,
+                        "regdate" => $user->regdate,
+                        "actdate" => $user->actdate,
+                        "logondate" => $user->logondate,
+                        "username" => $user->username,
+                        "email" => $user->email,
+                        "authkey" => $user->authkey,
+                        "state" => $user->state,
+                        "totalsessioncounter" => $user->totalsessioncounter,
+                        "currentsessioncounter" => $user->currentsessioncounter,
+                        "temporal" => $user->temporal,
+                        "fullname" => $user->fullname,
+                        "name" => $user->name,
+                        "lastname" => $user->lastname,
+                        "surname" => $user->surname,
                     ],
+                    "token" => (string) $token,
                 ];
-
-                return parent::sendResponse($responseData, 201);
                                
             } else {
                 return parent::sendResponse("Invalid username or password", 401, "Unauthorized");
