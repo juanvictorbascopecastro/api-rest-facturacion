@@ -5,9 +5,7 @@ namespace app\models;
 use Yii;
 
 class Sale extends \yii\db\ActiveRecord
-{
-    public static $customDb;
-    
+{ 
     public static function tableName()
     {
         return 'sale';
@@ -16,11 +14,6 @@ class Sale extends \yii\db\ActiveRecord
     public static function getDb()
     {
         return Yii::$app->iooxsBranch;
-    }
-
-    public static function setCustomDb($db)
-    {
-        self::$customDb = $db;
     }
 
     public function getProductStocks() 

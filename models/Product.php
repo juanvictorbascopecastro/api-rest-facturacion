@@ -4,41 +4,12 @@ namespace app\models;
 
 use Yii;
 
-/**
- * This is the model class for table "product".
- *
- * @property int $id
- * @property string $dateCreate
- * @property bool $recycleBin
- * @property string $name
- * @property string|null $tags
- * @property string|null $code
- * @property string|null $barcode
- * @property int|null $idunit
- * @property int|null $idcategory
- * @property bool $stockcontrol
- * @property float|null $dimensionwidth cm
- * @property float|null $dimensionlength cm
- * @property float|null $dimensionheight cm
- * @property string|null $codeRef
- * @property float|null $weight
- * @property string|null $nameRef from factory or provider
- * @property int|null $idsincronizarListaProductosServicios
- * @property int $idstatus
- * @property int|null $iduser
- * @property string|null $description
- * @property bool|null $typeBudget
- * @property float|null $price
- * @property string|null $nameSource
- * @property string|null $codeSource
- *
- * @property Category $idcategory0
- * @property Unit $idunit0
- */
+
 class Product extends \yii\db\ActiveRecord
 {
-    public static $customDb;
-    
+    /**
+     * {@inheritdoc}
+     */
     public static function tableName()
     {
         return 'product';
@@ -50,9 +21,9 @@ class Product extends \yii\db\ActiveRecord
             [['dateCreate'], 'safe'],
             [['recycleBin', 'stockcontrol', 'typeBudget'], 'boolean'],
             [['name', 'idstatus'], 'required'],
-            [['name', 'tags', 'nameRef', 'description', 'nameSource', 'codeSource'], 'string'],
-            [['idunit', 'idcategory', 'idsincronizarListaProductosServicios', 'idstatus', 'iduser'], 'default', 'value' => null],
-            [['idunit', 'idcategory', 'idsincronizarListaProductosServicios', 'idstatus', 'iduser'], 'integer'],
+            [['name', 'tags', 'nameRef', 'description', 'nameSource', 'codeSource', 'activePrinciple', 'rs'], 'string'],
+            [['idunit', 'idcategory', 'idsincronizarListaProductosServicios', 'idstatus', 'iduser', 'idmark'], 'default', 'value' => null],
+            [['idunit', 'idcategory', 'idsincronizarListaProductosServicios', 'idstatus', 'iduser', 'idmark'], 'integer'],
             [['dimensionwidth', 'dimensionlength', 'dimensionheight', 'weight', 'price'], 'number'],
             [['code', 'barcode', 'codeRef'], 'string', 'max' => 20],
             [['idcategory'], 'exist', 'skipOnError' => true, 'targetClass' => Category::class, 'targetAttribute' => ['idcategory' => 'id']],
@@ -60,6 +31,9 @@ class Product extends \yii\db\ActiveRecord
         ];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function attributeLabels()
     {
         return [
@@ -87,6 +61,9 @@ class Product extends \yii\db\ActiveRecord
             'price' => 'Price',
             'nameSource' => 'Name Source',
             'codeSource' => 'Code Source',
+            'idmark' => 'Idmark',
+            'activePrinciple' => 'Active Principle',
+            'rs' => 'Rs',
         ];
     }
 
@@ -100,6 +77,11 @@ class Product extends \yii\db\ActiveRecord
         return $this->hasOne(Unit::class, ['id' => 'idunit']);
     }
 
+    public function getProductImages()
+    {
+        return $this->hasMany(ProductImage::class, ['idproduct' => 'id']);
+    }
+    
     public static function find()
     {
         return new ProductQuery(get_called_class());
@@ -108,10 +90,5 @@ class Product extends \yii\db\ActiveRecord
     public static function getDb()
     {
         return Yii::$app->iooxsRoot;
-    }
-
-    public static function setCustomDb($db)
-    {
-        self::$customDb = $db;
     }
 }

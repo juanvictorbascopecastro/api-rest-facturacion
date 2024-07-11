@@ -28,8 +28,8 @@ $config = [
         'migration_io' => $db['migration_io'],
         'iooxs_access' => $db['iooxs_access'],
         'iooxs_io' => $db['iooxs_io'],
-        // 'company_io' => $db['company_io'],
-        // 'company_io_sb0' => $db['company_io_sb0'],
+        'iooxsRoot' => $db['iooxsRoot'],
+        'iooxsBranch' => $db['iooxsBranch'],
     ],
     'params' => $params,
     /*

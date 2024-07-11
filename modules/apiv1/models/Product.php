@@ -39,7 +39,8 @@ class Product extends \app\models\Product {
             },
             'productBranch' => function () {
                 return $this->productBranch;
-            }
+            },
+            'productImages'
         ];
     }
 }

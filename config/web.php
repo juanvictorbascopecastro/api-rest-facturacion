@@ -49,7 +49,7 @@ $config = [
         ],
         
         // conexiones a las bases de datos
-        // 'empresa0_api' => $db['empresa0_api'],
+        // 'empresa2_api' => $db['empresa2_api'],
         'iooxs_access' => $db['iooxs_access'],
         'iooxs_io' => $db['iooxs_io'],
         'iooxsRoot' => $db['iooxsRoot'],

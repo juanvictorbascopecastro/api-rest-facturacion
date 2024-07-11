@@ -52,8 +52,6 @@ class ProductController extends BaseController
 
     public function actionInsert()
     {
-        $this->prepareData();
-
         $user = Yii::$app->user->identity;
         $product = new Product();
         $product->attributes = Yii::$app->request->post();
