@@ -2,7 +2,7 @@
 
 namespace app\modules\apiv1\models;
 
-class Productimage extends \app\models\Productimage {
+class ProductImage extends \app\models\ProductImage {
   
     public function fields() {
         return [

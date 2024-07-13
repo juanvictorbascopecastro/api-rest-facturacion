@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'adminEmail' => 'admin@example.com',
+    'senderEmail' => 'noreply@example.com',
+    'senderName' => 'Example.com mailer',
+    'jwt' => [
+        'issuer' => 'https://api.example.com',
+        'audience' => 'https://frontend.example.com',
+        'id' => 'UNIQUE-JWT-IDENTIFIER',
+        'expire' => 86400,
+    ],
+    'dbUser' => 'postgres',
+    'dbPassword' => '12345678',
+    'dbHost' => 'localhost',
+    'cloudinary' => [
+        'api_key' => '113248268315593',
+        'api_secret' => '_hsjKr9ImMwSeT4PUcK_7A5CI04',
+        'cloud_name' => 'dbfghtyws',
+    ],
+    // 'dbUser' => 'postgres',
+    // 'dbPassword' => '98765432.iO&',
+    // 'dbHost' => '62.72.9.146',
+];
+// user:  root
+// password: 98765432.iO&

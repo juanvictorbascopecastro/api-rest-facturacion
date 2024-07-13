@@ -56,7 +56,7 @@ class ProductimageController extends BaseController
         }
 
         // Crear un nuevo registro de ProductImage
-        $productImage = new Productimage();
+        $productImage = new ProductImage();
         $productImage->idproduct = $product->id;
         $productImage->imagepath = $uploadResult['url']; // URL de la imagen en Cloudinary
         $productImage->recyclebin = false; // Ajusta según tus requerimientos
@@ -71,14 +71,14 @@ class ProductimageController extends BaseController
         return $this->sendResponse([
             'statusCode' => 201,
             'message' => 'Product image created successfully',
-            'data' => Productimage::findOne($productImage->id)
+            'data' => ProductImage::findOne($productImage->id)
         ]);
     }
 
     public function actionRemove($id)
     {
         // Obtener el registro de ProductImage
-        $productImage = Productimage::findOne($id);
+        $productImage = ProductImage::findOne($id);
         if (!$productImage) {
             return $this->sendResponse(['statusCode' => 404, 'message' => 'Product image not found']);
         }

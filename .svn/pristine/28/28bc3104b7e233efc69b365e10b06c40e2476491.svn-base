@@ -9,7 +9,7 @@ use app\models\CfgIoSystemBranchUser;
 use app\modules\apiv1\models\CfgIoSystemBranch;
 use app\modules\apiv1\models\ProductStore; // stock de los productos
 use app\modules\apiv1\models\ProductBranch; // configuracion de los productos
-use app\modules\apiv1\models\Productimage;
+use app\modules\apiv1\models\ProductImage;
 
 use yii\web\UploadedFile;
 use app\modules\apiv1\helpers\UploadFile;
@@ -84,7 +84,7 @@ class ProductController extends BaseController
     
             // Si se subió una imagen a Cloudinary, guardar ProductImage
             if ($imageUrl) {
-                $productImage = new Productimage();
+                $productImage = new ProductImage();
                 $productImage->idproduct = $product->id; // Asignar el ID del producto
                 $productImage->imagepath = $imageUrl; // Asignar la URL de la imagen
                 $productImage->name = $publicId; // Asignar el public_id como nombre
@@ -145,7 +145,7 @@ class ProductController extends BaseController
             return parent::sendResponse(['statusCode' => 404, 'message' => "Product with ID $id not found."]);
         }
 
-        $productImages = Productimage::find()->where(['idproduct' => $id])->all();
+        $productImages = ProductImage::find()->where(['idproduct' => $id])->all();
         
         $errors = [];
         foreach ($productImages as $image) {
@@ -163,7 +163,7 @@ class ProductController extends BaseController
             ]);
         }
 
-        Productimage::deleteAll(['idproduct' => $id]);
+        ProductImage::deleteAll(['idproduct' => $id]);
 
         if ($product->delete()) {
             return parent::sendResponse(['statusCode' => 201, 'message' => 'Product deleted successfully']);
