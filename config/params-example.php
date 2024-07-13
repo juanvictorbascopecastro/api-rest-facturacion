@@ -13,4 +13,9 @@ return [
     'dbUser' => 'postgres',
     'dbPassword' => '12345678',
     'dbHost' => 'localhost',
+    'cloudinary' => [
+        'api_key' => 'your_api_key',
+        'api_secret' => 'your_api_secret',
+        'cloud_name' => 'your_cloud_name',
+    ],
 ];
