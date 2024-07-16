@@ -1,19 +1,17 @@
 <?php
 
-namespace app\modules\service\controllers;
+namespace app\modules\apiv1\controllers;
 
 
 use yii\data\ActiveDataProvider;
-use yii\web\NotFoundHttpException;
-use app\modules\service\models\SiatTipoDocumentoIdentidad; 
 use Yii;
 
 /**
- * Default controller for the `service` module
+ * Default controller for the `apiv1` module
  */
-class SiattipodocumentoidentidadController extends BaseController
+class SincronizarlistaproductosserviciosController extends BaseController
 {
-    public $modelClass = 'app\modules\service\models\SiatTipoDocumentoIdentidad';
+    public $modelClass = 'app\modules\apiv1\models\SincronizarListaProductosServicios';
     public function actions()
     {
         $actions = parent::actions();

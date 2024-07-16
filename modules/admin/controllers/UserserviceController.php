@@ -76,6 +76,7 @@ class UserserviceController extends Controller
                     default:
                         throw new \InvalidArgumentException("Invalid value for expireToken: {$formModel->expireToken}");
                 }
+                
                 $token = $this->generateJwt($formModel->iduserActive, $expiration);
                 $dbModel = IoSystemBranchService::findOne(['iduserActive' => $formModel->iduserActive]);
 

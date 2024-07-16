@@ -5,7 +5,7 @@ namespace app\modules\apiv1\controllers;
 use yii\data\ActiveDataProvider;
 use Yii;
 
-class SiatunidadmedidaController extends BaseController
+class UnidadmedidaController extends BaseController
 {
     public $modelClass = 'app\modules\apiv1\models\UnidadMedida';
     public function actions()

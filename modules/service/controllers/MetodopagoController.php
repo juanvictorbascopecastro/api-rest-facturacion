@@ -2,18 +2,12 @@
 
 namespace app\modules\service\controllers;
 
-
 use yii\data\ActiveDataProvider;
-use yii\web\NotFoundHttpException;
-use app\modules\service\models\SiatTipoDocumentoIdentidad; 
 use Yii;
 
-/**
- * Default controller for the `service` module
- */
-class SiattipodocumentoidentidadController extends BaseController
+class MetodopagoController extends BaseController
 {
-    public $modelClass = 'app\modules\service\models\SiatTipoDocumentoIdentidad';
+    public $modelClass = 'app\modules\service\models\MetodoPago';
     public function actions()
     {
         $actions = parent::actions();
@@ -25,15 +19,17 @@ class SiattipodocumentoidentidadController extends BaseController
             $actions['options']
         );
         
-        $actions['index']['prepareDataProvider'] = function($action) {
-            $modelClass = $this->modelClass;
-            return new ActiveDataProvider([
-                'query' => $modelClass::find(),
-                'pagination' => false,
-            ]);
-        };
+        $actions['index']['prepareDataProvider'] = [$this, 'actionListar'];
 
         return $actions;
+    }
+
+    public function actionListar()
+    {
+        return new ActiveDataProvider([
+            'query' => $this->modelClass::find()->where(['actived' => true])->orderBy(['id' => SORT_ASC]),
+            'pagination' => false,
+        ]);
     }
 
     public function beforeAction($action)

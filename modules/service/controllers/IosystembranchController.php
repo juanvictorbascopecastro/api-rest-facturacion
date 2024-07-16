@@ -4,16 +4,17 @@ namespace app\modules\service\controllers;
 
 
 use yii\data\ActiveDataProvider;
-use yii\web\NotFoundHttpException;
-use app\modules\service\models\SiatTipoDocumentoIdentidad; 
 use Yii;
 
+use app\models\IoSystemBranchService;
+use app\modules\service\models\IoSystemBranch;
+
 /**
- * Default controller for the `service` module
+ * Default controller for the `apiv1` module
  */
-class SiattipodocumentoidentidadController extends BaseController
+class IosystembranchController extends BaseController
 {
-    public $modelClass = 'app\modules\service\models\SiatTipoDocumentoIdentidad';
+    public $modelClass = 'app\modules\apiv1\models\IoSystemBranch';
     public function actions()
     {
         $actions = parent::actions();
@@ -26,11 +27,10 @@ class SiattipodocumentoidentidadController extends BaseController
         );
         
         $actions['index']['prepareDataProvider'] = function($action) {
-            $modelClass = $this->modelClass;
-            return new ActiveDataProvider([
-                'query' => $modelClass::find(),
-                'pagination' => false,
-            ]);
+            $user = Yii::$app->user->identity;
+            $ioSystemBranchService = IoSystemBranchService::findOne(['iduserActive' => $user->iduser]);
+            $ioSystemBranch = IoSystemBranch::findOne(['id' => $ioSystemBranchService->idioSystemBranch]);
+            return $ioSystemBranch;
         };
 
         return $actions;
