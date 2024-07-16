@@ -2,7 +2,7 @@
 
 namespace app\modules\admin\models;
 
-class CfgIoSystemBranchService extends \app\models\CfgIoSystemBranchService {
+class IoSystemBranchService extends \app\models\IoSystemBranchService {
 
     public function fields() {
         return [

@@ -4,11 +4,11 @@ namespace app\modules\admin\controllers;
 
 use Yii;
 use yii\web\Controller;
-use app\models\CfgIoSystemBranchService;
+use app\models\IoSystemBranchService;
 use yii\filters\VerbFilter;
 use app\modules\service\helpers\DbConnection;
 use app\models\CrugeUser;
-use app\models\CfgioSystemBranch;
+use app\models\IoSystemBranch;
 use yii\web\NotFoundHttpException;
 use app\modules\admin\validators\ExpireUserValidator;
 use app\modules\admin\models\FormularioModel;
@@ -20,12 +20,13 @@ class UserserviceController extends Controller
     public $enableCsrfValidation = false;
     private $dbUser;
     private $dbPassword;
+    private $dbHost;
 
     public function __construct($id, $module, $config = [])
     {
-        // Obtener los valores de params.php
         $this->dbUser = Yii::$app->params['dbUser'];
         $this->dbPassword = Yii::$app->params['dbPassword'];
+        $this->dbHost = Yii::$app->params['dbHost'];
 
         parent::__construct($id, $module, $config);
     }
@@ -35,41 +36,29 @@ class UserserviceController extends Controller
         return parent::beforeAction($action);
     }
 
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::class,
-                'actions' => [
-                    'index' => ['GET'],
-                    'habilitar' => ['POST'],
-                ],
-            ],
-        ];
-    }
-
     public function actionIndex() {
-        $services = CfgIoSystemBranchService::find()->all();
+        $services = IoSystemBranchService::find()->all();
         return $services;
     }
 
     public function actionHabilitar() {
+    
         $formModel = new FormularioModel();
         $formModel->attributes = \Yii::$app->request->post();
+
         if ($formModel->validate()) {
             $user = CrugeUser::findById($formModel->iduserActive);
             if (!$user) {
                 throw new NotFoundHttpException("User with iduserActive '$formModel->iduserActive' not found.");
             }
-
-            $ioSystemBranch = CfgioSystemBranch::findOne(['id' => $formModel->idioSystemBranch]);
+            $ioSystemBranch = IoSystemBranch::findOne(['id' => $formModel->idioSystemBranch]);
             if (!$ioSystemBranch) {
                 throw new NotFoundHttpException("ioSystemBrnach with ID '$formModel->idioSystemBranch' not found.");
             }
-
             try {
                 
-                $dbConnection = DbConnection::getConnection($ioSystemBranch->dbidentifier, $this->dbUser, $this->dbPassword);
+                $dbConnection = DbConnection::getConnection($ioSystemBranch->dbidentifier, $this->dbUser, $this->dbPassword, $this->dbHost);
+                // return $ioSystemBranch;
                 $expiration = 30 * 24 * 3600; 
                 switch ($formModel->expireToken) {
                     case 1:
@@ -88,7 +77,7 @@ class UserserviceController extends Controller
                         throw new \InvalidArgumentException("Invalid value for expireToken: {$formModel->expireToken}");
                 }
                 $token = $this->generateJwt($formModel->iduserActive, $expiration);
-                $dbModel = CfgIoSystemBranchService::findOne(['iduserActive' => $formModel->iduserActive]);
+                $dbModel = IoSystemBranchService::findOne(['iduserActive' => $formModel->iduserActive]);
 
                 if ($dbModel) {
                     $dbModel->idioSystem = $ioSystemBranch->idioSystem;
@@ -97,7 +86,7 @@ class UserserviceController extends Controller
                     $dbModel->expireToken = date('Y-m-d H:i:s', time() + $expiration);
                 } else {
                     // Si no existe, crear un nuevo registro
-                    $dbModel = new CfgIoSystemBranchService();
+                    $dbModel = new IoSystemBranchService();
                     $dbModel->iduserActive = $formModel->iduserActive;
                     $dbModel->idioSystem = $ioSystemBranch->idioSystem;
                     $dbModel->idioSystemBranch = $formModel->idioSystemBranch;

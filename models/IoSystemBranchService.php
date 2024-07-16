@@ -47,8 +47,8 @@ class IoSystemBranchService extends \yii\db\ActiveRecord
             [['iduser', 'idioSystemBranch', 'iduserActive', 'idioSystem'], 'integer'],
             [['idioSystemBranch', 'token', 'expireToken', 'idioSystem'], 'required'],
             [['token'], 'string'],
-            [['idioSystem'], 'exist', 'skipOnError' => true, 'targetClass' => CfgIoSystem::class, 'targetAttribute' => ['idioSystem' => 'id']],
-            [['idioSystemBranch'], 'exist', 'skipOnError' => true, 'targetClass' => CfgIoSystemBranch::class, 'targetAttribute' => ['idioSystemBranch' => 'id']],
+            [['idioSystem'], 'exist', 'skipOnError' => true, 'targetClass' => IoSystem::class, 'targetAttribute' => ['idioSystem' => 'id']],
+            [['idioSystemBranch'], 'exist', 'skipOnError' => true, 'targetClass' => IoSystemBranch::class, 'targetAttribute' => ['idioSystemBranch' => 'id']],
         ];
     }
 

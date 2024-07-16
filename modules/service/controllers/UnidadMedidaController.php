@@ -2,7 +2,6 @@
 
 namespace app\modules\service\controllers;
 
-
 use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
 use Yii;
@@ -10,9 +9,10 @@ use Yii;
 /**
  * Default controller for the `service` module
  */
-class SiatsiattipodocumentoidentidadController extends BaseController
+class UnidadmedidaController extends BaseController
 {
-    public $modelClass = 'app\modules\service\models\SiatSiatTipoDocumentoIdentidad';
+    public $modelClass = 'app\modules\service\models\UnidadMedida';
+
     public function actions()
     {
         $actions = parent::actions();

@@ -376,4 +376,21 @@ class SaleController extends BaseController
             return null;
         }
     }    
+
+    public function actionInvoiceFile ($idsale) {
+        $sale = $this->modelClass::find()->where(['id' => $idsale])->with('productStocks')->one();
+
+        if (!$sale) {
+            return parent::sendResponse([
+                'statusCode' => 404,
+                'message' => "Sale with ID $idsale not found.",
+            ]);
+        }
+        
+        $filePath = Yii::getAlias('@webroot/files/invoice.pdf');
+        return Yii::$app->response->sendFile($filePath, 'invoice.pdf', [
+            'mimeType' => 'application/pdf',
+            'inline' => true // Cambia a false para forzar la descarga en lugar de mostrar en el navegador
+        ]);
+    }
 }

@@ -4,7 +4,7 @@ namespace app\modules\service\models;
 
 use app\models\CfgIoSystem;
 
-class CfgIoSystemBranch extends \app\models\CfgIoSystemBranch {
+class IoSystemBranch extends \app\models\IoSystemBranch {
     public function fields()
     {
         return [

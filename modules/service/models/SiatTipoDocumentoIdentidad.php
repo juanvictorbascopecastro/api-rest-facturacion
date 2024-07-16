@@ -2,7 +2,7 @@
 
 namespace app\modules\service\models;
 
-class SiatSiatTipoDocumentoIdentidad extends \app\models\SiatSiatTipoDocumentoIdentidad {
+class SiatTipoDocumentoIdentidad extends \app\models\SiatTipoDocumentoIdentidad {
 
     public function fields() {
         return [

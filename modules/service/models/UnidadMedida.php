@@ -2,7 +2,7 @@
 
 namespace app\modules\service\models;
 
-class SiatUnidadMedida extends \app\models\SiatUnidadMedida {
+class UnidadMedida extends \app\models\UnidadMedida {
 
     public function fields() {
         return [

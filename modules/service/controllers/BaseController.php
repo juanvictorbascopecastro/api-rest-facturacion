@@ -7,9 +7,26 @@ use yii\rest\ActiveController;
 use yii\web\Response;
 use yii\filters\ContentNegotiator;
 use yii\filters\Cors;
+use app\models\IoSystemBranchService;
+use app\modules\service\models\IoSystemBranch;
+
+use app\modules\service\helpers\DbConnection;
+use sizeg\jwt\Jwt;
 
 class BaseController extends ActiveController
 {
+    private $dbUser;
+    private $dbPassword;
+    private $dbHost;
+
+    public function __construct($id, $module, $config = [])
+    {
+        $this->dbUser = Yii::$app->params['dbUser'];
+        $this->dbPassword = Yii::$app->params['dbPassword'];
+        $this->dbHost = Yii::$app->params['dbHost'];
+
+        parent::__construct($id, $module, $config);
+    }
     public static function allowedDomains() {
         return [$_SERVER["REMOTE_ADDR"], "http://localhost:4200"];
     }
@@ -54,4 +71,69 @@ class BaseController extends ActiveController
         $response->setStatusCodeByException($exception);
         $response->send();
     }
+
+    // metodo para retornar el tipo de respuestas
+    protected function sendResponse($response)
+    {
+        Yii::$app->response->statusCode = $response['statusCode'];
+
+        $responseData = ['message' => $response['message']];
+
+        if (isset($response['name'])) {
+            $responseData['name'] = $response['name'];
+        }
+
+        if (isset($response['errors'])) {
+            $responseData['errors'] = $response['errors'];
+        }
+
+        if (isset($response['data'])) {
+            $responseData['data'] = $response['data'];
+        }
+
+        return $responseData;
+    }
+
+    // metodos para conexion a la base de dato respectiva
+    protected function prepareData($isSucursal = false)
+    {
+        $user = Yii::$app->user->identity;
+        $ioSystemBranchService = IoSystemBranchService::findOne(['iduserActive' => $user->iduser]);
+
+        if (!$ioSystemBranchService) {
+            throw new \yii\web\NotFoundHttpException("El usuario con el ID " . $user->iduser . " no tiene habilitación para esta función!");
+        }
+
+        $ioSystemBranch = IoSystemBranch::findOne(['id' => $ioSystemBranchService->idioSystemBranch]);
+        
+        if (!$ioSystemBranch) {
+            throw new \yii\web\NotFoundHttpException("Service with idioSystemBranch from iduserActive" . $user->iduser . " not found.");
+        }
+        
+        if($isSucursal == true) {
+            $db = DbConnection::getConnection($ioSystemBranch->dbidentifier, $this->dbUser, $this->dbPassword, $this->dbHost);
+        } else {
+            $db = DbConnection::getConnection($ioSystemBranch->cfgIoSystem->dbidentifier, $this->dbUser, $this->dbPassword, $this->dbHost);
+        }
+        
+        if (!$db) {
+            throw new \yii\base\InvalidConfigException("No se pudo establecer la conexión a la base de datos.");
+        }
+
+        $this->modelClass::setCustomDb($db); // Asignar la conexión personalizada al modelo
+        return $db; // retornamos la conexion
+    }
+    
+    // metodo para obtener el token
+    private function getAuthToken()
+    {
+        $jwt = new Jwt();
+        $token = Yii::$app->request->headers->get('Authorization');
+        
+        if ($token !== null) {
+            $token = str_replace('Bearer ', '', $token);
+        }
+        
+        return $token;
+    }   
 }
