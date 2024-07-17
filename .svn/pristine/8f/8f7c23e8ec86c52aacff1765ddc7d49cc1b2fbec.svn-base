@@ -1,0 +1,1946 @@
+a:13:{s:6:"config";s:1640:"a:5:{s:10:"phpVersion";s:5:"7.3.0";s:10:"yiiVersion";s:6:"2.0.50";s:11:"application";a:8:{s:3:"yii";s:6:"2.0.50";s:4:"name";s:14:"My Application";s:7:"version";s:3:"1.0";s:8:"language";s:5:"en-US";s:14:"sourceLanguage";s:5:"en-US";s:7:"charset";s:5:"UTF-8";s:3:"env";s:3:"dev";s:5:"debug";b:1;}s:3:"php";a:5:{s:7:"version";s:5:"7.3.0";s:6:"xdebug";b:0;s:3:"apc";b:0;s:8:"memcache";b:0;s:9:"memcached";b:0;}s:10:"extensions";a:6:{s:14:"sizeg/yii2-jwt";a:3:{s:4:"name";s:14:"sizeg/yii2-jwt";s:7:"version";s:7:"2.0.2.0";s:5:"alias";a:1:{s:10:"@sizeg/jwt";s:49:"C:\xampp\htdocs\apirest.app\vendor/sizeg/yii2-jwt";}}s:23:"yiisoft/yii2-bootstrap4";a:3:{s:4:"name";s:23:"yiisoft/yii2-bootstrap4";s:7:"version";s:8:"2.0.11.0";s:5:"alias";a:1:{s:15:"@yii/bootstrap4";s:62:"C:\xampp\htdocs\apirest.app\vendor/yiisoft/yii2-bootstrap4/src";}}s:18:"yiisoft/yii2-faker";a:3:{s:4:"name";s:18:"yiisoft/yii2-faker";s:7:"version";s:7:"2.0.5.0";s:5:"alias";a:1:{s:10:"@yii/faker";s:57:"C:\xampp\htdocs\apirest.app\vendor/yiisoft/yii2-faker/src";}}s:18:"yiisoft/yii2-debug";a:3:{s:4:"name";s:18:"yiisoft/yii2-debug";s:7:"version";s:8:"2.1.25.0";s:5:"alias";a:1:{s:10:"@yii/debug";s:57:"C:\xampp\htdocs\apirest.app\vendor/yiisoft/yii2-debug/src";}}s:16:"yiisoft/yii2-gii";a:3:{s:4:"name";s:16:"yiisoft/yii2-gii";s:7:"version";s:7:"2.2.6.0";s:5:"alias";a:1:{s:8:"@yii/gii";s:55:"C:\xampp\htdocs\apirest.app\vendor/yiisoft/yii2-gii/src";}}s:24:"yiisoft/yii2-swiftmailer";a:3:{s:4:"name";s:24:"yiisoft/yii2-swiftmailer";s:7:"version";s:7:"2.1.3.0";s:5:"alias";a:1:{s:16:"@yii/swiftmailer";s:63:"C:\xampp\htdocs\apirest.app\vendor/yiisoft/yii2-swiftmailer/src";}}}}";s:3:"log";s:62083:"a:1:{s:8:"messages";a:76:{i:0;a:6:{i:0;s:33:"Bootstrap with yii\log\Dispatcher";i:1;i:8;i:2;s:31:"yii\base\Application::bootstrap";i:3;d:1721232824.166909;i:4;a:0:{}i:5;i:2307056;}i:1;a:6:{i:0;s:21:"Loading module: debug";i:1;i:8;i:2;s:26:"yii\base\Module::getModule";i:3;d:1721232824.166925;i:4;a:0:{}i:5;i:2307944;}i:2;a:6:{i:0;s:44:"Bootstrap with yii\debug\Module::bootstrap()";i:1;i:8;i:2;s:31:"yii\base\Application::bootstrap";i:3;d:1721232824.177874;i:4;a:0:{}i:5;i:2960712;}i:3;a:6:{i:0;s:19:"Loading module: gii";i:1;i:8;i:2;s:26:"yii\base\Module::getModule";i:3;d:1721232824.18274;i:4;a:0:{}i:5;i:3259992;}i:4;a:6:{i:0;s:42:"Bootstrap with yii\gii\Module::bootstrap()";i:1;i:8;i:2;s:31:"yii\base\Application::bootstrap";i:3;d:1721232824.183207;i:4;a:0:{}i:5;i:3281256;}i:23;a:6:{i:0;s:36:"Route requested: 'apiv1/sale/insert'";i:1;i:8;i:2;s:34:"yii\web\Application::handleRequest";i:3;d:1721232824.18598;i:4;a:0:{}i:5;i:3596136;}i:24;a:6:{i:0;s:21:"Loading module: apiv1";i:1;i:8;i:2;s:26:"yii\base\Module::getModule";i:3;d:1721232824.185988;i:4;a:0:{}i:5;i:3597416;}i:25;a:6:{i:0;s:31:"Route to run: apiv1/sale/insert";i:1;i:8;i:2;s:30:"yii\base\Controller::runAction";i:3;d:1721232824.191659;i:4;a:0:{}i:5;i:3971168;}i:26;a:6:{i:0;s:65:"Opening DB connection: pgsql:host=localhost;dbname=0_iooxs_access";i:1;i:4;i:2;s:23:"yii\db\Connection::open";i:3;d:1721232824.211801;i:4;a:2:{i:0;a:5:{s:4:"file";s:48:"C:\xampp\htdocs\apirest.app\models\CrugeUser.php";s:4:"line";i:83;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:71:"C:\xampp\htdocs\apirest.app\vendor\sizeg\yii2-jwt\JwtHttpBearerAuth.php";s:4:"line";i:86;s:8:"function";s:18:"loginByAccessToken";s:5:"class";s:12:"yii\web\User";s:4:"type";s:2:"->";}}i:5;i:5153096;}i:29;a:6:{i:0;s:2796:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    COALESCE(td.typname, tb.typname, t.typname) AS data_type,
+    COALESCE(td.typtype, tb.typtype, t.typtype) AS type_type,
+    (SELECT nspname FROM pg_namespace WHERE oid = COALESCE(td.typnamespace, tb.typnamespace, t.typnamespace)) AS type_scheme,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false)  AS is_autoinc,
+    pg_get_serial_sequence(quote_ident(d.nspname) || '.' || quote_ident(c.relname), a.attname) AS sequence_name,
+    CASE WHEN COALESCE(td.typtype, tb.typtype, t.typtype) = 'e'::char
+        THEN array_to_string((SELECT array_agg(enumlabel) FROM pg_enum WHERE enumtypid = COALESCE(td.oid, tb.oid, a.atttypid))::varchar[], ',')
+        ELSE NULL
+    END AS enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey,
+    COALESCE(NULLIF(a.attndims, 0), NULLIF(t.typndims, 0), (t.typcategory='A')::int) AS dimension
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_type tb ON (a.attndims > 0 OR t.typcategory='A') AND t.typelem > 0 AND t.typelem = tb.oid OR t.typbasetype > 0 AND t.typbasetype = tb.oid
+    LEFT JOIN pg_type td ON t.typndims > 0 AND t.typbasetype > 0 AND tb.typelem = td.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT JOIN pg_constraint ct ON ct.conrelid = c.oid AND ct.contype = 'p'
+WHERE
+    a.attnum > 0 AND t.typname != '' AND NOT a.attisdropped
+    AND c.relname = 'cruge_user'
+    AND d.nspname = 'public'
+ORDER BY
+    a.attnum;";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.297224;i:4;a:2:{i:0;a:5:{s:4:"file";s:48:"C:\xampp\htdocs\apirest.app\models\CrugeUser.php";s:4:"line";i:83;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:71:"C:\xampp\htdocs\apirest.app\vendor\sizeg\yii2-jwt\JwtHttpBearerAuth.php";s:4:"line";i:86;s:8:"function";s:18:"loginByAccessToken";s:5:"class";s:12:"yii\web\User";s:4:"type";s:2:"->";}}i:5;i:5273200;}i:32;a:6:{i:0;s:878:"select
+    ct.conname as constraint_name,
+    a.attname as column_name,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    fa.attname as foreign_column_name
+from
+    (SELECT ct.conname, ct.conrelid, ct.confrelid, ct.conkey, ct.contype, ct.confkey, generate_subscripts(ct.conkey, 1) AS s
+       FROM pg_constraint ct
+    ) AS ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    inner join pg_attribute a on a.attrelid=ct.conrelid and a.attnum = ct.conkey[ct.s]
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+    left join pg_attribute fa on fa.attrelid=ct.confrelid and fa.attnum = ct.confkey[ct.s]
+where
+    ct.contype='f'
+    and c.relname='cruge_user'
+    and ns.nspname='public'
+order by
+    fns.nspname, fc.relname, a.attnum";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.310999;i:4;a:2:{i:0;a:5:{s:4:"file";s:48:"C:\xampp\htdocs\apirest.app\models\CrugeUser.php";s:4:"line";i:83;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:71:"C:\xampp\htdocs\apirest.app\vendor\sizeg\yii2-jwt\JwtHttpBearerAuth.php";s:4:"line";i:86;s:8:"function";s:18:"loginByAccessToken";s:5:"class";s:12:"yii\web\User";s:4:"type";s:2:"->";}}i:5;i:5317096;}i:35;a:6:{i:0;s:48:"SELECT * FROM "cruge_user" WHERE "iduser"='1282'";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.318571;i:4;a:3:{i:0;a:5:{s:4:"file";s:53:"C:\xampp\htdocs\apirest.app\models\CrugeUserQuery.php";s:4:"line";i:32;s:8:"function";s:3:"one";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:48:"C:\xampp\htdocs\apirest.app\models\CrugeUser.php";s:4:"line";i:83;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:2;a:5:{s:4:"file";s:71:"C:\xampp\htdocs\apirest.app\vendor\sizeg\yii2-jwt\JwtHttpBearerAuth.php";s:4:"line";i:86;s:8:"function";s:18:"loginByAccessToken";s:5:"class";s:12:"yii\web\User";s:4:"type";s:2:"->";}}i:5;i:5636528;}i:38;a:6:{i:0;s:63:"User '1282' logged in from 192.168.100.62. Session not enabled.";i:1;i:4;i:2;s:19:"yii\web\User::login";i:3;d:1721232824.324246;i:4;a:1:{i:0;a:5:{s:4:"file";s:71:"C:\xampp\htdocs\apirest.app\vendor\sizeg\yii2-jwt\JwtHttpBearerAuth.php";s:4:"line";i:86;s:8:"function";s:18:"loginByAccessToken";s:5:"class";s:12:"yii\web\User";s:4:"type";s:2:"->";}}i:5;i:5917944;}i:39;a:6:{i:0;s:65:"Rate limit skipped: "user" does not implement RateLimitInterface.";i:1;i:4;i:2;s:37:"yii\filters\RateLimiter::beforeAction";i:3;d:1721232824.326022;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\BaseController.php";s:4:"line";i:53;s:8:"function";s:12:"beforeAction";s:5:"class";s:18:"yii\web\Controller";s:4:"type";s:2:"->";}}i:5;i:6003168;}i:40;a:6:{i:0;s:76:"Running action: app\modules\apiv1\controllers\SaleController::actionInsert()";i:1;i:8;i:2;s:36:"yii\base\InlineAction::runWithParams";i:3;d:1721232824.326109;i:4;a:0:{}i:5;i:6004192;}i:41;a:6:{i:0;s:48:"SELECT EXISTS(SELECT * FROM "unit" WHERE "id"=6)";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.334941;i:4;a:2:{i:0;a:5:{s:4:"file";s:61:"C:\xampp\htdocs\apirest.app\modules\apiv1\models\SaleForm.php";s:4:"line";i:85;s:8:"function";s:6:"exists";s:5:"class";s:12:"yii\db\Query";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:60;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6202960;}i:42;a:6:{i:0;s:63:"Opening DB connection: pgsql:host=localhost;dbname=marketing_io";i:1;i:4;i:2;s:23:"yii\db\Connection::open";i:3;d:1721232824.334965;i:4;a:2:{i:0;a:5:{s:4:"file";s:61:"C:\xampp\htdocs\apirest.app\modules\apiv1\models\SaleForm.php";s:4:"line";i:85;s:8:"function";s:6:"exists";s:5:"class";s:12:"yii\db\Query";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:60;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6205176;}i:47;a:6:{i:0;s:2793:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    COALESCE(td.typname, tb.typname, t.typname) AS data_type,
+    COALESCE(td.typtype, tb.typtype, t.typtype) AS type_type,
+    (SELECT nspname FROM pg_namespace WHERE oid = COALESCE(td.typnamespace, tb.typnamespace, t.typnamespace)) AS type_scheme,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false)  AS is_autoinc,
+    pg_get_serial_sequence(quote_ident(d.nspname) || '.' || quote_ident(c.relname), a.attname) AS sequence_name,
+    CASE WHEN COALESCE(td.typtype, tb.typtype, t.typtype) = 'e'::char
+        THEN array_to_string((SELECT array_agg(enumlabel) FROM pg_enum WHERE enumtypid = COALESCE(td.oid, tb.oid, a.atttypid))::varchar[], ',')
+        ELSE NULL
+    END AS enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey,
+    COALESCE(NULLIF(a.attndims, 0), NULLIF(t.typndims, 0), (t.typcategory='A')::int) AS dimension
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_type tb ON (a.attndims > 0 OR t.typcategory='A') AND t.typelem > 0 AND t.typelem = tb.oid OR t.typbasetype > 0 AND t.typbasetype = tb.oid
+    LEFT JOIN pg_type td ON t.typndims > 0 AND t.typbasetype > 0 AND tb.typelem = td.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT JOIN pg_constraint ct ON ct.conrelid = c.oid AND ct.contype = 'p'
+WHERE
+    a.attnum > 0 AND t.typname != '' AND NOT a.attisdropped
+    AND c.relname = 'product'
+    AND d.nspname = 'public'
+ORDER BY
+    a.attnum;";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.421059;i:4;a:2:{i:0;a:5:{s:4:"file";s:61:"C:\xampp\htdocs\apirest.app\modules\apiv1\models\SaleForm.php";s:4:"line";i:103;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:60;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6247032;}i:50;a:6:{i:0;s:875:"select
+    ct.conname as constraint_name,
+    a.attname as column_name,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    fa.attname as foreign_column_name
+from
+    (SELECT ct.conname, ct.conrelid, ct.confrelid, ct.conkey, ct.contype, ct.confkey, generate_subscripts(ct.conkey, 1) AS s
+       FROM pg_constraint ct
+    ) AS ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    inner join pg_attribute a on a.attrelid=ct.conrelid and a.attnum = ct.conkey[ct.s]
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+    left join pg_attribute fa on fa.attrelid=ct.confrelid and fa.attnum = ct.confkey[ct.s]
+where
+    ct.contype='f'
+    and c.relname='product'
+    and ns.nspname='public'
+order by
+    fns.nspname, fc.relname, a.attnum";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.433262;i:4;a:2:{i:0;a:5:{s:4:"file";s:61:"C:\xampp\htdocs\apirest.app\modules\apiv1\models\SaleForm.php";s:4:"line";i:103;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:60;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6268040;}i:53;a:6:{i:0;s:39:"SELECT * FROM "product" WHERE "id"='11'";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.43779;i:4;a:3:{i:0;a:5:{s:4:"file";s:51:"C:\xampp\htdocs\apirest.app\models\ProductQuery.php";s:4:"line";i:32;s:8:"function";s:3:"one";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:61:"C:\xampp\htdocs\apirest.app\modules\apiv1\models\SaleForm.php";s:4:"line";i:103;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:2;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:60;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6273648;}i:56;a:6:{i:0;s:67:"Opening DB connection: pgsql:host=localhost;dbname=marketing_io_sb0";i:1;i:4;i:2;s:23:"yii\db\Connection::open";i:3;d:1721232824.440666;i:4;a:2:{i:0;a:5:{s:4:"file";s:61:"C:\xampp\htdocs\apirest.app\modules\apiv1\models\SaleForm.php";s:4:"line";i:108;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:60;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6321064;}i:59;a:6:{i:0;s:2796:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    COALESCE(td.typname, tb.typname, t.typname) AS data_type,
+    COALESCE(td.typtype, tb.typtype, t.typtype) AS type_type,
+    (SELECT nspname FROM pg_namespace WHERE oid = COALESCE(td.typnamespace, tb.typnamespace, t.typnamespace)) AS type_scheme,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false)  AS is_autoinc,
+    pg_get_serial_sequence(quote_ident(d.nspname) || '.' || quote_ident(c.relname), a.attname) AS sequence_name,
+    CASE WHEN COALESCE(td.typtype, tb.typtype, t.typtype) = 'e'::char
+        THEN array_to_string((SELECT array_agg(enumlabel) FROM pg_enum WHERE enumtypid = COALESCE(td.oid, tb.oid, a.atttypid))::varchar[], ',')
+        ELSE NULL
+    END AS enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey,
+    COALESCE(NULLIF(a.attndims, 0), NULLIF(t.typndims, 0), (t.typcategory='A')::int) AS dimension
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_type tb ON (a.attndims > 0 OR t.typcategory='A') AND t.typelem > 0 AND t.typelem = tb.oid OR t.typbasetype > 0 AND t.typbasetype = tb.oid
+    LEFT JOIN pg_type td ON t.typndims > 0 AND t.typbasetype > 0 AND tb.typelem = td.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT JOIN pg_constraint ct ON ct.conrelid = c.oid AND ct.contype = 'p'
+WHERE
+    a.attnum > 0 AND t.typname != '' AND NOT a.attisdropped
+    AND c.relname = 'productBranch'
+    AND d.nspname = 'cfg'
+ORDER BY
+    a.attnum;";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.538196;i:4;a:2:{i:0;a:5:{s:4:"file";s:61:"C:\xampp\htdocs\apirest.app\modules\apiv1\models\SaleForm.php";s:4:"line";i:108;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:60;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6328008;}i:62;a:6:{i:0;s:878:"select
+    ct.conname as constraint_name,
+    a.attname as column_name,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    fa.attname as foreign_column_name
+from
+    (SELECT ct.conname, ct.conrelid, ct.confrelid, ct.conkey, ct.contype, ct.confkey, generate_subscripts(ct.conkey, 1) AS s
+       FROM pg_constraint ct
+    ) AS ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    inner join pg_attribute a on a.attrelid=ct.conrelid and a.attnum = ct.conkey[ct.s]
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+    left join pg_attribute fa on fa.attrelid=ct.confrelid and fa.attnum = ct.confkey[ct.s]
+where
+    ct.contype='f'
+    and c.relname='productBranch'
+    and ns.nspname='cfg'
+order by
+    fns.nspname, fc.relname, a.attnum";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.549708;i:4;a:2:{i:0;a:5:{s:4:"file";s:61:"C:\xampp\htdocs\apirest.app\modules\apiv1\models\SaleForm.php";s:4:"line";i:108;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:60;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6338632;}i:65;a:6:{i:0;s:51:"SELECT * FROM "cfg"."productBranch" WHERE "id"='11'";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.553878;i:4;a:3:{i:0;a:5:{s:4:"file";s:57:"C:\xampp\htdocs\apirest.app\models\ProductBranchQuery.php";s:4:"line";i:32;s:8:"function";s:3:"one";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:61:"C:\xampp\htdocs\apirest.app\modules\apiv1\models\SaleForm.php";s:4:"line";i:108;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:2;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:60;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6347928;}i:68;a:6:{i:0;s:49:"SELECT EXISTS(SELECT * FROM "unit" WHERE "id"=58)";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.554771;i:4;a:2:{i:0;a:5:{s:4:"file";s:61:"C:\xampp\htdocs\apirest.app\modules\apiv1\models\SaleForm.php";s:4:"line";i:85;s:8:"function";s:6:"exists";s:5:"class";s:12:"yii\db\Query";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:60;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6353712;}i:71;a:6:{i:0;s:39:"SELECT * FROM "product" WHERE "id"='43'";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.55538;i:4;a:3:{i:0;a:5:{s:4:"file";s:51:"C:\xampp\htdocs\apirest.app\models\ProductQuery.php";s:4:"line";i:32;s:8:"function";s:3:"one";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:61:"C:\xampp\htdocs\apirest.app\modules\apiv1\models\SaleForm.php";s:4:"line";i:103;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:2;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:60;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6358464;}i:74;a:6:{i:0;s:51:"SELECT * FROM "cfg"."productBranch" WHERE "id"='43'";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.556014;i:4;a:3:{i:0;a:5:{s:4:"file";s:57:"C:\xampp\htdocs\apirest.app\models\ProductBranchQuery.php";s:4:"line";i:32;s:8:"function";s:3:"one";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:61:"C:\xampp\htdocs\apirest.app\modules\apiv1\models\SaleForm.php";s:4:"line";i:108;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:2;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:60;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6363816;}i:77;a:6:{i:0;s:2794:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    COALESCE(td.typname, tb.typname, t.typname) AS data_type,
+    COALESCE(td.typtype, tb.typtype, t.typtype) AS type_type,
+    (SELECT nspname FROM pg_namespace WHERE oid = COALESCE(td.typnamespace, tb.typnamespace, t.typnamespace)) AS type_scheme,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false)  AS is_autoinc,
+    pg_get_serial_sequence(quote_ident(d.nspname) || '.' || quote_ident(c.relname), a.attname) AS sequence_name,
+    CASE WHEN COALESCE(td.typtype, tb.typtype, t.typtype) = 'e'::char
+        THEN array_to_string((SELECT array_agg(enumlabel) FROM pg_enum WHERE enumtypid = COALESCE(td.oid, tb.oid, a.atttypid))::varchar[], ',')
+        ELSE NULL
+    END AS enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey,
+    COALESCE(NULLIF(a.attndims, 0), NULLIF(t.typndims, 0), (t.typcategory='A')::int) AS dimension
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_type tb ON (a.attndims > 0 OR t.typcategory='A') AND t.typelem > 0 AND t.typelem = tb.oid OR t.typbasetype > 0 AND t.typbasetype = tb.oid
+    LEFT JOIN pg_type td ON t.typndims > 0 AND t.typbasetype > 0 AND tb.typelem = td.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT JOIN pg_constraint ct ON ct.conrelid = c.oid AND ct.contype = 'p'
+WHERE
+    a.attnum > 0 AND t.typname != '' AND NOT a.attisdropped
+    AND c.relname = 'customer'
+    AND d.nspname = 'public'
+ORDER BY
+    a.attnum;";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.557243;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:85;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6392528;}i:80;a:6:{i:0;s:876:"select
+    ct.conname as constraint_name,
+    a.attname as column_name,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    fa.attname as foreign_column_name
+from
+    (SELECT ct.conname, ct.conrelid, ct.confrelid, ct.conkey, ct.contype, ct.confkey, generate_subscripts(ct.conkey, 1) AS s
+       FROM pg_constraint ct
+    ) AS ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    inner join pg_attribute a on a.attrelid=ct.conrelid and a.attnum = ct.conkey[ct.s]
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+    left join pg_attribute fa on fa.attrelid=ct.confrelid and fa.attnum = ct.confkey[ct.s]
+where
+    ct.contype='f'
+    and c.relname='customer'
+    and ns.nspname='public'
+order by
+    fns.nspname, fc.relname, a.attnum";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.564056;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:85;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6406640;}i:83;a:6:{i:0;s:38:"SELECT * FROM "customer" WHERE "id"=35";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.567115;i:4;a:2:{i:0;a:5:{s:4:"file";s:52:"C:\xampp\htdocs\apirest.app\models\CustomerQuery.php";s:4:"line";i:32;s:8:"function";s:3:"one";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:85;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6409736;}i:86;a:6:{i:0;s:2790:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    COALESCE(td.typname, tb.typname, t.typname) AS data_type,
+    COALESCE(td.typtype, tb.typtype, t.typtype) AS type_type,
+    (SELECT nspname FROM pg_namespace WHERE oid = COALESCE(td.typnamespace, tb.typnamespace, t.typnamespace)) AS type_scheme,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false)  AS is_autoinc,
+    pg_get_serial_sequence(quote_ident(d.nspname) || '.' || quote_ident(c.relname), a.attname) AS sequence_name,
+    CASE WHEN COALESCE(td.typtype, tb.typtype, t.typtype) = 'e'::char
+        THEN array_to_string((SELECT array_agg(enumlabel) FROM pg_enum WHERE enumtypid = COALESCE(td.oid, tb.oid, a.atttypid))::varchar[], ',')
+        ELSE NULL
+    END AS enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey,
+    COALESCE(NULLIF(a.attndims, 0), NULLIF(t.typndims, 0), (t.typcategory='A')::int) AS dimension
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_type tb ON (a.attndims > 0 OR t.typcategory='A') AND t.typelem > 0 AND t.typelem = tb.oid OR t.typbasetype > 0 AND t.typbasetype = tb.oid
+    LEFT JOIN pg_type td ON t.typndims > 0 AND t.typbasetype > 0 AND tb.typelem = td.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT JOIN pg_constraint ct ON ct.conrelid = c.oid AND ct.contype = 'p'
+WHERE
+    a.attnum > 0 AND t.typname != '' AND NOT a.attisdropped
+    AND c.relname = 'sale'
+    AND d.nspname = 'public'
+ORDER BY
+    a.attnum;";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.569295;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:96;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6462568;}i:89;a:6:{i:0;s:872:"select
+    ct.conname as constraint_name,
+    a.attname as column_name,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    fa.attname as foreign_column_name
+from
+    (SELECT ct.conname, ct.conrelid, ct.confrelid, ct.conkey, ct.contype, ct.confkey, generate_subscripts(ct.conkey, 1) AS s
+       FROM pg_constraint ct
+    ) AS ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    inner join pg_attribute a on a.attrelid=ct.conrelid and a.attnum = ct.conkey[ct.s]
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+    left join pg_attribute fa on fa.attrelid=ct.confrelid and fa.attnum = ct.confkey[ct.s]
+where
+    ct.contype='f'
+    and c.relname='sale'
+    and ns.nspname='public'
+order by
+    fns.nspname, fc.relname, a.attnum";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.578287;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:96;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6488896;}i:92;a:6:{i:0;s:83:"Failed to set unsafe attribute 'idtypeDocument' in 'app\modules\apiv1\models\Sale'.";i:1;i:8;i:2;s:33:"yii\base\Model::onUnsafeAttribute";i:3;d:1721232824.583062;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:96;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6504736;}i:93;a:6:{i:0;s:77:"Failed to set unsafe attribute 'products' in 'app\modules\apiv1\models\Sale'.";i:1;i:8;i:2;s:33:"yii\base\Model::onUnsafeAttribute";i:3;d:1721232824.583094;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:96;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6506312;}i:94;a:6:{i:0;s:74:"Failed to set unsafe attribute 'total' in 'app\modules\apiv1\models\Sale'.";i:1;i:8;i:2;s:33:"yii\base\Model::onUnsafeAttribute";i:3;d:1721232824.583106;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:96;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6507264;}i:95;a:6:{i:0;s:78:"Failed to set unsafe attribute 'isInvoice' in 'app\modules\apiv1\models\Sale'.";i:1;i:8;i:2;s:33:"yii\base\Model::onUnsafeAttribute";i:3;d:1721232824.583115;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:96;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6508216;}i:96;a:6:{i:0;s:630:"INSERT INTO "sale" ("razonSocial", "numeroDocumento", "phone", "discountamount", "idcustomer", "codigoMetodoPago", "montoTotal", "subTotal", "montoRecibido", "iddocument", "iduser", "codigoDocumentoSector", "idstatus", "number", "idsystemPoint", "codigoModalidad", "codigoMoneda", "idcash", "idcardService", "idcashDocument", "codigoTipoDocumentoIdentidad", "idorder", "idpriceSheet", "idtypeCharge", "idcustomer2", "codigoTipoDocumentoIdentidad2") VALUES ('OSCAR YUCRA', '123456', '', '0.2', 35, 1, '42', '41.8', '42', 2, 1282, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL) RETURNING "id"";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.583953;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:109;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6528592;}i:99;a:6:{i:0;s:61:"Opening DB connection: pgsql:host=localhost;dbname=0_iooxs_io";i:1;i:4;i:2;s:23:"yii\db\Connection::open";i:3;d:1721232824.5876;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:117;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6547608;}i:102;a:6:{i:0;s:2798:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    COALESCE(td.typname, tb.typname, t.typname) AS data_type,
+    COALESCE(td.typtype, tb.typtype, t.typtype) AS type_type,
+    (SELECT nspname FROM pg_namespace WHERE oid = COALESCE(td.typnamespace, tb.typnamespace, t.typnamespace)) AS type_scheme,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false)  AS is_autoinc,
+    pg_get_serial_sequence(quote_ident(d.nspname) || '.' || quote_ident(c.relname), a.attname) AS sequence_name,
+    CASE WHEN COALESCE(td.typtype, tb.typtype, t.typtype) = 'e'::char
+        THEN array_to_string((SELECT array_agg(enumlabel) FROM pg_enum WHERE enumtypid = COALESCE(td.oid, tb.oid, a.atttypid))::varchar[], ',')
+        ELSE NULL
+    END AS enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey,
+    COALESCE(NULLIF(a.attndims, 0), NULLIF(t.typndims, 0), (t.typcategory='A')::int) AS dimension
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_type tb ON (a.attndims > 0 OR t.typcategory='A') AND t.typelem > 0 AND t.typelem = tb.oid OR t.typbasetype > 0 AND t.typbasetype = tb.oid
+    LEFT JOIN pg_type td ON t.typndims > 0 AND t.typbasetype > 0 AND tb.typelem = td.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT JOIN pg_constraint ct ON ct.conrelid = c.oid AND ct.contype = 'p'
+WHERE
+    a.attnum > 0 AND t.typname != '' AND NOT a.attisdropped
+    AND c.relname = 'documentType'
+    AND d.nspname = 'public'
+ORDER BY
+    a.attnum;";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.671691;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:117;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6553648;}i:105;a:6:{i:0;s:880:"select
+    ct.conname as constraint_name,
+    a.attname as column_name,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    fa.attname as foreign_column_name
+from
+    (SELECT ct.conname, ct.conrelid, ct.confrelid, ct.conkey, ct.contype, ct.confkey, generate_subscripts(ct.conkey, 1) AS s
+       FROM pg_constraint ct
+    ) AS ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    inner join pg_attribute a on a.attrelid=ct.conrelid and a.attnum = ct.conkey[ct.s]
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+    left join pg_attribute fa on fa.attrelid=ct.confrelid and fa.attnum = ct.confkey[ct.s]
+where
+    ct.contype='f'
+    and c.relname='documentType'
+    and ns.nspname='public'
+order by
+    fns.nspname, fc.relname, a.attnum";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.683449;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:117;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6561120;}i:108;a:6:{i:0;s:49:"SELECT * FROM "documentType" WHERE "type"='VENTA'";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.686858;i:4;a:2:{i:0;a:5:{s:4:"file";s:56:"C:\xampp\htdocs\apirest.app\models\DocumentTypeQuery.php";s:4:"line";i:32;s:8:"function";s:3:"one";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:117;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6566272;}i:111;a:6:{i:0;s:2794:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    COALESCE(td.typname, tb.typname, t.typname) AS data_type,
+    COALESCE(td.typtype, tb.typtype, t.typtype) AS type_type,
+    (SELECT nspname FROM pg_namespace WHERE oid = COALESCE(td.typnamespace, tb.typnamespace, t.typnamespace)) AS type_scheme,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false)  AS is_autoinc,
+    pg_get_serial_sequence(quote_ident(d.nspname) || '.' || quote_ident(c.relname), a.attname) AS sequence_name,
+    CASE WHEN COALESCE(td.typtype, tb.typtype, t.typtype) = 'e'::char
+        THEN array_to_string((SELECT array_agg(enumlabel) FROM pg_enum WHERE enumtypid = COALESCE(td.oid, tb.oid, a.atttypid))::varchar[], ',')
+        ELSE NULL
+    END AS enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey,
+    COALESCE(NULLIF(a.attndims, 0), NULLIF(t.typndims, 0), (t.typcategory='A')::int) AS dimension
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_type tb ON (a.attndims > 0 OR t.typcategory='A') AND t.typelem > 0 AND t.typelem = tb.oid OR t.typbasetype > 0 AND t.typbasetype = tb.oid
+    LEFT JOIN pg_type td ON t.typndims > 0 AND t.typbasetype > 0 AND tb.typelem = td.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT JOIN pg_constraint ct ON ct.conrelid = c.oid AND ct.contype = 'p'
+WHERE
+    a.attnum > 0 AND t.typname != '' AND NOT a.attisdropped
+    AND c.relname = 'document'
+    AND d.nspname = 'public'
+ORDER BY
+    a.attnum;";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.690204;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:124;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6658448;}i:114;a:6:{i:0;s:876:"select
+    ct.conname as constraint_name,
+    a.attname as column_name,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    fa.attname as foreign_column_name
+from
+    (SELECT ct.conname, ct.conrelid, ct.confrelid, ct.conkey, ct.contype, ct.confkey, generate_subscripts(ct.conkey, 1) AS s
+       FROM pg_constraint ct
+    ) AS ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    inner join pg_attribute a on a.attrelid=ct.conrelid and a.attnum = ct.conkey[ct.s]
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+    left join pg_attribute fa on fa.attrelid=ct.confrelid and fa.attnum = ct.confkey[ct.s]
+where
+    ct.contype='f'
+    and c.relname='document'
+    and ns.nspname='public'
+order by
+    fns.nspname, fc.relname, a.attnum";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.696875;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:124;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6669856;}i:117;a:6:{i:0;s:63:"Failed to set unsafe attribute 'name' in 'app\models\Document'.";i:1;i:8;i:2;s:33:"yii\base\Model::onUnsafeAttribute";i:3;d:1721232824.701198;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:124;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6705496;}i:118;a:6:{i:0;s:67:"Failed to set unsafe attribute 'quantity' in 'app\models\Document'.";i:1;i:8;i:2;s:33:"yii\base\Model::onUnsafeAttribute";i:3;d:1721232824.70121;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:124;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6706440;}i:119;a:6:{i:0;s:64:"Failed to set unsafe attribute 'price' in 'app\models\Document'.";i:1;i:8;i:2;s:33:"yii\base\Model::onUnsafeAttribute";i:3;d:1721232824.701222;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:124;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6707384;}i:120;a:6:{i:0;s:61:"Failed to set unsafe attribute 'id' in 'app\models\Document'.";i:1;i:8;i:2;s:33:"yii\base\Model::onUnsafeAttribute";i:3;d:1721232824.701228;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:124;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6708312;}i:121;a:6:{i:0;s:65:"Failed to set unsafe attribute 'idunit' in 'app\models\Document'.";i:1;i:8;i:2;s:33:"yii\base\Model::onUnsafeAttribute";i:3;d:1721232824.701236;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:124;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6709256;}i:122;a:6:{i:0;s:56:"SELECT EXISTS(SELECT * FROM "sale" WHERE "sale"."id"=51)";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.704352;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:131;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6737952;}i:125;a:6:{i:0;s:268:"INSERT INTO "document" ("idcliente", "iddocumentType", "number", "iduser", "idsale", "idstatus", "idpurchase", "iddocument", "idorder", "idstore", "idproductionOrder", "idadjustment") VALUES (35, 3, 2, 1282, 51, NULL, NULL, NULL, NULL, NULL, NULL, NULL) RETURNING "id"";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.705226;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:131;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6740616;}i:128;a:6:{i:0;s:51:"SELECT * FROM "cfg"."productBranch" WHERE "id"='11'";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.706801;i:4;a:3:{i:0;a:5:{s:4:"file";s:57:"C:\xampp\htdocs\apirest.app\models\ProductBranchQuery.php";s:4:"line";i:32;s:8:"function";s:3:"one";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:491;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:2;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:139;s:8:"function";s:11:"updateStock";s:5:"class";s:44:"app\modules\apiv1\controllers\SaleController";s:4:"type";s:2:"->";}}i:5;i:6740680;}i:131;a:6:{i:0;s:2798:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    COALESCE(td.typname, tb.typname, t.typname) AS data_type,
+    COALESCE(td.typtype, tb.typtype, t.typtype) AS type_type,
+    (SELECT nspname FROM pg_namespace WHERE oid = COALESCE(td.typnamespace, tb.typnamespace, t.typnamespace)) AS type_scheme,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false)  AS is_autoinc,
+    pg_get_serial_sequence(quote_ident(d.nspname) || '.' || quote_ident(c.relname), a.attname) AS sequence_name,
+    CASE WHEN COALESCE(td.typtype, tb.typtype, t.typtype) = 'e'::char
+        THEN array_to_string((SELECT array_agg(enumlabel) FROM pg_enum WHERE enumtypid = COALESCE(td.oid, tb.oid, a.atttypid))::varchar[], ',')
+        ELSE NULL
+    END AS enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey,
+    COALESCE(NULLIF(a.attndims, 0), NULLIF(t.typndims, 0), (t.typcategory='A')::int) AS dimension
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_type tb ON (a.attndims > 0 OR t.typcategory='A') AND t.typelem > 0 AND t.typelem = tb.oid OR t.typbasetype > 0 AND t.typbasetype = tb.oid
+    LEFT JOIN pg_type td ON t.typndims > 0 AND t.typbasetype > 0 AND tb.typelem = td.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT JOIN pg_constraint ct ON ct.conrelid = c.oid AND ct.contype = 'p'
+WHERE
+    a.attnum > 0 AND t.typname != '' AND NOT a.attisdropped
+    AND c.relname = 'productstock'
+    AND d.nspname = 'public'
+ORDER BY
+    a.attnum;";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.70852;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:150;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6787864;}i:134;a:6:{i:0;s:880:"select
+    ct.conname as constraint_name,
+    a.attname as column_name,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    fa.attname as foreign_column_name
+from
+    (SELECT ct.conname, ct.conrelid, ct.confrelid, ct.conkey, ct.contype, ct.confkey, generate_subscripts(ct.conkey, 1) AS s
+       FROM pg_constraint ct
+    ) AS ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    inner join pg_attribute a on a.attrelid=ct.conrelid and a.attnum = ct.conkey[ct.s]
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+    left join pg_attribute fa on fa.attrelid=ct.confrelid and fa.attnum = ct.confkey[ct.s]
+where
+    ct.contype='f'
+    and c.relname='productstock'
+    and ns.nspname='public'
+order by
+    fns.nspname, fc.relname, a.attnum";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.715146;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:150;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6801736;}i:137;a:6:{i:0;s:81:"Failed to set unsafe attribute 'name' in 'app\modules\apiv1\models\Productstock'.";i:1;i:8;i:2;s:33:"yii\base\Model::onUnsafeAttribute";i:3;d:1721232824.718453;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:150;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6806728;}i:138;a:6:{i:0;s:85:"Failed to set unsafe attribute 'quantity' in 'app\modules\apiv1\models\Productstock'.";i:1;i:8;i:2;s:33:"yii\base\Model::onUnsafeAttribute";i:3;d:1721232824.718464;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:150;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6807688;}i:139;a:6:{i:0;s:79:"Failed to set unsafe attribute 'id' in 'app\modules\apiv1\models\Productstock'.";i:1;i:8;i:2;s:33:"yii\base\Model::onUnsafeAttribute";i:3;d:1721232824.71848;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:150;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6809248;}i:140;a:6:{i:0;s:83:"Failed to set unsafe attribute 'idunit' in 'app\modules\apiv1\models\Productstock'.";i:1;i:8;i:2;s:33:"yii\base\Model::onUnsafeAttribute";i:3;d:1721232824.718486;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:150;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6810208;}i:141;a:6:{i:0;s:56:"SELECT EXISTS(SELECT * FROM "sale" WHERE "sale"."id"=51)";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.718867;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:159;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6821112;}i:144;a:6:{i:0;s:63:"Failed to set unsafe attribute 'name' in 'app\models\Document'.";i:1;i:8;i:2;s:33:"yii\base\Model::onUnsafeAttribute";i:3;d:1721232824.719535;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:124;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6815080;}i:145;a:6:{i:0;s:67:"Failed to set unsafe attribute 'quantity' in 'app\models\Document'.";i:1;i:8;i:2;s:33:"yii\base\Model::onUnsafeAttribute";i:3;d:1721232824.719544;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:124;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6816024;}i:146;a:6:{i:0;s:64:"Failed to set unsafe attribute 'price' in 'app\models\Document'.";i:1;i:8;i:2;s:33:"yii\base\Model::onUnsafeAttribute";i:3;d:1721232824.71955;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:124;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6816968;}i:147;a:6:{i:0;s:61:"Failed to set unsafe attribute 'id' in 'app\models\Document'.";i:1;i:8;i:2;s:33:"yii\base\Model::onUnsafeAttribute";i:3;d:1721232824.719556;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:124;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6817896;}i:148;a:6:{i:0;s:65:"Failed to set unsafe attribute 'idunit' in 'app\models\Document'.";i:1;i:8;i:2;s:33:"yii\base\Model::onUnsafeAttribute";i:3;d:1721232824.719562;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:124;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6818840;}i:149;a:6:{i:0;s:56:"SELECT EXISTS(SELECT * FROM "sale" WHERE "sale"."id"=51)";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.719886;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:131;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6830288;}i:152;a:6:{i:0;s:268:"INSERT INTO "document" ("idcliente", "iddocumentType", "number", "iduser", "idsale", "idstatus", "idpurchase", "iddocument", "idorder", "idstore", "idproductionOrder", "idadjustment") VALUES (35, 3, 1, 1282, 51, NULL, NULL, NULL, NULL, NULL, NULL, NULL) RETURNING "id"";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.720518;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:131;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6832888;}i:155;a:6:{i:0;s:51:"SELECT * FROM "cfg"."productBranch" WHERE "id"='43'";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.721399;i:4;a:3:{i:0;a:5:{s:4:"file";s:57:"C:\xampp\htdocs\apirest.app\models\ProductBranchQuery.php";s:4:"line";i:32;s:8:"function";s:3:"one";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:491;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:2;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:139;s:8:"function";s:11:"updateStock";s:5:"class";s:44:"app\modules\apiv1\controllers\SaleController";s:4:"type";s:2:"->";}}i:5;i:6832952;}i:158;a:6:{i:0;s:81:"Failed to set unsafe attribute 'name' in 'app\modules\apiv1\models\Productstock'.";i:1;i:8;i:2;s:33:"yii\base\Model::onUnsafeAttribute";i:3;d:1721232824.722055;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:150;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6836992;}i:159;a:6:{i:0;s:85:"Failed to set unsafe attribute 'quantity' in 'app\modules\apiv1\models\Productstock'.";i:1;i:8;i:2;s:33:"yii\base\Model::onUnsafeAttribute";i:3;d:1721232824.722064;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:150;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6837952;}i:160;a:6:{i:0;s:79:"Failed to set unsafe attribute 'id' in 'app\modules\apiv1\models\Productstock'.";i:1;i:8;i:2;s:33:"yii\base\Model::onUnsafeAttribute";i:3;d:1721232824.722078;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:150;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6839512;}i:161;a:6:{i:0;s:83:"Failed to set unsafe attribute 'idunit' in 'app\modules\apiv1\models\Productstock'.";i:1;i:8;i:2;s:33:"yii\base\Model::onUnsafeAttribute";i:3;d:1721232824.722084;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:150;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6840472;}i:162;a:6:{i:0;s:56:"SELECT EXISTS(SELECT * FROM "sale" WHERE "sale"."id"=51)";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.722438;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:159;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6853680;}i:165;a:6:{i:0;s:56:"SELECT EXISTS(SELECT * FROM "sale" WHERE "sale"."id"=51)";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.723175;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:171;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6858176;}i:168;a:6:{i:0;s:232:"INSERT INTO "productstock" ("price", "nprocess", "quantityoutput", "iduser", "idproduct", "iddocument", "idsale", "idpurchase", "idstore", "idproductionOrder") VALUES ('30', 1, '2', 1282, 11, 83, 51, NULL, NULL, NULL) RETURNING "id"";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.72377;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:171;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6860888;}i:171;a:6:{i:0;s:56:"SELECT EXISTS(SELECT * FROM "sale" WHERE "sale"."id"=51)";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.725527;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:171;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6866216;}i:174;a:6:{i:0;s:232:"INSERT INTO "productstock" ("price", "nprocess", "quantityoutput", "iduser", "idproduct", "iddocument", "idsale", "idpurchase", "idstore", "idproductionOrder") VALUES ('12', 1, '1', 1282, 43, 84, 51, NULL, NULL, NULL) RETURNING "id"";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.726139;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:171;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6868896;}i:177;a:6:{i:0;s:103:"Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.100.62";i:1;i:2;i:2;s:29:"yii\debug\Module::checkAccess";i:3;d:1721232824.728129;i:4;a:0:{}i:5;i:6874608;}}}";s:9:"profiling";s:101599:"a:3:{s:6:"memory";i:6908816;s:4:"time";d:0.6614589691162109;s:8:"messages";a:84:{i:27;a:6:{i:0;s:65:"Opening DB connection: pgsql:host=localhost;dbname=0_iooxs_access";i:1;i:80;i:2;s:23:"yii\db\Connection::open";i:3;d:1721232824.211824;i:4;a:2:{i:0;a:5:{s:4:"file";s:48:"C:\xampp\htdocs\apirest.app\models\CrugeUser.php";s:4:"line";i:83;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:71:"C:\xampp\htdocs\apirest.app\vendor\sizeg\yii2-jwt\JwtHttpBearerAuth.php";s:4:"line";i:86;s:8:"function";s:18:"loginByAccessToken";s:5:"class";s:12:"yii\web\User";s:4:"type";s:2:"->";}}i:5;i:5154248;}i:28;a:6:{i:0;s:65:"Opening DB connection: pgsql:host=localhost;dbname=0_iooxs_access";i:1;i:96;i:2;s:23:"yii\db\Connection::open";i:3;d:1721232824.295707;i:4;a:2:{i:0;a:5:{s:4:"file";s:48:"C:\xampp\htdocs\apirest.app\models\CrugeUser.php";s:4:"line";i:83;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:71:"C:\xampp\htdocs\apirest.app\vendor\sizeg\yii2-jwt\JwtHttpBearerAuth.php";s:4:"line";i:86;s:8:"function";s:18:"loginByAccessToken";s:5:"class";s:12:"yii\web\User";s:4:"type";s:2:"->";}}i:5;i:5156024;}i:30;a:6:{i:0;s:2796:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    COALESCE(td.typname, tb.typname, t.typname) AS data_type,
+    COALESCE(td.typtype, tb.typtype, t.typtype) AS type_type,
+    (SELECT nspname FROM pg_namespace WHERE oid = COALESCE(td.typnamespace, tb.typnamespace, t.typnamespace)) AS type_scheme,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false)  AS is_autoinc,
+    pg_get_serial_sequence(quote_ident(d.nspname) || '.' || quote_ident(c.relname), a.attname) AS sequence_name,
+    CASE WHEN COALESCE(td.typtype, tb.typtype, t.typtype) = 'e'::char
+        THEN array_to_string((SELECT array_agg(enumlabel) FROM pg_enum WHERE enumtypid = COALESCE(td.oid, tb.oid, a.atttypid))::varchar[], ',')
+        ELSE NULL
+    END AS enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey,
+    COALESCE(NULLIF(a.attndims, 0), NULLIF(t.typndims, 0), (t.typcategory='A')::int) AS dimension
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_type tb ON (a.attndims > 0 OR t.typcategory='A') AND t.typelem > 0 AND t.typelem = tb.oid OR t.typbasetype > 0 AND t.typbasetype = tb.oid
+    LEFT JOIN pg_type td ON t.typndims > 0 AND t.typbasetype > 0 AND tb.typelem = td.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT JOIN pg_constraint ct ON ct.conrelid = c.oid AND ct.contype = 'p'
+WHERE
+    a.attnum > 0 AND t.typname != '' AND NOT a.attisdropped
+    AND c.relname = 'cruge_user'
+    AND d.nspname = 'public'
+ORDER BY
+    a.attnum;";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.297276;i:4;a:2:{i:0;a:5:{s:4:"file";s:48:"C:\xampp\htdocs\apirest.app\models\CrugeUser.php";s:4:"line";i:83;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:71:"C:\xampp\htdocs\apirest.app\vendor\sizeg\yii2-jwt\JwtHttpBearerAuth.php";s:4:"line";i:86;s:8:"function";s:18:"loginByAccessToken";s:5:"class";s:12:"yii\web\User";s:4:"type";s:2:"->";}}i:5;i:5283960;}i:31;a:6:{i:0;s:2796:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    COALESCE(td.typname, tb.typname, t.typname) AS data_type,
+    COALESCE(td.typtype, tb.typtype, t.typtype) AS type_type,
+    (SELECT nspname FROM pg_namespace WHERE oid = COALESCE(td.typnamespace, tb.typnamespace, t.typnamespace)) AS type_scheme,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false)  AS is_autoinc,
+    pg_get_serial_sequence(quote_ident(d.nspname) || '.' || quote_ident(c.relname), a.attname) AS sequence_name,
+    CASE WHEN COALESCE(td.typtype, tb.typtype, t.typtype) = 'e'::char
+        THEN array_to_string((SELECT array_agg(enumlabel) FROM pg_enum WHERE enumtypid = COALESCE(td.oid, tb.oid, a.atttypid))::varchar[], ',')
+        ELSE NULL
+    END AS enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey,
+    COALESCE(NULLIF(a.attndims, 0), NULLIF(t.typndims, 0), (t.typcategory='A')::int) AS dimension
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_type tb ON (a.attndims > 0 OR t.typcategory='A') AND t.typelem > 0 AND t.typelem = tb.oid OR t.typbasetype > 0 AND t.typbasetype = tb.oid
+    LEFT JOIN pg_type td ON t.typndims > 0 AND t.typbasetype > 0 AND tb.typelem = td.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT JOIN pg_constraint ct ON ct.conrelid = c.oid AND ct.contype = 'p'
+WHERE
+    a.attnum > 0 AND t.typname != '' AND NOT a.attisdropped
+    AND c.relname = 'cruge_user'
+    AND d.nspname = 'public'
+ORDER BY
+    a.attnum;";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.309836;i:4;a:2:{i:0;a:5:{s:4:"file";s:48:"C:\xampp\htdocs\apirest.app\models\CrugeUser.php";s:4:"line";i:83;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:71:"C:\xampp\htdocs\apirest.app\vendor\sizeg\yii2-jwt\JwtHttpBearerAuth.php";s:4:"line";i:86;s:8:"function";s:18:"loginByAccessToken";s:5:"class";s:12:"yii\web\User";s:4:"type";s:2:"->";}}i:5;i:5306712;}i:33;a:6:{i:0;s:878:"select
+    ct.conname as constraint_name,
+    a.attname as column_name,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    fa.attname as foreign_column_name
+from
+    (SELECT ct.conname, ct.conrelid, ct.confrelid, ct.conkey, ct.contype, ct.confkey, generate_subscripts(ct.conkey, 1) AS s
+       FROM pg_constraint ct
+    ) AS ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    inner join pg_attribute a on a.attrelid=ct.conrelid and a.attnum = ct.conkey[ct.s]
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+    left join pg_attribute fa on fa.attrelid=ct.confrelid and fa.attnum = ct.confkey[ct.s]
+where
+    ct.contype='f'
+    and c.relname='cruge_user'
+    and ns.nspname='public'
+order by
+    fns.nspname, fc.relname, a.attnum";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.311034;i:4;a:2:{i:0;a:5:{s:4:"file";s:48:"C:\xampp\htdocs\apirest.app\models\CrugeUser.php";s:4:"line";i:83;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:71:"C:\xampp\htdocs\apirest.app\vendor\sizeg\yii2-jwt\JwtHttpBearerAuth.php";s:4:"line";i:86;s:8:"function";s:18:"loginByAccessToken";s:5:"class";s:12:"yii\web\User";s:4:"type";s:2:"->";}}i:5;i:5322152;}i:34;a:6:{i:0;s:878:"select
+    ct.conname as constraint_name,
+    a.attname as column_name,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    fa.attname as foreign_column_name
+from
+    (SELECT ct.conname, ct.conrelid, ct.confrelid, ct.conkey, ct.contype, ct.confkey, generate_subscripts(ct.conkey, 1) AS s
+       FROM pg_constraint ct
+    ) AS ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    inner join pg_attribute a on a.attrelid=ct.conrelid and a.attnum = ct.conkey[ct.s]
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+    left join pg_attribute fa on fa.attrelid=ct.confrelid and fa.attnum = ct.confkey[ct.s]
+where
+    ct.contype='f'
+    and c.relname='cruge_user'
+    and ns.nspname='public'
+order by
+    fns.nspname, fc.relname, a.attnum";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.314278;i:4;a:2:{i:0;a:5:{s:4:"file";s:48:"C:\xampp\htdocs\apirest.app\models\CrugeUser.php";s:4:"line";i:83;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:71:"C:\xampp\htdocs\apirest.app\vendor\sizeg\yii2-jwt\JwtHttpBearerAuth.php";s:4:"line";i:86;s:8:"function";s:18:"loginByAccessToken";s:5:"class";s:12:"yii\web\User";s:4:"type";s:2:"->";}}i:5;i:5323616;}i:36;a:6:{i:0;s:48:"SELECT * FROM "cruge_user" WHERE "iduser"='1282'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.318609;i:4;a:3:{i:0;a:5:{s:4:"file";s:53:"C:\xampp\htdocs\apirest.app\models\CrugeUserQuery.php";s:4:"line";i:32;s:8:"function";s:3:"one";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:48:"C:\xampp\htdocs\apirest.app\models\CrugeUser.php";s:4:"line";i:83;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:2;a:5:{s:4:"file";s:71:"C:\xampp\htdocs\apirest.app\vendor\sizeg\yii2-jwt\JwtHttpBearerAuth.php";s:4:"line";i:86;s:8:"function";s:18:"loginByAccessToken";s:5:"class";s:12:"yii\web\User";s:4:"type";s:2:"->";}}i:5;i:5639144;}i:37;a:6:{i:0;s:48:"SELECT * FROM "cruge_user" WHERE "iduser"='1282'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.31937;i:4;a:3:{i:0;a:5:{s:4:"file";s:53:"C:\xampp\htdocs\apirest.app\models\CrugeUserQuery.php";s:4:"line";i:32;s:8:"function";s:3:"one";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:48:"C:\xampp\htdocs\apirest.app\models\CrugeUser.php";s:4:"line";i:83;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:2;a:5:{s:4:"file";s:71:"C:\xampp\htdocs\apirest.app\vendor\sizeg\yii2-jwt\JwtHttpBearerAuth.php";s:4:"line";i:86;s:8:"function";s:18:"loginByAccessToken";s:5:"class";s:12:"yii\web\User";s:4:"type";s:2:"->";}}i:5;i:5642096;}i:43;a:6:{i:0;s:63:"Opening DB connection: pgsql:host=localhost;dbname=marketing_io";i:1;i:80;i:2;s:23:"yii\db\Connection::open";i:3;d:1721232824.334974;i:4;a:2:{i:0;a:5:{s:4:"file";s:61:"C:\xampp\htdocs\apirest.app\modules\apiv1\models\SaleForm.php";s:4:"line";i:85;s:8:"function";s:6:"exists";s:5:"class";s:12:"yii\db\Query";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:60;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6206328;}i:44;a:6:{i:0;s:63:"Opening DB connection: pgsql:host=localhost;dbname=marketing_io";i:1;i:96;i:2;s:23:"yii\db\Connection::open";i:3;d:1721232824.418318;i:4;a:2:{i:0;a:5:{s:4:"file";s:61:"C:\xampp\htdocs\apirest.app\modules\apiv1\models\SaleForm.php";s:4:"line";i:85;s:8:"function";s:6:"exists";s:5:"class";s:12:"yii\db\Query";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:60;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6208104;}i:45;a:6:{i:0;s:48:"SELECT EXISTS(SELECT * FROM "unit" WHERE "id"=6)";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.418357;i:4;a:2:{i:0;a:5:{s:4:"file";s:61:"C:\xampp\htdocs\apirest.app\modules\apiv1\models\SaleForm.php";s:4:"line";i:85;s:8:"function";s:6:"exists";s:5:"class";s:12:"yii\db\Query";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:60;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6209080;}i:46;a:6:{i:0;s:48:"SELECT EXISTS(SELECT * FROM "unit" WHERE "id"=6)";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.419757;i:4;a:2:{i:0;a:5:{s:4:"file";s:61:"C:\xampp\htdocs\apirest.app\modules\apiv1\models\SaleForm.php";s:4:"line";i:85;s:8:"function";s:6:"exists";s:5:"class";s:12:"yii\db\Query";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:60;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6210304;}i:48;a:6:{i:0;s:2793:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    COALESCE(td.typname, tb.typname, t.typname) AS data_type,
+    COALESCE(td.typtype, tb.typtype, t.typtype) AS type_type,
+    (SELECT nspname FROM pg_namespace WHERE oid = COALESCE(td.typnamespace, tb.typnamespace, t.typnamespace)) AS type_scheme,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false)  AS is_autoinc,
+    pg_get_serial_sequence(quote_ident(d.nspname) || '.' || quote_ident(c.relname), a.attname) AS sequence_name,
+    CASE WHEN COALESCE(td.typtype, tb.typtype, t.typtype) = 'e'::char
+        THEN array_to_string((SELECT array_agg(enumlabel) FROM pg_enum WHERE enumtypid = COALESCE(td.oid, tb.oid, a.atttypid))::varchar[], ',')
+        ELSE NULL
+    END AS enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey,
+    COALESCE(NULLIF(a.attndims, 0), NULLIF(t.typndims, 0), (t.typcategory='A')::int) AS dimension
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_type tb ON (a.attndims > 0 OR t.typcategory='A') AND t.typelem > 0 AND t.typelem = tb.oid OR t.typbasetype > 0 AND t.typbasetype = tb.oid
+    LEFT JOIN pg_type td ON t.typndims > 0 AND t.typbasetype > 0 AND tb.typelem = td.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT JOIN pg_constraint ct ON ct.conrelid = c.oid AND ct.contype = 'p'
+WHERE
+    a.attnum > 0 AND t.typname != '' AND NOT a.attisdropped
+    AND c.relname = 'product'
+    AND d.nspname = 'public'
+ORDER BY
+    a.attnum;";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.421104;i:4;a:2:{i:0;a:5:{s:4:"file";s:61:"C:\xampp\htdocs\apirest.app\modules\apiv1\models\SaleForm.php";s:4:"line";i:103;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:60;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6257720;}i:49;a:6:{i:0;s:2793:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    COALESCE(td.typname, tb.typname, t.typname) AS data_type,
+    COALESCE(td.typtype, tb.typtype, t.typtype) AS type_type,
+    (SELECT nspname FROM pg_namespace WHERE oid = COALESCE(td.typnamespace, tb.typnamespace, t.typnamespace)) AS type_scheme,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false)  AS is_autoinc,
+    pg_get_serial_sequence(quote_ident(d.nspname) || '.' || quote_ident(c.relname), a.attname) AS sequence_name,
+    CASE WHEN COALESCE(td.typtype, tb.typtype, t.typtype) = 'e'::char
+        THEN array_to_string((SELECT array_agg(enumlabel) FROM pg_enum WHERE enumtypid = COALESCE(td.oid, tb.oid, a.atttypid))::varchar[], ',')
+        ELSE NULL
+    END AS enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey,
+    COALESCE(NULLIF(a.attndims, 0), NULLIF(t.typndims, 0), (t.typcategory='A')::int) AS dimension
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_type tb ON (a.attndims > 0 OR t.typcategory='A') AND t.typelem > 0 AND t.typelem = tb.oid OR t.typbasetype > 0 AND t.typbasetype = tb.oid
+    LEFT JOIN pg_type td ON t.typndims > 0 AND t.typbasetype > 0 AND tb.typelem = td.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT JOIN pg_constraint ct ON ct.conrelid = c.oid AND ct.contype = 'p'
+WHERE
+    a.attnum > 0 AND t.typname != '' AND NOT a.attisdropped
+    AND c.relname = 'product'
+    AND d.nspname = 'public'
+ORDER BY
+    a.attnum;";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.432481;i:4;a:2:{i:0;a:5:{s:4:"file";s:61:"C:\xampp\htdocs\apirest.app\modules\apiv1\models\SaleForm.php";s:4:"line";i:103;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:60;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6294352;}i:51;a:6:{i:0;s:875:"select
+    ct.conname as constraint_name,
+    a.attname as column_name,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    fa.attname as foreign_column_name
+from
+    (SELECT ct.conname, ct.conrelid, ct.confrelid, ct.conkey, ct.contype, ct.confkey, generate_subscripts(ct.conkey, 1) AS s
+       FROM pg_constraint ct
+    ) AS ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    inner join pg_attribute a on a.attrelid=ct.conrelid and a.attnum = ct.conkey[ct.s]
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+    left join pg_attribute fa on fa.attrelid=ct.confrelid and fa.attnum = ct.confkey[ct.s]
+where
+    ct.contype='f'
+    and c.relname='product'
+    and ns.nspname='public'
+order by
+    fns.nspname, fc.relname, a.attnum";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.433294;i:4;a:2:{i:0;a:5:{s:4:"file";s:61:"C:\xampp\htdocs\apirest.app\modules\apiv1\models\SaleForm.php";s:4:"line";i:103;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:60;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6272200;}i:52;a:6:{i:0;s:875:"select
+    ct.conname as constraint_name,
+    a.attname as column_name,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    fa.attname as foreign_column_name
+from
+    (SELECT ct.conname, ct.conrelid, ct.confrelid, ct.conkey, ct.contype, ct.confkey, generate_subscripts(ct.conkey, 1) AS s
+       FROM pg_constraint ct
+    ) AS ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    inner join pg_attribute a on a.attrelid=ct.conrelid and a.attnum = ct.conkey[ct.s]
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+    left join pg_attribute fa on fa.attrelid=ct.confrelid and fa.attnum = ct.confkey[ct.s]
+where
+    ct.contype='f'
+    and c.relname='product'
+    and ns.nspname='public'
+order by
+    fns.nspname, fc.relname, a.attnum";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.437313;i:4;a:2:{i:0;a:5:{s:4:"file";s:61:"C:\xampp\htdocs\apirest.app\modules\apiv1\models\SaleForm.php";s:4:"line";i:103;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:60;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6274784;}i:54;a:6:{i:0;s:39:"SELECT * FROM "product" WHERE "id"='11'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.437845;i:4;a:3:{i:0;a:5:{s:4:"file";s:51:"C:\xampp\htdocs\apirest.app\models\ProductQuery.php";s:4:"line";i:32;s:8:"function";s:3:"one";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:61:"C:\xampp\htdocs\apirest.app\modules\apiv1\models\SaleForm.php";s:4:"line";i:103;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:2;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:60;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6276240;}i:55;a:6:{i:0;s:39:"SELECT * FROM "product" WHERE "id"='11'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.438862;i:4;a:3:{i:0;a:5:{s:4:"file";s:51:"C:\xampp\htdocs\apirest.app\models\ProductQuery.php";s:4:"line";i:32;s:8:"function";s:3:"one";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:61:"C:\xampp\htdocs\apirest.app\modules\apiv1\models\SaleForm.php";s:4:"line";i:103;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:2;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:60;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6280208;}i:57;a:6:{i:0;s:67:"Opening DB connection: pgsql:host=localhost;dbname=marketing_io_sb0";i:1;i:80;i:2;s:23:"yii\db\Connection::open";i:3;d:1721232824.440684;i:4;a:2:{i:0;a:5:{s:4:"file";s:61:"C:\xampp\htdocs\apirest.app\modules\apiv1\models\SaleForm.php";s:4:"line";i:108;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:60;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6322216;}i:58;a:6:{i:0;s:67:"Opening DB connection: pgsql:host=localhost;dbname=marketing_io_sb0";i:1;i:96;i:2;s:23:"yii\db\Connection::open";i:3;d:1721232824.538115;i:4;a:2:{i:0;a:5:{s:4:"file";s:61:"C:\xampp\htdocs\apirest.app\modules\apiv1\models\SaleForm.php";s:4:"line";i:108;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:60;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6323992;}i:60;a:6:{i:0;s:2796:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    COALESCE(td.typname, tb.typname, t.typname) AS data_type,
+    COALESCE(td.typtype, tb.typtype, t.typtype) AS type_type,
+    (SELECT nspname FROM pg_namespace WHERE oid = COALESCE(td.typnamespace, tb.typnamespace, t.typnamespace)) AS type_scheme,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false)  AS is_autoinc,
+    pg_get_serial_sequence(quote_ident(d.nspname) || '.' || quote_ident(c.relname), a.attname) AS sequence_name,
+    CASE WHEN COALESCE(td.typtype, tb.typtype, t.typtype) = 'e'::char
+        THEN array_to_string((SELECT array_agg(enumlabel) FROM pg_enum WHERE enumtypid = COALESCE(td.oid, tb.oid, a.atttypid))::varchar[], ',')
+        ELSE NULL
+    END AS enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey,
+    COALESCE(NULLIF(a.attndims, 0), NULLIF(t.typndims, 0), (t.typcategory='A')::int) AS dimension
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_type tb ON (a.attndims > 0 OR t.typcategory='A') AND t.typelem > 0 AND t.typelem = tb.oid OR t.typbasetype > 0 AND t.typbasetype = tb.oid
+    LEFT JOIN pg_type td ON t.typndims > 0 AND t.typbasetype > 0 AND tb.typelem = td.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT JOIN pg_constraint ct ON ct.conrelid = c.oid AND ct.contype = 'p'
+WHERE
+    a.attnum > 0 AND t.typname != '' AND NOT a.attisdropped
+    AND c.relname = 'productBranch'
+    AND d.nspname = 'cfg'
+ORDER BY
+    a.attnum;";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.538236;i:4;a:2:{i:0;a:5:{s:4:"file";s:61:"C:\xampp\htdocs\apirest.app\modules\apiv1\models\SaleForm.php";s:4:"line";i:108;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:60;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6338768;}i:61;a:6:{i:0;s:2796:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    COALESCE(td.typname, tb.typname, t.typname) AS data_type,
+    COALESCE(td.typtype, tb.typtype, t.typtype) AS type_type,
+    (SELECT nspname FROM pg_namespace WHERE oid = COALESCE(td.typnamespace, tb.typnamespace, t.typnamespace)) AS type_scheme,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false)  AS is_autoinc,
+    pg_get_serial_sequence(quote_ident(d.nspname) || '.' || quote_ident(c.relname), a.attname) AS sequence_name,
+    CASE WHEN COALESCE(td.typtype, tb.typtype, t.typtype) = 'e'::char
+        THEN array_to_string((SELECT array_agg(enumlabel) FROM pg_enum WHERE enumtypid = COALESCE(td.oid, tb.oid, a.atttypid))::varchar[], ',')
+        ELSE NULL
+    END AS enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey,
+    COALESCE(NULLIF(a.attndims, 0), NULLIF(t.typndims, 0), (t.typcategory='A')::int) AS dimension
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_type tb ON (a.attndims > 0 OR t.typcategory='A') AND t.typelem > 0 AND t.typelem = tb.oid OR t.typbasetype > 0 AND t.typbasetype = tb.oid
+    LEFT JOIN pg_type td ON t.typndims > 0 AND t.typbasetype > 0 AND tb.typelem = td.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT JOIN pg_constraint ct ON ct.conrelid = c.oid AND ct.contype = 'p'
+WHERE
+    a.attnum > 0 AND t.typname != '' AND NOT a.attisdropped
+    AND c.relname = 'productBranch'
+    AND d.nspname = 'cfg'
+ORDER BY
+    a.attnum;";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.549297;i:4;a:2:{i:0;a:5:{s:4:"file";s:61:"C:\xampp\htdocs\apirest.app\modules\apiv1\models\SaleForm.php";s:4:"line";i:108;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:60;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6356384;}i:63;a:6:{i:0;s:878:"select
+    ct.conname as constraint_name,
+    a.attname as column_name,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    fa.attname as foreign_column_name
+from
+    (SELECT ct.conname, ct.conrelid, ct.confrelid, ct.conkey, ct.contype, ct.confkey, generate_subscripts(ct.conkey, 1) AS s
+       FROM pg_constraint ct
+    ) AS ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    inner join pg_attribute a on a.attrelid=ct.conrelid and a.attnum = ct.conkey[ct.s]
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+    left join pg_attribute fa on fa.attrelid=ct.confrelid and fa.attnum = ct.confkey[ct.s]
+where
+    ct.contype='f'
+    and c.relname='productBranch'
+    and ns.nspname='cfg'
+order by
+    fns.nspname, fc.relname, a.attnum";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.549742;i:4;a:2:{i:0;a:5:{s:4:"file";s:61:"C:\xampp\htdocs\apirest.app\modules\apiv1\models\SaleForm.php";s:4:"line";i:108;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:60;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6342792;}i:64;a:6:{i:0;s:878:"select
+    ct.conname as constraint_name,
+    a.attname as column_name,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    fa.attname as foreign_column_name
+from
+    (SELECT ct.conname, ct.conrelid, ct.confrelid, ct.conkey, ct.contype, ct.confkey, generate_subscripts(ct.conkey, 1) AS s
+       FROM pg_constraint ct
+    ) AS ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    inner join pg_attribute a on a.attrelid=ct.conrelid and a.attnum = ct.conkey[ct.s]
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+    left join pg_attribute fa on fa.attrelid=ct.confrelid and fa.attnum = ct.confkey[ct.s]
+where
+    ct.contype='f'
+    and c.relname='productBranch'
+    and ns.nspname='cfg'
+order by
+    fns.nspname, fc.relname, a.attnum";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.553534;i:4;a:2:{i:0;a:5:{s:4:"file";s:61:"C:\xampp\htdocs\apirest.app\modules\apiv1\models\SaleForm.php";s:4:"line";i:108;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:60;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6344256;}i:66;a:6:{i:0;s:51:"SELECT * FROM "cfg"."productBranch" WHERE "id"='11'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.553908;i:4;a:3:{i:0;a:5:{s:4:"file";s:57:"C:\xampp\htdocs\apirest.app\models\ProductBranchQuery.php";s:4:"line";i:32;s:8:"function";s:3:"one";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:61:"C:\xampp\htdocs\apirest.app\modules\apiv1\models\SaleForm.php";s:4:"line";i:108;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:2;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:60;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6350568;}i:67;a:6:{i:0;s:51:"SELECT * FROM "cfg"."productBranch" WHERE "id"='11'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.554497;i:4;a:3:{i:0;a:5:{s:4:"file";s:57:"C:\xampp\htdocs\apirest.app\models\ProductBranchQuery.php";s:4:"line";i:32;s:8:"function";s:3:"one";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:61:"C:\xampp\htdocs\apirest.app\modules\apiv1\models\SaleForm.php";s:4:"line";i:108;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:2;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:60;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6353312;}i:69;a:6:{i:0;s:49:"SELECT EXISTS(SELECT * FROM "unit" WHERE "id"=58)";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.554796;i:4;a:2:{i:0;a:5:{s:4:"file";s:61:"C:\xampp\htdocs\apirest.app\modules\apiv1\models\SaleForm.php";s:4:"line";i:85;s:8:"function";s:6:"exists";s:5:"class";s:12:"yii\db\Query";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:60;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6355600;}i:70;a:6:{i:0;s:49:"SELECT EXISTS(SELECT * FROM "unit" WHERE "id"=58)";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.555115;i:4;a:2:{i:0;a:5:{s:4:"file";s:61:"C:\xampp\htdocs\apirest.app\modules\apiv1\models\SaleForm.php";s:4:"line";i:85;s:8:"function";s:6:"exists";s:5:"class";s:12:"yii\db\Query";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:60;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6356848;}i:72;a:6:{i:0;s:39:"SELECT * FROM "product" WHERE "id"='43'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.555405;i:4;a:3:{i:0;a:5:{s:4:"file";s:51:"C:\xampp\htdocs\apirest.app\models\ProductQuery.php";s:4:"line";i:32;s:8:"function";s:3:"one";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:61:"C:\xampp\htdocs\apirest.app\modules\apiv1\models\SaleForm.php";s:4:"line";i:103;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:2;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:60;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6361056;}i:73;a:6:{i:0;s:39:"SELECT * FROM "product" WHERE "id"='43'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.555775;i:4;a:3:{i:0;a:5:{s:4:"file";s:51:"C:\xampp\htdocs\apirest.app\models\ProductQuery.php";s:4:"line";i:32;s:8:"function";s:3:"one";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:61:"C:\xampp\htdocs\apirest.app\modules\apiv1\models\SaleForm.php";s:4:"line";i:103;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:2;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:60;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6364952;}i:75;a:6:{i:0;s:51:"SELECT * FROM "cfg"."productBranch" WHERE "id"='43'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.556038;i:4;a:3:{i:0;a:5:{s:4:"file";s:57:"C:\xampp\htdocs\apirest.app\models\ProductBranchQuery.php";s:4:"line";i:32;s:8:"function";s:3:"one";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:61:"C:\xampp\htdocs\apirest.app\modules\apiv1\models\SaleForm.php";s:4:"line";i:108;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:2;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:60;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6366456;}i:76;a:6:{i:0;s:51:"SELECT * FROM "cfg"."productBranch" WHERE "id"='43'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.55634;i:4;a:3:{i:0;a:5:{s:4:"file";s:57:"C:\xampp\htdocs\apirest.app\models\ProductBranchQuery.php";s:4:"line";i:32;s:8:"function";s:3:"one";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:61:"C:\xampp\htdocs\apirest.app\modules\apiv1\models\SaleForm.php";s:4:"line";i:108;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:2;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:60;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6368496;}i:78;a:6:{i:0;s:2794:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    COALESCE(td.typname, tb.typname, t.typname) AS data_type,
+    COALESCE(td.typtype, tb.typtype, t.typtype) AS type_type,
+    (SELECT nspname FROM pg_namespace WHERE oid = COALESCE(td.typnamespace, tb.typnamespace, t.typnamespace)) AS type_scheme,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false)  AS is_autoinc,
+    pg_get_serial_sequence(quote_ident(d.nspname) || '.' || quote_ident(c.relname), a.attname) AS sequence_name,
+    CASE WHEN COALESCE(td.typtype, tb.typtype, t.typtype) = 'e'::char
+        THEN array_to_string((SELECT array_agg(enumlabel) FROM pg_enum WHERE enumtypid = COALESCE(td.oid, tb.oid, a.atttypid))::varchar[], ',')
+        ELSE NULL
+    END AS enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey,
+    COALESCE(NULLIF(a.attndims, 0), NULLIF(t.typndims, 0), (t.typcategory='A')::int) AS dimension
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_type tb ON (a.attndims > 0 OR t.typcategory='A') AND t.typelem > 0 AND t.typelem = tb.oid OR t.typbasetype > 0 AND t.typbasetype = tb.oid
+    LEFT JOIN pg_type td ON t.typndims > 0 AND t.typbasetype > 0 AND tb.typelem = td.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT JOIN pg_constraint ct ON ct.conrelid = c.oid AND ct.contype = 'p'
+WHERE
+    a.attnum > 0 AND t.typname != '' AND NOT a.attisdropped
+    AND c.relname = 'customer'
+    AND d.nspname = 'public'
+ORDER BY
+    a.attnum;";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.557284;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:85;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6402912;}i:79;a:6:{i:0;s:2794:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    COALESCE(td.typname, tb.typname, t.typname) AS data_type,
+    COALESCE(td.typtype, tb.typtype, t.typtype) AS type_type,
+    (SELECT nspname FROM pg_namespace WHERE oid = COALESCE(td.typnamespace, tb.typnamespace, t.typnamespace)) AS type_scheme,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false)  AS is_autoinc,
+    pg_get_serial_sequence(quote_ident(d.nspname) || '.' || quote_ident(c.relname), a.attname) AS sequence_name,
+    CASE WHEN COALESCE(td.typtype, tb.typtype, t.typtype) = 'e'::char
+        THEN array_to_string((SELECT array_agg(enumlabel) FROM pg_enum WHERE enumtypid = COALESCE(td.oid, tb.oid, a.atttypid))::varchar[], ',')
+        ELSE NULL
+    END AS enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey,
+    COALESCE(NULLIF(a.attndims, 0), NULLIF(t.typndims, 0), (t.typcategory='A')::int) AS dimension
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_type tb ON (a.attndims > 0 OR t.typcategory='A') AND t.typelem > 0 AND t.typelem = tb.oid OR t.typbasetype > 0 AND t.typbasetype = tb.oid
+    LEFT JOIN pg_type td ON t.typndims > 0 AND t.typbasetype > 0 AND tb.typelem = td.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT JOIN pg_constraint ct ON ct.conrelid = c.oid AND ct.contype = 'p'
+WHERE
+    a.attnum > 0 AND t.typname != '' AND NOT a.attisdropped
+    AND c.relname = 'customer'
+    AND d.nspname = 'public'
+ORDER BY
+    a.attnum;";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.563692;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:85;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6431896;}i:81;a:6:{i:0;s:876:"select
+    ct.conname as constraint_name,
+    a.attname as column_name,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    fa.attname as foreign_column_name
+from
+    (SELECT ct.conname, ct.conrelid, ct.confrelid, ct.conkey, ct.contype, ct.confkey, generate_subscripts(ct.conkey, 1) AS s
+       FROM pg_constraint ct
+    ) AS ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    inner join pg_attribute a on a.attrelid=ct.conrelid and a.attnum = ct.conkey[ct.s]
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+    left join pg_attribute fa on fa.attrelid=ct.confrelid and fa.attnum = ct.confkey[ct.s]
+where
+    ct.contype='f'
+    and c.relname='customer'
+    and ns.nspname='public'
+order by
+    fns.nspname, fc.relname, a.attnum";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.564084;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:85;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6410496;}i:82;a:6:{i:0;s:876:"select
+    ct.conname as constraint_name,
+    a.attname as column_name,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    fa.attname as foreign_column_name
+from
+    (SELECT ct.conname, ct.conrelid, ct.confrelid, ct.conkey, ct.contype, ct.confkey, generate_subscripts(ct.conkey, 1) AS s
+       FROM pg_constraint ct
+    ) AS ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    inner join pg_attribute a on a.attrelid=ct.conrelid and a.attnum = ct.conkey[ct.s]
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+    left join pg_attribute fa on fa.attrelid=ct.confrelid and fa.attnum = ct.confkey[ct.s]
+where
+    ct.contype='f'
+    and c.relname='customer'
+    and ns.nspname='public'
+order by
+    fns.nspname, fc.relname, a.attnum";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.566878;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:85;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6411656;}i:84;a:6:{i:0;s:38:"SELECT * FROM "customer" WHERE "id"=35";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.567141;i:4;a:2:{i:0;a:5:{s:4:"file";s:52:"C:\xampp\htdocs\apirest.app\models\CustomerQuery.php";s:4:"line";i:32;s:8:"function";s:3:"one";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:85;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6412040;}i:85;a:6:{i:0;s:38:"SELECT * FROM "customer" WHERE "id"=35";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.567898;i:4;a:2:{i:0;a:5:{s:4:"file";s:52:"C:\xampp\htdocs\apirest.app\models\CustomerQuery.php";s:4:"line";i:32;s:8:"function";s:3:"one";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:85;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6415456;}i:87;a:6:{i:0;s:2790:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    COALESCE(td.typname, tb.typname, t.typname) AS data_type,
+    COALESCE(td.typtype, tb.typtype, t.typtype) AS type_type,
+    (SELECT nspname FROM pg_namespace WHERE oid = COALESCE(td.typnamespace, tb.typnamespace, t.typnamespace)) AS type_scheme,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false)  AS is_autoinc,
+    pg_get_serial_sequence(quote_ident(d.nspname) || '.' || quote_ident(c.relname), a.attname) AS sequence_name,
+    CASE WHEN COALESCE(td.typtype, tb.typtype, t.typtype) = 'e'::char
+        THEN array_to_string((SELECT array_agg(enumlabel) FROM pg_enum WHERE enumtypid = COALESCE(td.oid, tb.oid, a.atttypid))::varchar[], ',')
+        ELSE NULL
+    END AS enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey,
+    COALESCE(NULLIF(a.attndims, 0), NULLIF(t.typndims, 0), (t.typcategory='A')::int) AS dimension
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_type tb ON (a.attndims > 0 OR t.typcategory='A') AND t.typelem > 0 AND t.typelem = tb.oid OR t.typbasetype > 0 AND t.typbasetype = tb.oid
+    LEFT JOIN pg_type td ON t.typndims > 0 AND t.typbasetype > 0 AND tb.typelem = td.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT JOIN pg_constraint ct ON ct.conrelid = c.oid AND ct.contype = 'p'
+WHERE
+    a.attnum > 0 AND t.typname != '' AND NOT a.attisdropped
+    AND c.relname = 'sale'
+    AND d.nspname = 'public'
+ORDER BY
+    a.attnum;";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.569333;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:96;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6472952;}i:88;a:6:{i:0;s:2790:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    COALESCE(td.typname, tb.typname, t.typname) AS data_type,
+    COALESCE(td.typtype, tb.typtype, t.typtype) AS type_type,
+    (SELECT nspname FROM pg_namespace WHERE oid = COALESCE(td.typnamespace, tb.typnamespace, t.typnamespace)) AS type_scheme,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false)  AS is_autoinc,
+    pg_get_serial_sequence(quote_ident(d.nspname) || '.' || quote_ident(c.relname), a.attname) AS sequence_name,
+    CASE WHEN COALESCE(td.typtype, tb.typtype, t.typtype) = 'e'::char
+        THEN array_to_string((SELECT array_agg(enumlabel) FROM pg_enum WHERE enumtypid = COALESCE(td.oid, tb.oid, a.atttypid))::varchar[], ',')
+        ELSE NULL
+    END AS enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey,
+    COALESCE(NULLIF(a.attndims, 0), NULLIF(t.typndims, 0), (t.typcategory='A')::int) AS dimension
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_type tb ON (a.attndims > 0 OR t.typcategory='A') AND t.typelem > 0 AND t.typelem = tb.oid OR t.typbasetype > 0 AND t.typbasetype = tb.oid
+    LEFT JOIN pg_type td ON t.typndims > 0 AND t.typbasetype > 0 AND tb.typelem = td.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT JOIN pg_constraint ct ON ct.conrelid = c.oid AND ct.contype = 'p'
+WHERE
+    a.attnum > 0 AND t.typname != '' AND NOT a.attisdropped
+    AND c.relname = 'sale'
+    AND d.nspname = 'public'
+ORDER BY
+    a.attnum;";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.577746;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:96;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6533752;}i:90;a:6:{i:0;s:872:"select
+    ct.conname as constraint_name,
+    a.attname as column_name,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    fa.attname as foreign_column_name
+from
+    (SELECT ct.conname, ct.conrelid, ct.confrelid, ct.conkey, ct.contype, ct.confkey, generate_subscripts(ct.conkey, 1) AS s
+       FROM pg_constraint ct
+    ) AS ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    inner join pg_attribute a on a.attrelid=ct.conrelid and a.attnum = ct.conkey[ct.s]
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+    left join pg_attribute fa on fa.attrelid=ct.confrelid and fa.attnum = ct.confkey[ct.s]
+where
+    ct.contype='f'
+    and c.relname='sale'
+    and ns.nspname='public'
+order by
+    fns.nspname, fc.relname, a.attnum";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.578322;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:96;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6492752;}i:91;a:6:{i:0;s:872:"select
+    ct.conname as constraint_name,
+    a.attname as column_name,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    fa.attname as foreign_column_name
+from
+    (SELECT ct.conname, ct.conrelid, ct.confrelid, ct.conkey, ct.contype, ct.confkey, generate_subscripts(ct.conkey, 1) AS s
+       FROM pg_constraint ct
+    ) AS ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    inner join pg_attribute a on a.attrelid=ct.conrelid and a.attnum = ct.conkey[ct.s]
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+    left join pg_attribute fa on fa.attrelid=ct.confrelid and fa.attnum = ct.confkey[ct.s]
+where
+    ct.contype='f'
+    and c.relname='sale'
+    and ns.nspname='public'
+order by
+    fns.nspname, fc.relname, a.attnum";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.58119;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:96;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6493912;}i:97;a:6:{i:0;s:630:"INSERT INTO "sale" ("razonSocial", "numeroDocumento", "phone", "discountamount", "idcustomer", "codigoMetodoPago", "montoTotal", "subTotal", "montoRecibido", "iddocument", "iduser", "codigoDocumentoSector", "idstatus", "number", "idsystemPoint", "codigoModalidad", "codigoMoneda", "idcash", "idcardService", "idcashDocument", "codigoTipoDocumentoIdentidad", "idorder", "idpriceSheet", "idtypeCharge", "idcustomer2", "codigoTipoDocumentoIdentidad2") VALUES ('OSCAR YUCRA', '123456', '', '0.2', 35, 1, '42', '41.8', '42', 2, 1282, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL) RETURNING "id"";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.583967;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:109;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6529136;}i:98;a:6:{i:0;s:630:"INSERT INTO "sale" ("razonSocial", "numeroDocumento", "phone", "discountamount", "idcustomer", "codigoMetodoPago", "montoTotal", "subTotal", "montoRecibido", "iddocument", "iduser", "codigoDocumentoSector", "idstatus", "number", "idsystemPoint", "codigoModalidad", "codigoMoneda", "idcash", "idcardService", "idcashDocument", "codigoTipoDocumentoIdentidad", "idorder", "idpriceSheet", "idtypeCharge", "idcustomer2", "codigoTipoDocumentoIdentidad2") VALUES ('OSCAR YUCRA', '123456', '', '0.2', 35, 1, '42', '41.8', '42', 2, 1282, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL) RETURNING "id"";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.585222;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:109;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6531272;}i:100;a:6:{i:0;s:61:"Opening DB connection: pgsql:host=localhost;dbname=0_iooxs_io";i:1;i:80;i:2;s:23:"yii\db\Connection::open";i:3;d:1721232824.587617;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:117;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6548456;}i:101;a:6:{i:0;s:61:"Opening DB connection: pgsql:host=localhost;dbname=0_iooxs_io";i:1;i:96;i:2;s:23:"yii\db\Connection::open";i:3;d:1721232824.671615;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:117;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6549928;}i:103;a:6:{i:0;s:2798:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    COALESCE(td.typname, tb.typname, t.typname) AS data_type,
+    COALESCE(td.typtype, tb.typtype, t.typtype) AS type_type,
+    (SELECT nspname FROM pg_namespace WHERE oid = COALESCE(td.typnamespace, tb.typnamespace, t.typnamespace)) AS type_scheme,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false)  AS is_autoinc,
+    pg_get_serial_sequence(quote_ident(d.nspname) || '.' || quote_ident(c.relname), a.attname) AS sequence_name,
+    CASE WHEN COALESCE(td.typtype, tb.typtype, t.typtype) = 'e'::char
+        THEN array_to_string((SELECT array_agg(enumlabel) FROM pg_enum WHERE enumtypid = COALESCE(td.oid, tb.oid, a.atttypid))::varchar[], ',')
+        ELSE NULL
+    END AS enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey,
+    COALESCE(NULLIF(a.attndims, 0), NULLIF(t.typndims, 0), (t.typcategory='A')::int) AS dimension
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_type tb ON (a.attndims > 0 OR t.typcategory='A') AND t.typelem > 0 AND t.typelem = tb.oid OR t.typbasetype > 0 AND t.typbasetype = tb.oid
+    LEFT JOIN pg_type td ON t.typndims > 0 AND t.typbasetype > 0 AND tb.typelem = td.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT JOIN pg_constraint ct ON ct.conrelid = c.oid AND ct.contype = 'p'
+WHERE
+    a.attnum > 0 AND t.typname != '' AND NOT a.attisdropped
+    AND c.relname = 'documentType'
+    AND d.nspname = 'public'
+ORDER BY
+    a.attnum;";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.67173;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:117;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6564104;}i:104;a:6:{i:0;s:2798:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    COALESCE(td.typname, tb.typname, t.typname) AS data_type,
+    COALESCE(td.typtype, tb.typtype, t.typtype) AS type_type,
+    (SELECT nspname FROM pg_namespace WHERE oid = COALESCE(td.typnamespace, tb.typnamespace, t.typnamespace)) AS type_scheme,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false)  AS is_autoinc,
+    pg_get_serial_sequence(quote_ident(d.nspname) || '.' || quote_ident(c.relname), a.attname) AS sequence_name,
+    CASE WHEN COALESCE(td.typtype, tb.typtype, t.typtype) = 'e'::char
+        THEN array_to_string((SELECT array_agg(enumlabel) FROM pg_enum WHERE enumtypid = COALESCE(td.oid, tb.oid, a.atttypid))::varchar[], ',')
+        ELSE NULL
+    END AS enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey,
+    COALESCE(NULLIF(a.attndims, 0), NULLIF(t.typndims, 0), (t.typcategory='A')::int) AS dimension
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_type tb ON (a.attndims > 0 OR t.typcategory='A') AND t.typelem > 0 AND t.typelem = tb.oid OR t.typbasetype > 0 AND t.typbasetype = tb.oid
+    LEFT JOIN pg_type td ON t.typndims > 0 AND t.typbasetype > 0 AND tb.typelem = td.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT JOIN pg_constraint ct ON ct.conrelid = c.oid AND ct.contype = 'p'
+WHERE
+    a.attnum > 0 AND t.typname != '' AND NOT a.attisdropped
+    AND c.relname = 'documentType'
+    AND d.nspname = 'public'
+ORDER BY
+    a.attnum;";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.683117;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:117;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6575056;}i:106;a:6:{i:0;s:880:"select
+    ct.conname as constraint_name,
+    a.attname as column_name,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    fa.attname as foreign_column_name
+from
+    (SELECT ct.conname, ct.conrelid, ct.confrelid, ct.conkey, ct.contype, ct.confkey, generate_subscripts(ct.conkey, 1) AS s
+       FROM pg_constraint ct
+    ) AS ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    inner join pg_attribute a on a.attrelid=ct.conrelid and a.attnum = ct.conkey[ct.s]
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+    left join pg_attribute fa on fa.attrelid=ct.confrelid and fa.attnum = ct.confkey[ct.s]
+where
+    ct.contype='f'
+    and c.relname='documentType'
+    and ns.nspname='public'
+order by
+    fns.nspname, fc.relname, a.attnum";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.683478;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:117;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6565104;}i:107;a:6:{i:0;s:880:"select
+    ct.conname as constraint_name,
+    a.attname as column_name,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    fa.attname as foreign_column_name
+from
+    (SELECT ct.conname, ct.conrelid, ct.confrelid, ct.conkey, ct.contype, ct.confkey, generate_subscripts(ct.conkey, 1) AS s
+       FROM pg_constraint ct
+    ) AS ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    inner join pg_attribute a on a.attrelid=ct.conrelid and a.attnum = ct.conkey[ct.s]
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+    left join pg_attribute fa on fa.attrelid=ct.confrelid and fa.attnum = ct.confkey[ct.s]
+where
+    ct.contype='f'
+    and c.relname='documentType'
+    and ns.nspname='public'
+order by
+    fns.nspname, fc.relname, a.attnum";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.686574;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:117;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6566264;}i:109;a:6:{i:0;s:49:"SELECT * FROM "documentType" WHERE "type"='VENTA'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.686882;i:4;a:2:{i:0;a:5:{s:4:"file";s:56:"C:\xampp\htdocs\apirest.app\models\DocumentTypeQuery.php";s:4:"line";i:32;s:8:"function";s:3:"one";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:117;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6568584;}i:110;a:6:{i:0;s:49:"SELECT * FROM "documentType" WHERE "type"='VENTA'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.688963;i:4;a:2:{i:0;a:5:{s:4:"file";s:56:"C:\xampp\htdocs\apirest.app\models\DocumentTypeQuery.php";s:4:"line";i:32;s:8:"function";s:3:"one";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:117;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6570464;}i:112;a:6:{i:0;s:2794:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    COALESCE(td.typname, tb.typname, t.typname) AS data_type,
+    COALESCE(td.typtype, tb.typtype, t.typtype) AS type_type,
+    (SELECT nspname FROM pg_namespace WHERE oid = COALESCE(td.typnamespace, tb.typnamespace, t.typnamespace)) AS type_scheme,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false)  AS is_autoinc,
+    pg_get_serial_sequence(quote_ident(d.nspname) || '.' || quote_ident(c.relname), a.attname) AS sequence_name,
+    CASE WHEN COALESCE(td.typtype, tb.typtype, t.typtype) = 'e'::char
+        THEN array_to_string((SELECT array_agg(enumlabel) FROM pg_enum WHERE enumtypid = COALESCE(td.oid, tb.oid, a.atttypid))::varchar[], ',')
+        ELSE NULL
+    END AS enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey,
+    COALESCE(NULLIF(a.attndims, 0), NULLIF(t.typndims, 0), (t.typcategory='A')::int) AS dimension
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_type tb ON (a.attndims > 0 OR t.typcategory='A') AND t.typelem > 0 AND t.typelem = tb.oid OR t.typbasetype > 0 AND t.typbasetype = tb.oid
+    LEFT JOIN pg_type td ON t.typndims > 0 AND t.typbasetype > 0 AND tb.typelem = td.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT JOIN pg_constraint ct ON ct.conrelid = c.oid AND ct.contype = 'p'
+WHERE
+    a.attnum > 0 AND t.typname != '' AND NOT a.attisdropped
+    AND c.relname = 'document'
+    AND d.nspname = 'public'
+ORDER BY
+    a.attnum;";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.690244;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:124;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6668832;}i:113;a:6:{i:0;s:2794:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    COALESCE(td.typname, tb.typname, t.typname) AS data_type,
+    COALESCE(td.typtype, tb.typtype, t.typtype) AS type_type,
+    (SELECT nspname FROM pg_namespace WHERE oid = COALESCE(td.typnamespace, tb.typnamespace, t.typnamespace)) AS type_scheme,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false)  AS is_autoinc,
+    pg_get_serial_sequence(quote_ident(d.nspname) || '.' || quote_ident(c.relname), a.attname) AS sequence_name,
+    CASE WHEN COALESCE(td.typtype, tb.typtype, t.typtype) = 'e'::char
+        THEN array_to_string((SELECT array_agg(enumlabel) FROM pg_enum WHERE enumtypid = COALESCE(td.oid, tb.oid, a.atttypid))::varchar[], ',')
+        ELSE NULL
+    END AS enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey,
+    COALESCE(NULLIF(a.attndims, 0), NULLIF(t.typndims, 0), (t.typcategory='A')::int) AS dimension
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_type tb ON (a.attndims > 0 OR t.typcategory='A') AND t.typelem > 0 AND t.typelem = tb.oid OR t.typbasetype > 0 AND t.typbasetype = tb.oid
+    LEFT JOIN pg_type td ON t.typndims > 0 AND t.typbasetype > 0 AND tb.typelem = td.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT JOIN pg_constraint ct ON ct.conrelid = c.oid AND ct.contype = 'p'
+WHERE
+    a.attnum > 0 AND t.typname != '' AND NOT a.attisdropped
+    AND c.relname = 'document'
+    AND d.nspname = 'public'
+ORDER BY
+    a.attnum;";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.69654;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:124;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6691104;}i:115;a:6:{i:0;s:876:"select
+    ct.conname as constraint_name,
+    a.attname as column_name,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    fa.attname as foreign_column_name
+from
+    (SELECT ct.conname, ct.conrelid, ct.confrelid, ct.conkey, ct.contype, ct.confkey, generate_subscripts(ct.conkey, 1) AS s
+       FROM pg_constraint ct
+    ) AS ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    inner join pg_attribute a on a.attrelid=ct.conrelid and a.attnum = ct.conkey[ct.s]
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+    left join pg_attribute fa on fa.attrelid=ct.confrelid and fa.attnum = ct.confkey[ct.s]
+where
+    ct.contype='f'
+    and c.relname='document'
+    and ns.nspname='public'
+order by
+    fns.nspname, fc.relname, a.attnum";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.696903;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:124;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6673712;}i:116;a:6:{i:0;s:876:"select
+    ct.conname as constraint_name,
+    a.attname as column_name,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    fa.attname as foreign_column_name
+from
+    (SELECT ct.conname, ct.conrelid, ct.confrelid, ct.conkey, ct.contype, ct.confkey, generate_subscripts(ct.conkey, 1) AS s
+       FROM pg_constraint ct
+    ) AS ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    inner join pg_attribute a on a.attrelid=ct.conrelid and a.attnum = ct.conkey[ct.s]
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+    left join pg_attribute fa on fa.attrelid=ct.confrelid and fa.attnum = ct.confkey[ct.s]
+where
+    ct.contype='f'
+    and c.relname='document'
+    and ns.nspname='public'
+order by
+    fns.nspname, fc.relname, a.attnum";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.699658;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:124;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6674872;}i:123;a:6:{i:0;s:56:"SELECT EXISTS(SELECT * FROM "sale" WHERE "sale"."id"=51)";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.704382;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:131;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6740000;}i:124;a:6:{i:0;s:56:"SELECT EXISTS(SELECT * FROM "sale" WHERE "sale"."id"=51)";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.70488;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:131;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6740944;}i:126;a:6:{i:0;s:268:"INSERT INTO "document" ("idcliente", "iddocumentType", "number", "iduser", "idsale", "idstatus", "idpurchase", "iddocument", "idorder", "idstore", "idproductionOrder", "idadjustment") VALUES (35, 3, 2, 1282, 51, NULL, NULL, NULL, NULL, NULL, NULL, NULL) RETURNING "id"";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.70524;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:131;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6741160;}i:127;a:6:{i:0;s:268:"INSERT INTO "document" ("idcliente", "iddocumentType", "number", "iduser", "idsale", "idstatus", "idpurchase", "iddocument", "idorder", "idstore", "idproductionOrder", "idadjustment") VALUES (35, 3, 2, 1282, 51, NULL, NULL, NULL, NULL, NULL, NULL, NULL) RETURNING "id"";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.706513;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:131;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6742808;}i:129;a:6:{i:0;s:51:"SELECT * FROM "cfg"."productBranch" WHERE "id"='11'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.706834;i:4;a:3:{i:0;a:5:{s:4:"file";s:57:"C:\xampp\htdocs\apirest.app\models\ProductBranchQuery.php";s:4:"line";i:32;s:8:"function";s:3:"one";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:491;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:2;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:139;s:8:"function";s:11:"updateStock";s:5:"class";s:44:"app\modules\apiv1\controllers\SaleController";s:4:"type";s:2:"->";}}i:5;i:6746968;}i:130;a:6:{i:0;s:51:"SELECT * FROM "cfg"."productBranch" WHERE "id"='11'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.707233;i:4;a:3:{i:0;a:5:{s:4:"file";s:57:"C:\xampp\htdocs\apirest.app\models\ProductBranchQuery.php";s:4:"line";i:32;s:8:"function";s:3:"one";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:491;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:2;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:139;s:8:"function";s:11:"updateStock";s:5:"class";s:44:"app\modules\apiv1\controllers\SaleController";s:4:"type";s:2:"->";}}i:5;i:6749712;}i:132;a:6:{i:0;s:2798:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    COALESCE(td.typname, tb.typname, t.typname) AS data_type,
+    COALESCE(td.typtype, tb.typtype, t.typtype) AS type_type,
+    (SELECT nspname FROM pg_namespace WHERE oid = COALESCE(td.typnamespace, tb.typnamespace, t.typnamespace)) AS type_scheme,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false)  AS is_autoinc,
+    pg_get_serial_sequence(quote_ident(d.nspname) || '.' || quote_ident(c.relname), a.attname) AS sequence_name,
+    CASE WHEN COALESCE(td.typtype, tb.typtype, t.typtype) = 'e'::char
+        THEN array_to_string((SELECT array_agg(enumlabel) FROM pg_enum WHERE enumtypid = COALESCE(td.oid, tb.oid, a.atttypid))::varchar[], ',')
+        ELSE NULL
+    END AS enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey,
+    COALESCE(NULLIF(a.attndims, 0), NULLIF(t.typndims, 0), (t.typcategory='A')::int) AS dimension
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_type tb ON (a.attndims > 0 OR t.typcategory='A') AND t.typelem > 0 AND t.typelem = tb.oid OR t.typbasetype > 0 AND t.typbasetype = tb.oid
+    LEFT JOIN pg_type td ON t.typndims > 0 AND t.typbasetype > 0 AND tb.typelem = td.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT JOIN pg_constraint ct ON ct.conrelid = c.oid AND ct.contype = 'p'
+WHERE
+    a.attnum > 0 AND t.typname != '' AND NOT a.attisdropped
+    AND c.relname = 'productstock'
+    AND d.nspname = 'public'
+ORDER BY
+    a.attnum;";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.708571;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:150;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6798248;}i:133;a:6:{i:0;s:2798:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    COALESCE(td.typname, tb.typname, t.typname) AS data_type,
+    COALESCE(td.typtype, tb.typtype, t.typtype) AS type_type,
+    (SELECT nspname FROM pg_namespace WHERE oid = COALESCE(td.typnamespace, tb.typnamespace, t.typnamespace)) AS type_scheme,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false)  AS is_autoinc,
+    pg_get_serial_sequence(quote_ident(d.nspname) || '.' || quote_ident(c.relname), a.attname) AS sequence_name,
+    CASE WHEN COALESCE(td.typtype, tb.typtype, t.typtype) = 'e'::char
+        THEN array_to_string((SELECT array_agg(enumlabel) FROM pg_enum WHERE enumtypid = COALESCE(td.oid, tb.oid, a.atttypid))::varchar[], ',')
+        ELSE NULL
+    END AS enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey,
+    COALESCE(NULLIF(a.attndims, 0), NULLIF(t.typndims, 0), (t.typcategory='A')::int) AS dimension
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_type tb ON (a.attndims > 0 OR t.typcategory='A') AND t.typelem > 0 AND t.typelem = tb.oid OR t.typbasetype > 0 AND t.typbasetype = tb.oid
+    LEFT JOIN pg_type td ON t.typndims > 0 AND t.typbasetype > 0 AND tb.typelem = td.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT JOIN pg_constraint ct ON ct.conrelid = c.oid AND ct.contype = 'p'
+WHERE
+    a.attnum > 0 AND t.typname != '' AND NOT a.attisdropped
+    AND c.relname = 'productstock'
+    AND d.nspname = 'public'
+ORDER BY
+    a.attnum;";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.714726;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:150;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6826024;}i:135;a:6:{i:0;s:880:"select
+    ct.conname as constraint_name,
+    a.attname as column_name,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    fa.attname as foreign_column_name
+from
+    (SELECT ct.conname, ct.conrelid, ct.confrelid, ct.conkey, ct.contype, ct.confkey, generate_subscripts(ct.conkey, 1) AS s
+       FROM pg_constraint ct
+    ) AS ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    inner join pg_attribute a on a.attrelid=ct.conrelid and a.attnum = ct.conkey[ct.s]
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+    left join pg_attribute fa on fa.attrelid=ct.confrelid and fa.attnum = ct.confkey[ct.s]
+where
+    ct.contype='f'
+    and c.relname='productstock'
+    and ns.nspname='public'
+order by
+    fns.nspname, fc.relname, a.attnum";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.715173;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:150;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6805720;}i:136;a:6:{i:0;s:880:"select
+    ct.conname as constraint_name,
+    a.attname as column_name,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    fa.attname as foreign_column_name
+from
+    (SELECT ct.conname, ct.conrelid, ct.confrelid, ct.conkey, ct.contype, ct.confkey, generate_subscripts(ct.conkey, 1) AS s
+       FROM pg_constraint ct
+    ) AS ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    inner join pg_attribute a on a.attrelid=ct.conrelid and a.attnum = ct.conkey[ct.s]
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+    left join pg_attribute fa on fa.attrelid=ct.confrelid and fa.attnum = ct.confkey[ct.s]
+where
+    ct.contype='f'
+    and c.relname='productstock'
+    and ns.nspname='public'
+order by
+    fns.nspname, fc.relname, a.attnum";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.71816;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:150;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6808016;}i:142;a:6:{i:0;s:56:"SELECT EXISTS(SELECT * FROM "sale" WHERE "sale"."id"=51)";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.718902;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:159;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6823160;}i:143;a:6:{i:0;s:56:"SELECT EXISTS(SELECT * FROM "sale" WHERE "sale"."id"=51)";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.719314;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:159;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6824104;}i:150;a:6:{i:0;s:56:"SELECT EXISTS(SELECT * FROM "sale" WHERE "sale"."id"=51)";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.71992;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:131;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6832336;}i:151;a:6:{i:0;s:56:"SELECT EXISTS(SELECT * FROM "sale" WHERE "sale"."id"=51)";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.720258;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:131;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6833280;}i:153;a:6:{i:0;s:268:"INSERT INTO "document" ("idcliente", "iddocumentType", "number", "iduser", "idsale", "idstatus", "idpurchase", "iddocument", "idorder", "idstore", "idproductionOrder", "idadjustment") VALUES (35, 3, 1, 1282, 51, NULL, NULL, NULL, NULL, NULL, NULL, NULL) RETURNING "id"";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.72053;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:131;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6833432;}i:154;a:6:{i:0;s:268:"INSERT INTO "document" ("idcliente", "iddocumentType", "number", "iduser", "idsale", "idstatus", "idpurchase", "iddocument", "idorder", "idstore", "idproductionOrder", "idadjustment") VALUES (35, 3, 1, 1282, 51, NULL, NULL, NULL, NULL, NULL, NULL, NULL) RETURNING "id"";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.721131;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:131;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6835080;}i:156;a:6:{i:0;s:51:"SELECT * FROM "cfg"."productBranch" WHERE "id"='43'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.721424;i:4;a:3:{i:0;a:5:{s:4:"file";s:57:"C:\xampp\htdocs\apirest.app\models\ProductBranchQuery.php";s:4:"line";i:32;s:8:"function";s:3:"one";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:491;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:2;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:139;s:8:"function";s:11:"updateStock";s:5:"class";s:44:"app\modules\apiv1\controllers\SaleController";s:4:"type";s:2:"->";}}i:5;i:6835144;}i:157;a:6:{i:0;s:51:"SELECT * FROM "cfg"."productBranch" WHERE "id"='43'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.721837;i:4;a:3:{i:0;a:5:{s:4:"file";s:57:"C:\xampp\htdocs\apirest.app\models\ProductBranchQuery.php";s:4:"line";i:32;s:8:"function";s:3:"one";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:491;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:2;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:139;s:8:"function";s:11:"updateStock";s:5:"class";s:44:"app\modules\apiv1\controllers\SaleController";s:4:"type";s:2:"->";}}i:5;i:6837184;}i:163;a:6:{i:0;s:56:"SELECT EXISTS(SELECT * FROM "sale" WHERE "sale"."id"=51)";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.722462;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:159;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6855728;}i:164;a:6:{i:0;s:56:"SELECT EXISTS(SELECT * FROM "sale" WHERE "sale"."id"=51)";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.722785;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:159;s:8:"function";s:8:"validate";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}}i:5;i:6856672;}i:166;a:6:{i:0;s:56:"SELECT EXISTS(SELECT * FROM "sale" WHERE "sale"."id"=51)";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.7232;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:171;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6860224;}i:167;a:6:{i:0;s:56:"SELECT EXISTS(SELECT * FROM "sale" WHERE "sale"."id"=51)";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.7235;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:171;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6861168;}i:169;a:6:{i:0;s:232:"INSERT INTO "productstock" ("price", "nprocess", "quantityoutput", "iduser", "idproduct", "iddocument", "idsale", "idpurchase", "idstore", "idproductionOrder") VALUES ('30', 1, '2', 1282, 11, 83, 51, NULL, NULL, NULL) RETURNING "id"";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.723782;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:171;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6861432;}i:170;a:6:{i:0;s:232:"INSERT INTO "productstock" ("price", "nprocess", "quantityoutput", "iduser", "idproduct", "iddocument", "idsale", "idpurchase", "idstore", "idproductionOrder") VALUES ('30', 1, '2', 1282, 11, 83, 51, NULL, NULL, NULL) RETURNING "id"";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.725116;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:171;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6863040;}i:172;a:6:{i:0;s:56:"SELECT EXISTS(SELECT * FROM "sale" WHERE "sale"."id"=51)";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.725552;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:171;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6868264;}i:173;a:6:{i:0;s:56:"SELECT EXISTS(SELECT * FROM "sale" WHERE "sale"."id"=51)";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.725886;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:171;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6869208;}i:175;a:6:{i:0;s:232:"INSERT INTO "productstock" ("price", "nprocess", "quantityoutput", "iduser", "idproduct", "iddocument", "idsale", "idpurchase", "idstore", "idproductionOrder") VALUES ('12', 1, '1', 1282, 43, 84, 51, NULL, NULL, NULL) RETURNING "id"";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.726151;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:171;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6869440;}i:176;a:6:{i:0;s:232:"INSERT INTO "productstock" ("price", "nprocess", "quantityoutput", "iduser", "idproduct", "iddocument", "idsale", "idpurchase", "idstore", "idproductionOrder") VALUES ('12', 1, '1', 1282, 43, 84, 51, NULL, NULL, NULL) RETURNING "id"";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1721232824.726748;i:4;a:1:{i:0;a:5:{s:4:"file";s:72:"C:\xampp\htdocs\apirest.app\modules\apiv1\controllers\SaleController.php";s:4:"line";i:171;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:6871048;}}}";s:5:"event";s:15273:"a:85:{i:0;a:5:{s:4:"time";d:1721232824.185784;s:4:"name";s:13:"beforeRequest";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:19:"yii\web\Application";}i:1;a:5:{s:4:"time";d:1721232824.191852;s:4:"name";s:12:"beforeAction";s:5:"class";s:20:"yii\base\ActionEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:19:"yii\web\Application";}i:2;a:5:{s:4:"time";d:1721232824.206434;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:25:"app\models\CrugeUserQuery";}i:3;a:5:{s:4:"time";d:1721232824.295695;s:4:"name";s:9:"afterOpen";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:17:"yii\db\Connection";}i:4;a:5:{s:4:"time";d:1721232824.319517;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:20:"app\models\CrugeUser";}i:5;a:5:{s:4:"time";d:1721232824.31957;s:4:"name";s:9:"afterFind";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:20:"app\models\CrugeUser";}i:6;a:5:{s:4:"time";d:1721232824.319815;s:4:"name";s:11:"beforeLogin";s:5:"class";s:17:"yii\web\UserEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:12:"yii\web\User";}i:7;a:5:{s:4:"time";d:1721232824.324271;s:4:"name";s:10:"afterLogin";s:5:"class";s:17:"yii\web\UserEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:12:"yii\web\User";}i:8;a:5:{s:4:"time";d:1721232824.324291;s:4:"name";s:12:"beforeAction";s:5:"class";s:20:"yii\base\ActionEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:29:"app\modules\apiv1\Apiv1Module";}i:9;a:5:{s:4:"time";d:1721232824.326096;s:4:"name";s:12:"beforeAction";s:5:"class";s:20:"yii\base\ActionEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:44:"app\modules\apiv1\controllers\SaleController";}i:10;a:5:{s:4:"time";d:1721232824.333195;s:4:"name";s:14:"beforeValidate";s:5:"class";s:19:"yii\base\ModelEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:33:"app\modules\apiv1\models\SaleForm";}i:11;a:5:{s:4:"time";d:1721232824.334815;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:20:"app\models\UnitQuery";}i:12;a:5:{s:4:"time";d:1721232824.41831;s:4:"name";s:9:"afterOpen";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:17:"yii\db\Connection";}i:13;a:5:{s:4:"time";d:1721232824.420985;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:23:"app\models\ProductQuery";}i:14;a:5:{s:4:"time";d:1721232824.439011;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:18:"app\models\Product";}i:15;a:5:{s:4:"time";d:1721232824.43907;s:4:"name";s:9:"afterFind";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:18:"app\models\Product";}i:16;a:5:{s:4:"time";d:1721232824.44061;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:29:"app\models\ProductBranchQuery";}i:17;a:5:{s:4:"time";d:1721232824.538107;s:4:"name";s:9:"afterOpen";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:17:"yii\db\Connection";}i:18;a:5:{s:4:"time";d:1721232824.554616;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:38:"app\modules\apiv1\models\ProductBranch";}i:19;a:5:{s:4:"time";d:1721232824.554662;s:4:"name";s:9:"afterFind";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:38:"app\modules\apiv1\models\ProductBranch";}i:20;a:5:{s:4:"time";d:1721232824.55469;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:20:"app\models\UnitQuery";}i:21;a:5:{s:4:"time";d:1721232824.55529;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:23:"app\models\ProductQuery";}i:22;a:5:{s:4:"time";d:1721232824.55588;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:18:"app\models\Product";}i:23;a:5:{s:4:"time";d:1721232824.555927;s:4:"name";s:9:"afterFind";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:18:"app\models\Product";}i:24;a:5:{s:4:"time";d:1721232824.555942;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:29:"app\models\ProductBranchQuery";}i:25;a:5:{s:4:"time";d:1721232824.55649;s:4:"name";s:13:"afterValidate";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:33:"app\modules\apiv1\models\SaleForm";}i:26;a:5:{s:4:"time";d:1721232824.557189;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:24:"app\models\CustomerQuery";}i:27;a:5:{s:4:"time";d:1721232824.568016;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:19:"app\models\Customer";}i:28;a:5:{s:4:"time";d:1721232824.568065;s:4:"name";s:9:"afterFind";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:19:"app\models\Customer";}i:29;a:5:{s:4:"time";d:1721232824.569215;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:29:"app\modules\apiv1\models\Sale";}i:30;a:5:{s:4:"time";d:1721232824.583172;s:4:"name";s:14:"beforeValidate";s:5:"class";s:19:"yii\base\ModelEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:29:"app\modules\apiv1\models\Sale";}i:31;a:5:{s:4:"time";d:1721232824.583659;s:4:"name";s:13:"afterValidate";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:29:"app\modules\apiv1\models\Sale";}i:32;a:5:{s:4:"time";d:1721232824.583674;s:4:"name";s:12:"beforeInsert";s:5:"class";s:19:"yii\base\ModelEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:29:"app\modules\apiv1\models\Sale";}i:33;a:5:{s:4:"time";d:1721232824.586207;s:4:"name";s:11:"afterInsert";s:5:"class";s:21:"yii\db\AfterSaveEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:29:"app\modules\apiv1\models\Sale";}i:34;a:5:{s:4:"time";d:1721232824.587522;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:28:"app\models\DocumentTypeQuery";}i:35;a:5:{s:4:"time";d:1721232824.671607;s:4:"name";s:9:"afterOpen";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:17:"yii\db\Connection";}i:36;a:5:{s:4:"time";d:1721232824.689079;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:23:"app\models\DocumentType";}i:37;a:5:{s:4:"time";d:1721232824.689117;s:4:"name";s:9:"afterFind";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:23:"app\models\DocumentType";}i:38;a:5:{s:4:"time";d:1721232824.690139;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:19:"app\models\Document";}i:39;a:5:{s:4:"time";d:1721232824.701286;s:4:"name";s:14:"beforeValidate";s:5:"class";s:19:"yii\base\ModelEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:19:"app\models\Document";}i:40;a:5:{s:4:"time";d:1721232824.701958;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:20:"app\models\SaleQuery";}i:41;a:5:{s:4:"time";d:1721232824.702451;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:20:"app\models\SaleQuery";}i:42;a:5:{s:4:"time";d:1721232824.705056;s:4:"name";s:13:"afterValidate";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:19:"app\models\Document";}i:43;a:5:{s:4:"time";d:1721232824.705073;s:4:"name";s:12:"beforeInsert";s:5:"class";s:19:"yii\base\ModelEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:19:"app\models\Document";}i:44;a:5:{s:4:"time";d:1721232824.706694;s:4:"name";s:11:"afterInsert";s:5:"class";s:21:"yii\db\AfterSaveEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:19:"app\models\Document";}i:45;a:5:{s:4:"time";d:1721232824.706715;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:29:"app\models\ProductBranchQuery";}i:46;a:5:{s:4:"time";d:1721232824.707356;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:38:"app\modules\apiv1\models\ProductBranch";}i:47;a:5:{s:4:"time";d:1721232824.707399;s:4:"name";s:9:"afterFind";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:38:"app\modules\apiv1\models\ProductBranch";}i:48;a:5:{s:4:"time";d:1721232824.708462;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:37:"app\modules\apiv1\models\Productstock";}i:49;a:5:{s:4:"time";d:1721232824.718529;s:4:"name";s:14:"beforeValidate";s:5:"class";s:19:"yii\base\ModelEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:37:"app\modules\apiv1\models\Productstock";}i:50;a:5:{s:4:"time";d:1721232824.718741;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:20:"app\models\SaleQuery";}i:51;a:5:{s:4:"time";d:1721232824.718772;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:20:"app\models\SaleQuery";}i:52;a:5:{s:4:"time";d:1721232824.719424;s:4:"name";s:13:"afterValidate";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:37:"app\modules\apiv1\models\Productstock";}i:53;a:5:{s:4:"time";d:1721232824.719439;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:19:"app\models\Document";}i:54;a:5:{s:4:"time";d:1721232824.719596;s:4:"name";s:14:"beforeValidate";s:5:"class";s:19:"yii\base\ModelEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:19:"app\models\Document";}i:55;a:5:{s:4:"time";d:1721232824.719784;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:20:"app\models\SaleQuery";}i:56;a:5:{s:4:"time";d:1721232824.719808;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:20:"app\models\SaleQuery";}i:57;a:5:{s:4:"time";d:1721232824.720365;s:4:"name";s:13:"afterValidate";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:19:"app\models\Document";}i:58;a:5:{s:4:"time";d:1721232824.720378;s:4:"name";s:12:"beforeInsert";s:5:"class";s:19:"yii\base\ModelEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:19:"app\models\Document";}i:59;a:5:{s:4:"time";d:1721232824.721295;s:4:"name";s:11:"afterInsert";s:5:"class";s:21:"yii\db\AfterSaveEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:19:"app\models\Document";}i:60;a:5:{s:4:"time";d:1721232824.721313;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:29:"app\models\ProductBranchQuery";}i:61;a:5:{s:4:"time";d:1721232824.721941;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:37:"app\modules\apiv1\models\Productstock";}i:62;a:5:{s:4:"time";d:1721232824.722141;s:4:"name";s:14:"beforeValidate";s:5:"class";s:19:"yii\base\ModelEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:37:"app\modules\apiv1\models\Productstock";}i:63;a:5:{s:4:"time";d:1721232824.722335;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:20:"app\models\SaleQuery";}i:64;a:5:{s:4:"time";d:1721232824.722359;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:20:"app\models\SaleQuery";}i:65;a:5:{s:4:"time";d:1721232824.722884;s:4:"name";s:13:"afterValidate";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:37:"app\modules\apiv1\models\Productstock";}i:66;a:5:{s:4:"time";d:1721232824.722898;s:4:"name";s:14:"beforeValidate";s:5:"class";s:19:"yii\base\ModelEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:37:"app\modules\apiv1\models\Productstock";}i:67;a:5:{s:4:"time";d:1721232824.723082;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:20:"app\models\SaleQuery";}i:68;a:5:{s:4:"time";d:1721232824.723103;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:20:"app\models\SaleQuery";}i:69;a:5:{s:4:"time";d:1721232824.723596;s:4:"name";s:13:"afterValidate";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:37:"app\modules\apiv1\models\Productstock";}i:70;a:5:{s:4:"time";d:1721232824.723609;s:4:"name";s:12:"beforeInsert";s:5:"class";s:19:"yii\base\ModelEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:37:"app\modules\apiv1\models\Productstock";}i:71;a:5:{s:4:"time";d:1721232824.725235;s:4:"name";s:11:"afterInsert";s:5:"class";s:21:"yii\db\AfterSaveEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:37:"app\modules\apiv1\models\Productstock";}i:72;a:5:{s:4:"time";d:1721232824.725247;s:4:"name";s:14:"beforeValidate";s:5:"class";s:19:"yii\base\ModelEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:37:"app\modules\apiv1\models\Productstock";}i:73;a:5:{s:4:"time";d:1721232824.725432;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:20:"app\models\SaleQuery";}i:74;a:5:{s:4:"time";d:1721232824.725454;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:20:"app\models\SaleQuery";}i:75;a:5:{s:4:"time";d:1721232824.725985;s:4:"name";s:13:"afterValidate";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:37:"app\modules\apiv1\models\Productstock";}i:76;a:5:{s:4:"time";d:1721232824.725997;s:4:"name";s:12:"beforeInsert";s:5:"class";s:19:"yii\base\ModelEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:37:"app\modules\apiv1\models\Productstock";}i:77;a:5:{s:4:"time";d:1721232824.726859;s:4:"name";s:11:"afterInsert";s:5:"class";s:21:"yii\db\AfterSaveEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:37:"app\modules\apiv1\models\Productstock";}i:78;a:5:{s:4:"time";d:1721232824.726915;s:4:"name";s:11:"afterAction";s:5:"class";s:20:"yii\base\ActionEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:44:"app\modules\apiv1\controllers\SaleController";}i:79;a:5:{s:4:"time";d:1721232824.727517;s:4:"name";s:11:"afterAction";s:5:"class";s:20:"yii\base\ActionEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:29:"app\modules\apiv1\Apiv1Module";}i:80;a:5:{s:4:"time";d:1721232824.727528;s:4:"name";s:11:"afterAction";s:5:"class";s:20:"yii\base\ActionEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:19:"yii\web\Application";}i:81;a:5:{s:4:"time";d:1721232824.727538;s:4:"name";s:12:"afterRequest";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:19:"yii\web\Application";}i:82;a:5:{s:4:"time";d:1721232824.727546;s:4:"name";s:10:"beforeSend";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:16:"yii\web\Response";}i:83;a:5:{s:4:"time";d:1721232824.728144;s:4:"name";s:12:"afterPrepare";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:16:"yii\web\Response";}i:84;a:5:{s:4:"time";d:1721232824.728222;s:4:"name";s:9:"afterSend";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:16:"yii\web\Response";}}";s:4:"mail";s:6:"a:0:{}";s:8:"timeline";s:91:"a:3:{s:5:"start";d:1721232824.070492;s:3:"end";d:1721232824.732513;s:6:"memory";i:6942808;}";s:4:"dump";s:6:"a:0:{}";s:6:"router";s:3693:"a:3:{s:8:"messages";a:18:{i:5;a:6:{i:0;a:3:{s:4:"rule";s:3:"gii";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1721232824.185854;i:4;a:0:{}i:5;i:3585648;}i:6;a:6:{i:0;a:3:{s:4:"rule";s:12:"gii/<id:\w+>";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1721232824.185865;i:4;a:0:{}i:5;i:3586224;}i:7;a:6:{i:0;a:3:{s:4:"rule";s:41:"gii/<controller:[\w\-]+>/<action:[\w\-]+>";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1721232824.185872;i:4;a:0:{}i:5;i:3586800;}i:8;a:6:{i:0;a:3:{s:4:"rule";s:5:"debug";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1721232824.185877;i:4;a:0:{}i:5;i:3587376;}i:9;a:6:{i:0;a:3:{s:4:"rule";s:43:"debug/<controller:[\w\-]+>/<action:[\w\-]+>";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1721232824.185883;i:4;a:0:{}i:5;i:3588176;}i:10;a:6:{i:0;a:3:{s:4:"rule";s:5:"class";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1721232824.185887;i:4;a:0:{}i:5;i:3588752;}i:11;a:6:{i:0;a:3:{s:4:"rule";s:27:"GET,HEAD service/categories";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1721232824.185899;i:4;a:0:{}i:5;i:3589376;}i:12;a:6:{i:0;a:3:{s:4:"rule";s:23:"POST service/categories";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1721232824.185909;i:4;a:0:{}i:5;i:3589992;}i:13;a:6:{i:0;a:3:{s:4:"rule";s:37:"PUT,PATCH service/categories/<id:\d+>";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1721232824.185916;i:4;a:0:{}i:5;i:3590624;}i:14;a:6:{i:0;a:3:{s:4:"rule";s:25:"DELETE service/categories";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1721232824.185923;i:4;a:0:{}i:5;i:3591248;}i:15;a:6:{i:0;a:3:{s:4:"rule";s:55:"GET apiv1/customers/actionSearchByDoc/<numeroDocumento>";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1721232824.18593;i:4;a:0:{}i:5;i:3591904;}i:16;a:6:{i:0;a:3:{s:4:"rule";s:45:"GET apiv1/customers/actionSearchByName/<name>";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1721232824.185937;i:4;a:0:{}i:5;i:3592544;}i:17;a:6:{i:0;a:3:{s:4:"rule";s:41:"GET apiv1/sales/actionProductsBySale/<id>";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1721232824.185944;i:4;a:0:{}i:5;i:3593632;}i:18;a:6:{i:0;a:3:{s:4:"rule";s:13:"apiv1/my-user";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1721232824.185949;i:4;a:0:{}i:5;i:3594208;}i:19;a:6:{i:0;a:3:{s:4:"rule";s:26:"GET apiv1/io-system-branch";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1721232824.185956;i:4;a:0:{}i:5;i:3594832;}i:20;a:6:{i:0;a:3:{s:4:"rule";s:28:"GET service/io-system-branch";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1721232824.185963;i:4;a:0:{}i:5;i:3595456;}i:21;a:6:{i:0;a:3:{s:4:"rule";s:43:"GET apiv1/product/actionSearchByName/<name>";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1721232824.18597;i:4;a:0:{}i:5;i:3596096;}i:22;a:6:{i:0;s:55:"No matching URL rules. Using default URL parsing logic.";i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1721232824.185973;i:4;a:0:{}i:5;i:3596368;}}s:5:"route";s:17:"apiv1/sale/insert";s:6:"action";s:60:"app\modules\apiv1\controllers\SaleController::actionInsert()";}";s:7:"request";s:6481:"a:15:{s:7:"flashes";a:0:{}s:10:"statusCode";i:201;s:14:"requestHeaders";a:10:{s:10:"user-agent";s:18:"Dart/3.4 (dart:io)";s:32:"access-control-allow-credentials";s:4:"true";s:28:"access-control-allow-headers";s:45:"authorization, X-Requested-With, content-type";s:15:"accept-encoding";s:4:"gzip";s:14:"content-length";s:3:"317";s:29:"access-control-expose-headers";s:50:"X-Pagination-Current-Page, X-Pagination-Page-Count";s:13:"authorization";s:327:"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImp0aSI6IlVOSVFVRS1KV1QtSURFTlRJRklFUiJ9.eyJpc3MiOiJodHRwczpcL1wvYXBpLmV4YW1wbGUuY29tIiwiYXVkIjoiaHR0cHM6XC9cL2Zyb250ZW5kLmV4YW1wbGUuY29tIiwianRpIjoiVU5JUVVFLUpXVC1JREVOVElGSUVSIiwiaWF0IjoxNzIxMjI1MDM3LCJleHAiOjE3MjEzMTE0MzcsInVpZCI6MTI4Mn0.d6QucIJOM5Z0w_EIApXtobXRpJYsvrPnWv5MbGVjEqo";s:4:"host";s:14:"192.168.100.58";s:22:"access-control-max-age";s:4:"3600";s:12:"content-type";s:31:"application/json; charset=utf-8";}s:15:"responseHeaders";a:7:{s:12:"X-Powered-By";s:9:"PHP/7.3.0";s:4:"Vary";s:6:"Accept";s:32:"Access-Control-Allow-Credentials";s:4:"true";s:29:"Access-Control-Expose-Headers";s:50:"X-Pagination-Current-Page, X-Pagination-Page-Count";s:28:"Access-Control-Allow-Headers";s:45:"authorization, X-Requested-With, content-type";s:12:"Content-Type";s:31:"application/json; charset=UTF-8";s:10:"Set-Cookie";s:204:"_csrf=53f4978ac96fa4bf1835668a3bdee8453ba9d6a95a3cfac80f4111b51c9a4114a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22fgEZc6llePUg2Wupi8BiR7NRkhCYtD_O%22%3B%7D; path=/; HttpOnly; SameSite=Lax";}s:5:"route";s:17:"apiv1/sale/insert";s:6:"action";s:60:"app\modules\apiv1\controllers\SaleController::actionInsert()";s:12:"actionParams";a:0:{}s:7:"general";a:5:{s:6:"method";s:4:"POST";s:6:"isAjax";b:0;s:6:"isPjax";b:0;s:7:"isFlash";b:0;s:18:"isSecureConnection";b:0;}s:11:"requestBody";a:3:{s:12:"Content Type";s:31:"application/json; charset=utf-8";s:3:"Raw";s:317:"{"discountamount":0.2,"isInvoice":true,"products":[{"name":"SALCHIPAPAS ","quantity":2.0,"price":15.0,"id":"11","idunit":6},{"name":"Prueba 1","quantity":1.0,"price":12.0,"id":"43","idunit":58}],"codigoMetodoPago":1,"idtypeDocument":2,"idcustomer":35,"razonSocial":"OSCAR YUCRA","numeroDocumento":"123456","phone":""}";s:7:"Decoded";a:9:{s:14:"discountamount";d:0.2;s:9:"isInvoice";b:1;s:8:"products";a:2:{i:0;a:5:{s:4:"name";s:12:"SALCHIPAPAS ";s:8:"quantity";d:2;s:5:"price";d:15;s:2:"id";s:2:"11";s:6:"idunit";i:6;}i:1;a:5:{s:4:"name";s:8:"Prueba 1";s:8:"quantity";d:1;s:5:"price";d:12;s:2:"id";s:2:"43";s:6:"idunit";i:58;}}s:16:"codigoMetodoPago";i:1;s:14:"idtypeDocument";i:2;s:10:"idcustomer";i:35;s:11:"razonSocial";s:11:"OSCAR YUCRA";s:15:"numeroDocumento";s:6:"123456";s:5:"phone";s:0:"";}}s:6:"SERVER";a:50:{s:16:"REDIRECT_MIBDIRS";s:24:"C:/xampp/php/extras/mibs";s:19:"REDIRECT_MYSQL_HOME";s:16:"\xampp\mysql\bin";s:21:"REDIRECT_OPENSSL_CONF";s:31:"C:/xampp/apache/bin/openssl.cnf";s:29:"REDIRECT_PHP_PEAR_SYSCONF_DIR";s:10:"\xampp\php";s:14:"REDIRECT_PHPRC";s:10:"\xampp\php";s:12:"REDIRECT_TMP";s:10:"\xampp\tmp";s:15:"REDIRECT_STATUS";s:3:"200";s:7:"MIBDIRS";s:24:"C:/xampp/php/extras/mibs";s:10:"MYSQL_HOME";s:16:"\xampp\mysql\bin";s:12:"OPENSSL_CONF";s:31:"C:/xampp/apache/bin/openssl.cnf";s:20:"PHP_PEAR_SYSCONF_DIR";s:10:"\xampp\php";s:5:"PHPRC";s:10:"\xampp\php";s:3:"TMP";s:10:"\xampp\tmp";s:15:"HTTP_USER_AGENT";s:18:"Dart/3.4 (dart:io)";s:37:"HTTP_ACCESS_CONTROL_ALLOW_CREDENTIALS";s:4:"true";s:33:"HTTP_ACCESS_CONTROL_ALLOW_HEADERS";s:45:"authorization, X-Requested-With, content-type";s:20:"HTTP_ACCEPT_ENCODING";s:4:"gzip";s:14:"CONTENT_LENGTH";s:3:"317";s:34:"HTTP_ACCESS_CONTROL_EXPOSE_HEADERS";s:50:"X-Pagination-Current-Page, X-Pagination-Page-Count";s:9:"HTTP_HOST";s:14:"192.168.100.58";s:27:"HTTP_ACCESS_CONTROL_MAX_AGE";s:4:"3600";s:12:"CONTENT_TYPE";s:31:"application/json; charset=utf-8";s:4:"PATH";s:1250:"C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Program Files\Git\bin;C:\flutter\bin;C:\Program Files\Git\bin\git.exe;C:\Program Files (x86)\Microsoft SQL Server\160\Tools\Binn\;C:\Program Files\Microsoft SQL Server\160\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\Microsoft SQL Server\160\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\160\DTS\Binn\;C:\Program Files\dotnet\;C:\Program Files\nodejs\;C:\Program Files (x86)\Bitvise SSH Client;C:\ProgramData\ComposerSetup\bin;C:\Program Files\TortoiseSVN\bin;;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Users\juanv\AppData\Local\Programs\Python\Python313\Scripts\;C:\Users\juanv\AppData\Local\Programs\Python\Python313\;C:\Users\juanv\AppData\Local\Programs\Python\Launcher\;C:\Users\juanv\AppData\Local\Microsoft\WindowsApps;C:\Users\juanv\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\PostgreSQL\9.6;C:\Users\juanv\AppData\Roaming\Composer\vendor\bin;C:\Users\juanv\.dotnet\tools;C:\flutter\bin;C:\Program Files\Git\bin;C:\Program Files\Git\cmd;C:\Program Files\Git\bin\git.exe;C:\Users\juanv\AppData\Roaming\npm;C:\xampp\php;";s:10:"SystemRoot";s:10:"C:\WINDOWS";s:7:"COMSPEC";s:27:"C:\WINDOWS\system32\cmd.exe";s:7:"PATHEXT";s:53:".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC";s:6:"WINDIR";s:10:"C:\WINDOWS";s:16:"SERVER_SIGNATURE";s:99:"<address>Apache/2.4.37 (Win32) OpenSSL/1.1.1a PHP/7.3.0 Server at 192.168.100.58 Port 80</address>
+";s:15:"SERVER_SOFTWARE";s:46:"Apache/2.4.37 (Win32) OpenSSL/1.1.1a PHP/7.3.0";s:11:"SERVER_NAME";s:14:"192.168.100.58";s:11:"SERVER_ADDR";s:14:"192.168.100.58";s:11:"SERVER_PORT";s:2:"80";s:11:"REMOTE_ADDR";s:14:"192.168.100.62";s:13:"DOCUMENT_ROOT";s:15:"C:/xampp/htdocs";s:14:"REQUEST_SCHEME";s:4:"http";s:14:"CONTEXT_PREFIX";s:0:"";s:21:"CONTEXT_DOCUMENT_ROOT";s:15:"C:/xampp/htdocs";s:12:"SERVER_ADMIN";s:20:"postmaster@localhost";s:15:"SCRIPT_FILENAME";s:41:"C:/xampp/htdocs/apirest.app/web/index.php";s:11:"REMOTE_PORT";s:5:"43168";s:12:"REDIRECT_URL";s:34:"/apirest.app/web/apiv1/sale/insert";s:17:"GATEWAY_INTERFACE";s:7:"CGI/1.1";s:15:"SERVER_PROTOCOL";s:8:"HTTP/1.1";s:14:"REQUEST_METHOD";s:4:"POST";s:12:"QUERY_STRING";s:0:"";s:11:"REQUEST_URI";s:34:"/apirest.app/web/apiv1/sale/insert";s:11:"SCRIPT_NAME";s:26:"/apirest.app/web/index.php";s:8:"PHP_SELF";s:26:"/apirest.app/web/index.php";s:18:"REQUEST_TIME_FLOAT";d:1721232824.054;s:12:"REQUEST_TIME";i:1721232824;}s:3:"GET";a:0:{}s:4:"POST";a:0:{}s:6:"COOKIE";a:0:{}s:5:"FILES";a:0:{}s:7:"SESSION";a:0:{}}";s:4:"user";s:1720:"a:5:{s:2:"id";i:1282;s:8:"identity";a:16:{s:6:"iduser";s:4:"1282";s:7:"regdate";s:4:"null";s:7:"actdate";s:12:"'1720140501'";s:9:"logondate";s:12:"'1719068828'";s:8:"username";s:20:"'admin_marketing_io'";s:5:"email";s:2:"''";s:8:"password";s:34:"'696b0709b9a2d7d9e2c25b71476ec255'";s:7:"authkey";s:4:"null";s:5:"state";s:1:"1";s:19:"totalsessioncounter";s:1:"0";s:21:"currentsessioncounter";s:1:"0";s:8:"temporal";s:5:"false";s:8:"fullname";s:4:"null";s:4:"name";s:4:"null";s:8:"lastname";s:4:"null";s:7:"surname";s:4:"null";}s:10:"attributes";a:16:{i:0;a:2:{s:9:"attribute";s:6:"iduser";s:5:"label";s:6:"Iduser";}i:1;a:2:{s:9:"attribute";s:7:"regdate";s:5:"label";s:7:"Regdate";}i:2;a:2:{s:9:"attribute";s:7:"actdate";s:5:"label";s:7:"Actdate";}i:3;a:2:{s:9:"attribute";s:9:"logondate";s:5:"label";s:9:"Logondate";}i:4;a:2:{s:9:"attribute";s:8:"username";s:5:"label";s:8:"Username";}i:5;a:2:{s:9:"attribute";s:5:"email";s:5:"label";s:5:"Email";}i:6;a:2:{s:9:"attribute";s:8:"password";s:5:"label";s:8:"Password";}i:7;a:2:{s:9:"attribute";s:7:"authkey";s:5:"label";s:7:"Authkey";}i:8;a:2:{s:9:"attribute";s:5:"state";s:5:"label";s:5:"State";}i:9;a:2:{s:9:"attribute";s:19:"totalsessioncounter";s:5:"label";s:19:"Totalsessioncounter";}i:10;a:2:{s:9:"attribute";s:21:"currentsessioncounter";s:5:"label";s:21:"Currentsessioncounter";}i:11;a:2:{s:9:"attribute";s:8:"temporal";s:5:"label";s:8:"Temporal";}i:12;a:2:{s:9:"attribute";s:8:"fullname";s:5:"label";s:8:"Fullname";}i:13;a:2:{s:9:"attribute";s:4:"name";s:5:"label";s:4:"Name";}i:14;a:2:{s:9:"attribute";s:8:"lastname";s:5:"label";s:8:"Lastname";}i:15;a:2:{s:9:"attribute";s:7:"surname";s:5:"label";s:7:"Surname";}}s:13:"rolesProvider";N;s:19:"permissionsProvider";N;}";s:5:"asset";s:6:"a:0:{}";s:7:"summary";a:13:{s:3:"tag";s:13:"6697edb82b966";s:3:"url";s:55:"http://192.168.100.58/apirest.app/web/apiv1/sale/insert";s:4:"ajax";i:0;s:6:"method";s:4:"POST";s:2:"ip";s:14:"192.168.100.62";s:4:"time";d:1721232824.054;s:10:"statusCode";i:201;s:8:"sqlCount";i:0;s:21:"excessiveCallersCount";i:0;s:9:"mailCount";i:0;s:9:"mailFiles";a:0:{}s:10:"peakMemory";i:6908816;s:14:"processingTime";d:0.6614589691162109;}s:10:"exceptions";a:0:{}}

@@ -1,13 +1,18 @@
 <?php
 
-namespace app\modules\apiv1\controllers;
+namespace app\modules\service\controllers;
 
 use yii\data\ActiveDataProvider;
+use yii\web\NotFoundHttpException;
 use Yii;
 
-class SiatunidadmedidaController extends BaseController
+/**
+ * Default controller for the `service` module
+ */
+class UnidadmedidaController extends BaseController
 {
-    public $modelClass = 'app\modules\apiv1\models\SiatUnidadMedida';
+    public $modelClass = 'app\modules\service\models\UnidadMedida';
+
     public function actions()
     {
         $actions = parent::actions();

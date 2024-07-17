@@ -2,12 +2,16 @@
 
 namespace app\modules\apiv1\controllers;
 
+
 use yii\data\ActiveDataProvider;
 use Yii;
 
-class SiatunidadmedidaController extends BaseController
+/**
+ * Default controller for the `apiv1` module
+ */
+class SincronizarlistaproductosserviciosController extends BaseController
 {
-    public $modelClass = 'app\modules\apiv1\models\SiatUnidadMedida';
+    public $modelClass = 'app\modules\apiv1\models\SincronizarListaProductosServicios';
     public function actions()
     {
         $actions = parent::actions();
