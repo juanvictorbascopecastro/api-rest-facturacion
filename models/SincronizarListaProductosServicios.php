@@ -21,8 +21,8 @@ class SincronizarListaProductosServicios extends \yii\db\ActiveRecord
         return [
             [['dateCreate'], 'safe'],
             [['recycleBin'], 'boolean'],
-            [['codigoProducto', 'iduser'], 'default', 'value' => null],
-            [['codigoProducto', 'iduser'], 'integer'],
+            [['codigoProducto', 'iduser', 'order'], 'default', 'value' => null],
+            [['codigoProducto', 'iduser', 'order'], 'integer'],
             [['descripcionProducto'], 'string'],
             [['codigoActividad'], 'string', 'max' => 30],
         ];
@@ -38,6 +38,7 @@ class SincronizarListaProductosServicios extends \yii\db\ActiveRecord
             'codigoProducto' => 'Codigo Producto',
             'descripcionProducto' => 'Descripcion Producto',
             'iduser' => 'Iduser',
+            'order' => 'Order',
         ];
     }
 

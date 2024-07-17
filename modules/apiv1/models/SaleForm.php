@@ -6,6 +6,8 @@ use Yii;
 use yii\base\Model;
 use app\models\Product;
 use app\models\Customer;
+use app\modules\apiv1\models\Unit;
+use app\modules\apiv1\models\SincronizarListaProductosServicios;
 
 class SaleForm extends Model
 {
@@ -58,8 +60,8 @@ class SaleForm extends Model
         $user = Yii::$app->user->identity;
 
         foreach ($this->$attribute as $index => $product) {
-            if (!isset($product['name']) || !isset($product['quantity']) || !isset($product['price']) || !isset($product['idunit'])) {
-                $this->addError($attribute, "El producto en la posición $index debe tener los campos 'name', 'quantity', 'price' y 'idunit'.");
+            if (!isset($product['name']) || !isset($product['quantity']) || !isset($product['price'])) {
+                $this->addError($attribute, "El producto en la posición $index debe tener los campos 'name', 'quantity' y 'price'.");
                 continue;
             }
 
@@ -75,8 +77,22 @@ class SaleForm extends Model
                 $this->addError($attribute, "El campo 'price' del producto en la posición $index debe ser un número mayor que cero.");
             }
 
-            if (!is_numeric($product['idunit']) || $product['idunit'] <= 0) {
-                $this->addError($attribute, "El campo 'idunit' del producto en la posición $index debe ser un número mayor que cero.");
+            // if (!is_numeric($product['idunit']) || $product['idunit'] <= 0) {
+            //     $this->addError($attribute, "El campo 'idunit' del producto en la posición $index debe ser un número mayor que cero.");
+            // }
+
+            if (isset($product['idunit']) && $product['idunit'] != null) {
+                $unitExists = Unit::find()->where(['id' => $product['idunit']])->exists();
+                if (!$unitExists) {
+                    $this->addError($attribute, "El 'idunit' del producto en la posición $index con el valor " . $product['idunit'] . " no existe en la base de datos.");
+                }
+            }
+    
+            if (isset($product['codigoProducto']) && $product['codigoProducto'] != null) {
+                $productoServicioExists = SincronizarListaProductosServicios::find()->where(['codigoProducto' => $product['codigoProducto']])->exists();
+                if (!$productoServicioExists) {
+                    $this->addError($attribute, "El 'codigoProducto' del producto en la posición $index con el valor " . $product['codigoProducto'] . " no existe en la base de datos.");
+                }
             }
 
             // Calcular el total basado en el precio y la cantidad

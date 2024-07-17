@@ -80,4 +80,11 @@ class Sale extends \app\models\Sale
     {
         return $this->hasMany(Productstock::class, ['idsale' => 'id']);
     }
+
+    // public function beforeSave()
+    // {
+    //     echo 'Hola ';
+
+    //     return true;
+    // }
 }

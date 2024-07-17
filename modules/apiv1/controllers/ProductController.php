@@ -5,14 +5,14 @@ use Yii;
 use app\modules\apiv1\models\Product;
 use yii\data\ActiveDataProvider;
 use app\modules\apiv1\controllers\BaseController; 
-use app\models\CfgIoSystemBranchUser;
-use app\modules\apiv1\models\CfgIoSystemBranch;
 use app\modules\apiv1\models\ProductStore; // stock de los productos
 use app\modules\apiv1\models\ProductBranch; // configuracion de los productos
 use app\modules\apiv1\models\Productimage;
 
 use yii\web\UploadedFile;
 use app\modules\apiv1\helpers\UploadFile;
+use app\modules\apiv1\models\ProductForm;
+use app\modules\apiv1\models\SincronizarListaProductosServicios;
 
 class ProductController extends BaseController
 {
@@ -55,53 +55,91 @@ class ProductController extends BaseController
     public function actionInsert()
     {
         $user = Yii::$app->user->identity;
-        $product = new Product();
-        $product->attributes = Yii::$app->request->post();
-        $product->iduser = $user->iduser;
+        $productForm = new ProductForm();
     
-        $uploadedFile = UploadedFile::getInstanceByName('image');
-        $imageUrl = null;
-        $publicId = null;
+        if ($productForm->load(Yii::$app->request->post(), '') && $productForm->validate()) {
+            $product = new Product();
+            $product->idcategory = $productForm->idcategory;
+            $product->idunit = $productForm->idunit;
+            $product->name = $productForm->name;
+            $product->price = $productForm->price;
+            $product->barcode = $productForm->barcode;
+            $product->recycleBin = $productForm->recycleBin;
+            $product->idstatus = $productForm->idstatus;
+            $product->description = $productForm->description;
+            $product->iduser = $user->iduser;
     
-        if ($uploadedFile) {
-            $validationResult = UploadFile::validateFile($uploadedFile);
-            if ($validationResult['error']) {
-                return parent::sendResponse(['statusCode' => 400, 'message' => $validationResult['message'], 'error' => $validationResult['code']]);
-            }
-    
-            $uploadResult = UploadFile::uploadToCloudinary($uploadedFile);
-            if ($uploadResult['error']) {
-                return parent::sendResponse(['statusCode' => 500, 'message' => $uploadResult['message'], 'error' => $uploadResult['details']]);
-            }
-    
-            $imageUrl = $uploadResult['url'];
-            $publicId = $uploadResult['public_id'];
-        }
-    
-        // Guardar Product
-        if ($product->save()) {
-            $product = Product::findOne($product->id);
-    
-            // Si se subió una imagen a Cloudinary, guardar ProductImage
-            if ($imageUrl) {
-                $productImage = new Productimage();
-                $productImage->idproduct = $product->id; // Asignar el ID del producto
-                $productImage->imagepath = $imageUrl; // Asignar la URL de la imagen
-                $productImage->name = $publicId; // Asignar el public_id como nombre
-                if (!$productImage->save()) {
-                    return parent::sendResponse(['statusCode' => 500, 'message' => 'No se pudo guardar ProductImage', 'errors' => $productImage->errors]);
+            if ($productForm->codigoProducto) {
+                $listaProductoServicio = SincronizarListaProductosServicios::find()
+                    ->where(['codigoProducto' => $productForm->codigoProducto])
+                    ->one();
+                
+                if ($listaProductoServicio !== null) {
+                    $product->idsincronizarListaProductosServicios = $listaProductoServicio->id;
+                } else {
+                    return $this->sendResponse([
+                        'statusCode' => 404,
+                        'message' => 'El código de producto ' . $productForm->codigoProducto . ' no es válido.',
+                    ]);
+                }
+            } else {
+                $listaProductoServicio = SincronizarListaProductosServicios::find()
+                    ->where(['is not', 'order', null])
+                    ->orderBy(['order' => SORT_ASC])
+                    ->one();
+                    
+                if ($listaProductoServicio != null) {
+                    $product->idsincronizarListaProductosServicios = $listaProductoServicio->id;
                 }
             }
     
-            return parent::sendResponse([
-                'statusCode' => 201,
-                'message' => 'Producto creado con éxito',
-                'data' => $product
-            ]);
+            $uploadedFile = UploadedFile::getInstanceByName('image');
+            $imageUrl = null;
+            $publicId = null;
+    
+            if ($uploadedFile) {
+                $validationResult = UploadFile::validateFile($uploadedFile);
+                if ($validationResult['error']) {
+                    return parent::sendResponse(['statusCode' => 400, 'message' => $validationResult['message'], 'error' => $validationResult['code']]);
+                }
+    
+                $uploadResult = UploadFile::uploadToCloudinary($uploadedFile);
+                if ($uploadResult['error']) {
+                    return parent::sendResponse(['statusCode' => 500, 'message' => $uploadResult['message'], 'error' => $uploadResult['details']]);
+                }
+    
+                $imageUrl = $uploadResult['url'];
+                $publicId = $uploadResult['public_id'];
+            }
+    
+            // Guardar Product
+            if ($product->save()) {
+                $product = Product::findOne($product->id);
+    
+                // Si se subió una imagen a Cloudinary, guardar ProductImage
+                if ($imageUrl) {
+                    $productImage = new Productimage();
+                    $productImage->idproduct = $product->id; // Asignar el ID del producto
+                    $productImage->imagepath = $imageUrl; // Asignar la URL de la imagen
+                    $productImage->name = $publicId; // Asignar el public_id como nombre
+                    if (!$productImage->save()) {
+                        return parent::sendResponse(['statusCode' => 500, 'message' => 'No se pudo guardar ProductImage', 'errors' => $productImage->errors]);
+                    }
+                }
+    
+                return parent::sendResponse([
+                    'statusCode' => 201,
+                    'message' => 'Producto creado con éxito',
+                    'data' => $product
+                ]);
+            } else {
+                return parent::sendResponse(['statusCode' => 400, 'message' => 'No se pudo crear el producto', 'errors' => $product->errors]);
+            }
         } else {
-            return parent::sendResponse(['statusCode' => 400, 'message' => 'No se pudo crear el producto', 'errors' => $product->errors]);
+            return parent::sendResponse(['statusCode' => 400, 'message' => 'Datos inválidos', 'errors' => $productForm->errors]);
         }
     }
+    
 
     public function actionEdit($id)
     {

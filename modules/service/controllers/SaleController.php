@@ -229,11 +229,31 @@ class SaleController extends BaseController
             $newProduct = new Product();
             $newProduct->name = $productData['name'];
             $newProduct->price = $productData['price'];
-            $newProduct->idunit = $productData['idunit'] ?? null; // Asegúrate de manejar el caso si idunit no está definido
+            $newProduct->idunit = $productData['idunit'] ?? null;
             $newProduct->idstatus = 1;
             $newProduct->iduser = $user->iduser;
-    
-            // Validar y guardar el producto
+         
+            if ($newProduct->idunit == null) {
+                $unit = Unit::find()->where(['is not', 'order', null])->orderBy(['order' => SORT_ASC])->one();
+                if ($unit !== null) {
+                    $newProduct->idunit = $unit->id;
+                }
+            }
+
+            if (isset($productData['codigoProducto']) && $productData['codigoProducto'] != null) {
+                $listaProductoServicio = SincronizarListaProductosServicios::find()->where(['codigoProducto' => $productData['codigoProducto']])->one();
+                $newProduct->idsincronizarListaProductosServicios = $listaProductoServicio->id;
+            } else {
+                $listaProductoServicio = SincronizarListaProductosServicios::find()
+                    ->where(['is not', 'order', null])
+                    ->orderBy(['order' => SORT_ASC])
+                    ->one();
+                    
+                if ($listaProductoServicio != null) {
+                    $newProduct->idsincronizarListaProductosServicios = $listaProductoServicio->id;
+                }
+            }
+
             if (!$newProduct->validate()) {
                 
                 return [
