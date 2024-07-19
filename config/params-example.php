@@ -18,4 +18,9 @@ return [
         'api_secret' => 'your_api_secret',
         'cloud_name' => 'your_cloud_name',
     ],
+    'mail' => [
+        'emailAddress' => 'example@gmail.com',
+        'emailKey' => '***********',
+        'emailHost' => 'smtp.gmail.com'
+    ]
 ];
