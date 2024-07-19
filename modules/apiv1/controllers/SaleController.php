@@ -3,14 +3,12 @@ namespace app\modules\apiv1\controllers;
 
 
 use Yii;
-use app\modules\apiv1\helpers\DbConnection;
 use app\models\Customer;
 use app\models\Product;
 use app\models\Unit;
 use app\models\Document;
 use yii\data\ActiveDataProvider;
 use app\modules\apiv1\controllers\BaseController;
-use yii\web\NotFoundHttpException;
 use app\modules\apiv1\models\SaleForm;
 use app\modules\apiv1\models\Sale;
 use app\models\Invoice;
@@ -21,6 +19,9 @@ use app\modules\apiv1\models\ProductBranch; // configuracion de los productos
 use app\models\DocumentType;
 use app\modules\apiv1\models\Store;
 use app\modules\apiv1\models\SincronizarListaProductosServicios;
+
+use app\modules\apiv1\models\SiatTipoDocumentoIdentidad;
+use app\modules\apiv1\helpers\ValidateNit;
 
 use app\modules\ioLib\models\WsdlSiat;
 
@@ -58,6 +59,21 @@ class SaleController extends BaseController
 
         $user = Yii::$app->user->identity;
         if ($saleForm->validate()) {
+            // AQUI VALIDAMOS QUE SEA UN NIT
+            if(!$saleForm->validateCodigoExcepcion) { // en caso que sea falso quiere decir que ese nit no se ha validado
+                $siatTipoDoc = SiatTipoDocumentoIdentidad::findOne(['id' => $saleForm->idtypeDocument]); // consultar si debe validad ese nit
+                if($siatTipoDoc->commandVerified == 'verificarNit') { // Es un documento que debe ser validado en impuesto
+                    $codigoExcepcion = ValidateNit::isValid($saleForm->numeroDocumento);
+                    if($codigoExcepcion == 0) {
+                        return parent::sendResponse([
+                            'statusCode' => 422,
+                            'message' => "El documento '" . $siatTipoDoc->descripcion . "' con el numero '" . $saleForm->numeroDocumento . "' no es valido con Impuestos SIAT!",
+                        ]);
+                    } 
+                }
+            }
+           
+            // $saleForm->numeroTarjeta; // Este campo tiene el numero de tarjeta
             // Se verifica y se registra el producto
             $products = $this->saveProducts($saleForm->products, $user);
             if (isset($products['statusCode']) && $products['statusCode'] == 500) {
@@ -192,6 +208,7 @@ class SaleController extends BaseController
             ]);
         }
     }
+    
     public function actionCreate0()
     {  
        
@@ -337,8 +354,7 @@ class SaleController extends BaseController
             ]);
         }
     }
- 
-    
+
     public function actionProductsBySale($idsale)
     {
         $sale = $this->modelClass::find()->where(['id' => $idsale])->with('productStocks')->one();

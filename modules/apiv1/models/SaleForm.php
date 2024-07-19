@@ -8,6 +8,8 @@ use app\models\Product;
 use app\models\Customer;
 use app\modules\apiv1\models\Unit;
 use app\modules\apiv1\models\SincronizarListaProductosServicios;
+use app\modules\apiv1\models\SiatTipoDocumentoIdentidad;
+use app\modules\apiv1\models\MetodoPago;
 
 class SaleForm extends Model
 {
@@ -21,6 +23,8 @@ class SaleForm extends Model
     public $idcustomer;
     public $isInvoice;
     public $codigoMetodoPago;
+    public $validateCodigoExcepcion;
+    public $numeroTarjeta;
 
     public function rules()
     {
@@ -30,6 +34,8 @@ class SaleForm extends Model
                 return $model->isInvoice;
             }],
             [['idtypeDocument', 'codigoMetodoPago'], 'integer'],
+            ['idtypeDocument', 'validateIdtypeDocument'], 
+            ['codigoMetodoPago', 'validateCodigoMetodoPago'], 
             ['razonSocial', 'required', 'when' => function ($model) {
                 return $model->isInvoice;
             }],
@@ -45,7 +51,38 @@ class SaleForm extends Model
             ['products', 'required', 'message' => 'El campo Productos no puede estar vacío.'],
             ['products', 'validateProducts'],
             ['total', 'number', 'min' => 0, 'message' => 'El campo Total debe ser un número mayor o igual a cero.'],
+            ['numeroTarjeta', 'validateNumeroTarjeta'],
+            ['validateCodigoExcepcion', 'required'],
+            ['validateCodigoExcepcion', 'boolean'], 
         ];
+    }
+
+    public function validateNumeroTarjeta($attribute, $params)
+    {
+        if ($this->$attribute === null || $this->$attribute === '') {
+            return;
+        }
+
+        // Expresión regular para el formato 1234-xxxx-xxxx-5678
+        $pattern = '/^\d{4}-x{4}-x{4}-\d{4}$/';
+
+        if (!preg_match($pattern, $this->$attribute)) {
+            $this->addError($attribute, 'El formato del número de tarjeta no es válido. Debe ser 1234-xxxx-xxxx-5678.');
+        }
+    }
+
+    public function validateIdtypeDocument($attribute, $params)
+    {
+        if (!SiatTipoDocumentoIdentidad::findOne($this->$attribute)) {
+            $this->addError($attribute, 'El tipo de documento no es válido.');
+        }
+    }
+
+    public function validateCodigoMetodoPago($attribute, $params)
+    {
+        if (!MetodoPago::findOne($this->$attribute)) {
+            $this->addError($attribute, 'El código de método de pago no es válido.');
+        }
     }
 
     public function validateProducts($attribute, $params)
