@@ -56,7 +56,11 @@ class LoginController extends BaseController
                 return parent::sendResponse("Invalid username or password", 401, "Unauthorized");
             }
         } else {
-            return parent::sendResponse("Validation failed", 422, null, $loginForm->errors);
+            return parent::sendResponse([
+                'statusCode' => 422,
+                'message' => 'Validation failed',
+                'errors' => $loginForm->errors
+    ]);
         }
     }
 

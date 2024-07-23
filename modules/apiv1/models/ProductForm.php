@@ -7,6 +7,9 @@ use app\modules\apiv1\models\Unit;
 use app\models\Category; 
 
 class ProductForm extends Model {
+    const SCENARIO_CREATE = 'create';
+    const SCENARIO_UPDATE = 'update';
+
     public $idcategory;
     public $idunit;
     public $name;
@@ -20,13 +23,22 @@ class ProductForm extends Model {
     public function rules()
     {
         return [
-            [['name', 'price', 'codigoProducto'], 'required'],
+            [['name', 'price'], 'required'],
+            [['codigoProducto'], 'required', 'on' => self::SCENARIO_CREATE],
             [['price', 'codigoProducto', 'idstatus'], 'number'],
             [['idstatus'], 'default', 'value' => 1],
             [['recycleBin'], 'default', 'value' => false],
             [['idunit'], 'validateIdunit'],
             [['idcategory'], 'validateCategory'],
         ];
+    }
+
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios[self::SCENARIO_CREATE] = ['idcategory', 'idunit', 'name', 'price', 'barcode', 'recycleBin', 'idstatus', 'description', 'codigoProducto'];
+        $scenarios[self::SCENARIO_UPDATE] = ['idcategory', 'idunit', 'name', 'price', 'barcode', 'recycleBin', 'idstatus', 'description'];
+        return $scenarios;
     }
 
     public function validateIdunit($attribute, $params)

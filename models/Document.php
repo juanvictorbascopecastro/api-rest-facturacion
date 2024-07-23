@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\models\DocumentType;
 use Yii;
 
 /**
@@ -24,29 +25,26 @@ use Yii;
  * @property int|null $idproductionOrder
  * @property int|null $idadjustment
  */
-class Document extends \yii\db\ActiveRecord
-{
+class Document extends \yii\db\ActiveRecord {
+
     public static $customDb;
 
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'document';
     }
 
-    public static function getDb()
-    {
+    public static function getDb() {
         return Yii::$app->iooxsBranch;
     }
 
-    public static function setCustomDb($db)
-    {
+    public static function setCustomDb($db) {
         self::$customDb = $db;
     }
+
     /**
      * {@inheritdoc}
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['dateCreate'], 'safe'],
             [['recycleBin'], 'boolean'],
@@ -60,8 +58,7 @@ class Document extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => 'ID',
             'dateCreate' => 'Date Create',
@@ -86,8 +83,30 @@ class Document extends \yii\db\ActiveRecord
      * {@inheritdoc}
      * @return DocumentQuery the active query used by this AR class.
      */
-    public static function find()
-    {
+    public static function find() {
         return new DocumentQuery(get_called_class());
+    }
+
+    public function setNumber() {
+        $q = 'SELECT MAX("number") FROM document WHERE "recycleBin"=false';
+        $command = Yii::$app->iooxsBranch->createCommand($q);
+        $number = $command->queryScalar();
+        
+        $number = $number == null ? 1 : $number + 1;
+
+        $this->number = $number;
+    }
+
+    public function getIddocumentType0() {
+        return $this->hasOne(DocumentType::class, ['id' => 'iddocumentType']);
+    }
+
+    public function beforeSave($insert) {
+
+        if ($this->scenario == 'default') {
+            $this->setNumber();
+        }
+
+        return true; // Permitir que la acción continúe
     }
 }

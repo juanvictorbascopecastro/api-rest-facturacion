@@ -2,6 +2,12 @@
 
 namespace app\models;
 
+use app\models\IoSystemBranch; 
+use app\models\SiatSystem; 
+
+
+
+
 use Yii;
 
 /**
@@ -74,4 +80,15 @@ class SiatBranch extends \yii\db\ActiveRecord
             'signerPassword' => 'Signer Password',
         ];
     }
+    
+    public function getIo() {
+        return $this->hasOne(IoSystemBranch::class, ['id' => 'id']);
+    }
+    
+    public function getIdsiatSystem0() {
+        return $this->hasOne(SiatSystem::class, ['id' => 'idsiatSystem']);
+    }
+    
+   
+    
 }

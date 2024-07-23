@@ -22,5 +22,9 @@ return [
         'emailAddress' => 'example@gmail.com',
         'emailKey' => '***********',
         'emailHost' => 'smtp.gmail.com'
+    ],
+    'whatsapp' => [
+        'token' => '',
+        'phone' => ''
     ]
 ];

@@ -7,7 +7,7 @@ use Yii;
 
 class SiatunidadmedidaController extends BaseController
 {
-    public $modelClass = 'app\modules\apiv1\models\SiatUnidadMedida';
+    public $modelClass = 'app\modules\apiv1\models\UnidadMedida';
     public function actions()
     {
         $actions = parent::actions();

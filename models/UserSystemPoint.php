@@ -15,29 +15,30 @@ use Yii;
  * @property int $idstatus
  * @property int|null $iduser
  */
-class UserSystemPoint extends \yii\db\ActiveRecord
-{
+class UserSystemPoint extends \yii\db\ActiveRecord {
+
+    public static $statusACTIVO = 10;
+    public static $statusINACTIVO = 60;
+    public static $statusBLOQUEADO = 70;
+
     /**
      * {@inheritdoc}
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'siat.userSystemPoint';
     }
 
     /**
      * @return \yii\db\Connection the database connection used by this AR class.
      */
-    public static function getDb()
-    {
+    public static function getDb() {
         return Yii::$app->get('iooxsBranch');
     }
 
     /**
      * {@inheritdoc}
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['dateCreate'], 'safe'],
             [['recycleBin'], 'boolean'],
@@ -51,8 +52,7 @@ class UserSystemPoint extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => 'ID',
             'dateCreate' => 'Date Create',
@@ -62,5 +62,16 @@ class UserSystemPoint extends \yii\db\ActiveRecord
             'idstatus' => 'Idstatus',
             'iduser' => 'Iduser',
         ];
+    }
+
+    public function getIdsystemPoint0() {
+        return $this->hasOne(SystemPoint::class, ['id' => 'idsystemPoint']);
+    }
+
+    public function getModel() {
+        return UserSystemPoint::find()
+                        ->where(['iduserEnabled' => Yii::$app->user->getId()])
+                        ->andWhere(['idstatus' => UserSystemPoint::$statusACTIVO])
+                        ->one();
     }
 }

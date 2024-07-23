@@ -19,6 +19,9 @@ use Yii;
  */
 class SiatToken extends \yii\db\ActiveRecord
 {
+     public static $statusACTIVO = 10;
+    public static $statusINACTIVO = 60;
+    public static $statusFINALIZADO = 100;
     /**
      * {@inheritdoc}
      */

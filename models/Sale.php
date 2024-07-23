@@ -2,9 +2,59 @@
 
 namespace app\models;
 
+use app\models\SystemPoint;
 use Yii;
 
 class Sale extends \yii\db\ActiveRecord {
+
+    public $WindowTitle = '';
+    public $editable = true;
+    public $statusPROCESADO = 40;
+    public $statusANULADO = 80;
+    public $idmark;
+    public $modelInvoice;
+    public $modalidad;
+    public $activadoCodigoModalidad = false;
+    public $dateBegin;
+    public $dateEnd;
+    public $numeroTarjetaBegin;
+    public $numeroTarjetaEnd;
+    public $productSearch;
+    public $printTicket = false;
+    public $fieldCafc = false;
+    public $cafc = null;
+    public $codigoExcepcion = 0;
+    public $codigoExcepcion2 = 0;
+    public $contingencia;
+    public $idcontingencia;
+    public $activatedSaleMetodoPago = false;
+    public $metodosPago;
+    public $isInvoice;
+    public $nameCustomer;
+    public $balanceCustomer;
+    public $dataProducts = array();
+    public $printDirectly = 0;
+    public $masivaFactura = 0;
+    //codigoDocumentoSector=02 inmueble
+    public $periodoFacturado;
+    //codigoDocumentoSector=06 turismo
+    public $cantidadHuespedes;
+    public $cantidadHabitaciones;
+    public $cantidadMayores;
+    public $cantidadMenores;
+    public $invoiceSecond = false;
+    public $numeroFactura2 = null;
+    public $idproduct;
+    public $product;
+    public $date = 2;
+    public $dateYear;
+    public $dateMonth;
+    public $onDELIVERY = false;
+    public $deadlineDELIVERY;
+    public $idcityDELIVERY;
+    public $addressDELIVERY;
+    public $phoneDELIVERY;
+    public $noteDELIVERY;
 
     public static function tableName() {
         return 'sale';
@@ -84,4 +134,26 @@ class Sale extends \yii\db\ActiveRecord {
         return new SaleQuery(get_called_class());
     }
 
+    public function getIdsystemPoint0() {
+        return $this->hasOne(SystemPoint::class, ['id' => 'idsystemPoint']);
+    }
+
+    public function beforeSave($insert) {
+
+        if ($this->scenario == 'default') {
+            $this->iduser = Yii::$app->user->getId();
+            $this->setNumber();
+        }
+
+        return true; // Permitir que la acción continúe
+    }
+
+    public function setNumber() {
+        $q = 'select max(number) from sale where "recycleBin"=false';
+        $command = Yii::$app->iooxsBranch->createCommand($q);
+        $number = $command->queryScalar();
+        $number = $number == null ? 1 : $number + 1;
+
+        $this->number = $number;
+    }
 }

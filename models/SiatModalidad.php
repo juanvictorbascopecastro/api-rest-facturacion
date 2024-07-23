@@ -15,29 +15,31 @@ use Yii;
  * @property string|null $modalidad
  * @property int|null $codigoModalidad
  */
-class SiatModalidad extends \yii\db\ActiveRecord
-{
+class SiatModalidad extends \yii\db\ActiveRecord {
+
+    public static $codigoModalidadELECTRONICA = 1;
+    public static $codigoModalidadCOMPUTARIZADA = 2;
+    public static $codigoModalidadMANUAL = 10;
+    public static $codigoModalidadCOMPUTARIZADA_v0 = 11;
+
     /**
      * {@inheritdoc}
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'siat.siatModalidad';
     }
 
     /**
      * @return \yii\db\Connection the database connection used by this AR class.
      */
-    public static function getDb()
-    {
+    public static function getDb() {
         return Yii::$app->get('iooxs_access');
     }
 
     /**
      * {@inheritdoc}
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['id', 'idstatus'], 'required'],
             [['id', 'iduser', 'idstatus', 'codigoModalidad'], 'default', 'value' => null],
@@ -52,8 +54,7 @@ class SiatModalidad extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => 'ID',
             'dateCreate' => 'Date Create',

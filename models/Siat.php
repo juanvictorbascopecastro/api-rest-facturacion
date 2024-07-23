@@ -59,4 +59,61 @@ class Siat extends \yii\db\ActiveRecord
             'connection' => 'Connection',
         ];
     }
+    
+    
+    public function cfg() {
+        $model = Siat::model()->findByPk(1);
+        if ($model == null) {
+            $model = new Siat();
+            $model->id = 1;
+            $model->save();
+            //model->connention=1;
+        }
+        return $model;
+    }
+    
+    public function conn($valueConnection = -1) {
+
+//        if(Yii::app()->user->getId()==1030)return 0;
+        $model = Siat::model()->findByPk(1);
+        if ($model == null) {
+            $model = new Siat();
+            $model->id = 1;
+            $model->save();
+            //model->connention=1;
+        }
+
+        $model = Siat::model()->findByPk(1);
+        if ($valueConnection != -1) {
+            $model->connection = $valueConnection;
+            $model->save();
+        }
+        return $model->connection;
+    }
+
+    public function sincronizarFechaHora() {
+        $wsdlSiat = new wsdlSiat('FacturacionSincronizacion');
+        $codigoPuntoVenta = 0;
+        $modelSystemPoint = SystemPoint::model()->find('"codigoPuntoVenta"=' . $codigoPuntoVenta);
+
+        $params = array(
+            'SolicitudSincronizacion' => array(
+                'codigoAmbiente' => $modelSystemPoint->idsiatBranch0->codigoAmbiente,
+                'codigoPuntoVenta' => $modelSystemPoint->codigoPuntoVenta,
+                'cuis' => $modelSystemPoint->SiatCuisActive()->cuis,
+                'codigoSistema' => $modelSystemPoint->idsiatBranch0->codigoSistema,
+                'codigoSucursal' => $modelSystemPoint->idsiatBranch0->codigoSucursal,
+                'nit' => $wsdlSiat::$nit
+        ));
+        $date = null;
+        if ($wsdlSiat->success()) {
+            $respons = $wsdlSiat::run('sincronizarFechaHora', $params);
+            if ($respons != false) {
+                $date = $respons->RespuestaFechaHora->fechaHora;
+            }
+        }
+        if ($date == null)
+            $date = Yii::app()->iooxsBranch->createCommand("select CAST(now() AS timestamp) + CAST('00:00:1.850' AS time)")->queryScalar();
+        return $date . '-04';
+    }
 }

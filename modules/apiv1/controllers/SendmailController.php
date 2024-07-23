@@ -7,7 +7,6 @@ use yii\web\Controller;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use app\modules\apiv1\models\Email;
-use yii\filters\Cors;
 
 class SendmailController extends Controller
 {

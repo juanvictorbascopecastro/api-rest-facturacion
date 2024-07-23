@@ -1,6 +1,9 @@
 <?php
 
 namespace app\models;
+use yii\data\ActiveDataProvider;
+
+use app\models\Product; 
 
 use Yii;
 
@@ -28,29 +31,26 @@ use Yii;
  * @property Purchase $idpurchase0
  * @property Sale $idsale0
  */
-class Productstock extends \yii\db\ActiveRecord
-{
+class Productstock extends \yii\db\ActiveRecord {
+
     public static $customDb;
 
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'productstock';
     }
 
-    public static function getDb()
-    {
+    public static function getDb() {
         return Yii::$app->iooxsBranch;
     }
 
-    public static function setCustomDb($db)
-    {
+    public static function setCustomDb($db) {
         self::$customDb = $db;
     }
+
     /**
      * {@inheritdoc}
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['dateCreate'], 'safe'],
             [['recycleBin'], 'boolean'],
@@ -66,8 +66,7 @@ class Productstock extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => 'ID',
             'dateCreate' => 'Date Create',
@@ -94,8 +93,7 @@ class Productstock extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery|PurchaseQuery
      */
-    public function getIdpurchase0()
-    {
+    public function getIdpurchase0() {
         return $this->hasOne(Purchase::class, ['id' => 'idpurchase']);
     }
 
@@ -104,19 +102,37 @@ class Productstock extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery|SaleQuery
      */
-    public function getIdsale0()
-    {
+    public function getIdsale0() {
         return $this->hasOne(Sale::class, ['id' => 'idsale']);
+    }
+    
+    public function getIdproduct0() {
+        return $this->hasOne(Product::class, ['id' => 'idproduct']);
     }
 
     /**
      * {@inheritdoc}
      * @return ProductstockQuery the active query used by this AR class.
      */
-    public static function find()
-    {
+    public static function find() {
         return new ProductstockQuery(get_called_class());
     }
 
-    
+    public function getDocument($idDocument) {
+        $query = self::find()
+                ->where(['iddocument' => $idDocument])
+                ->andWhere(['nprocess' => 1]);
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => false,
+            'sort' => [
+                'defaultOrder' => [
+                    'id' => SORT_ASC,
+                ],
+            ],
+        ]);
+
+        return $dataProvider;
+    }
 }

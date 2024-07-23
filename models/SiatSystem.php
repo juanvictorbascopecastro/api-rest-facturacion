@@ -2,6 +2,9 @@
 
 namespace app\models;
 
+
+use app\models\IoSystem; 
+
 use Yii;
 
 /**
@@ -83,5 +86,10 @@ class SiatSystem extends \yii\db\ActiveRecord
             'v0_razonSocial' => 'V0 Razon Social',
             'v0_masivaFactura' => 'V0 Masiva Factura',
         ];
+    }
+    
+    
+    public function getIo() {
+        return $this->hasOne(IoSystem::class, ['id' => 'id']);
     }
 }

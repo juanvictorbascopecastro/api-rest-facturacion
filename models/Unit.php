@@ -1,6 +1,7 @@
 <?php
 
 namespace app\models;
+use app\models\SiatUnidadMedida;
 
 use Yii;
 
@@ -58,5 +59,11 @@ class Unit extends \yii\db\ActiveRecord
     public static function find()
     {
         return new UnitQuery(get_called_class());
+    }
+    
+    
+    public function getIdunitSiat0()
+    {
+        return $this->hasOne(SiatUnidadMedida::class, ['id' => 'idunitSiat']);
     }
 }

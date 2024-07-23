@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use app\models\City; 
+
 use Yii;
 
 /**
@@ -172,5 +174,9 @@ class IoSystemBranch extends \yii\db\ActiveRecord
     public function getCfgIoSystem()
     {
         return $this->hasOne(IoSystem::class, ['id' => 'idioSystem']);
+    }
+    
+     public function getIdcity0() {
+        return $this->hasOne(City::class, ['id' => 'idcity']);
     }
 }

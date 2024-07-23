@@ -13,7 +13,6 @@ use app\modules\apiv1\models\MetodoPago;
 
 class SaleForm extends Model
 {
-    public $idtypeDocument;
     public $razonSocial;
     public $numeroDocumento;
     public $phone;
@@ -21,29 +20,31 @@ class SaleForm extends Model
     public $discountamount;
     public $total;
     public $idcustomer;
-    public $isInvoice;
+    public $invoice;
     public $codigoMetodoPago;
     public $validateCodigoExcepcion;
     public $numeroTarjeta;
+    
+    public $codigoTipoDocumentoIdentidad;
 
     public function rules()
     {
         return [
-            [['idtypeDocument', 'discountamount', 'codigoMetodoPago', 'isInvoice'], 'required'],
-            ['idtypeDocument', 'required', 'when' => function ($model) {
-                return $model->isInvoice;
+            [['codigoTipoDocumentoIdentidad', 'discountamount', 'codigoMetodoPago', 'invoice'], 'required'],
+            ['codigoTipoDocumentoIdentidad', 'required', 'when' => function ($model) {
+                return $model->invoice;
             }],
-            [['idtypeDocument', 'codigoMetodoPago'], 'integer'],
-            ['idtypeDocument', 'validateIdtypeDocument'], 
+            [['codigoTipoDocumentoIdentidad', 'codigoMetodoPago'], 'integer'],
+            ['codigoTipoDocumentoIdentidad', 'validateCodigoTipoDocumento'], 
             ['codigoMetodoPago', 'validateCodigoMetodoPago'], 
             ['razonSocial', 'required', 'when' => function ($model) {
-                return $model->isInvoice;
+                return $model->invoice;
             }],
             ['razonSocial', 'string', 'max' => 255],
             ['numeroDocumento', 'required', 'when' => function ($model) {
-                return $model->isInvoice;
+                return $model->invoice;
             }],
-            ['isInvoice', 'boolean'],
+            ['invoice', 'boolean'],
             ['numeroDocumento', 'string', 'max' => 20],
             ['phone', 'string', 'max' => 20],
             ['discountamount', 'number', 'min' => 0],
@@ -54,6 +55,8 @@ class SaleForm extends Model
             ['numeroTarjeta', 'validateNumeroTarjeta'],
             ['validateCodigoExcepcion', 'required'],
             ['validateCodigoExcepcion', 'boolean'], 
+                    
+            ['codigoTipoDocumentoIdentidad', 'number', 'min' =>1],
         ];
     }
 
@@ -71,10 +74,10 @@ class SaleForm extends Model
         }
     }
 
-    public function validateIdtypeDocument($attribute, $params)
+    public function validateCodigoTipoDocumento($attribute, $params)
     {
         if (!SiatTipoDocumentoIdentidad::findOne($this->$attribute)) {
-            $this->addError($attribute, 'El tipo de documento no es válido.');
+            $this->addError($attribute, 'El codigo tipo de documento no es válido.');
         }
     }
 
@@ -142,6 +145,7 @@ class SaleForm extends Model
                     $this->addError($attribute, "El producto en la posición $index no existe en la base de datos.");
                 }
                 
+                // CODIGO PARA VERIFICAR EL STOCK 
                 $productBranch = ProductBranch::findOne($product['id']);
                 if ($productBranch && $productBranch->controlInventory) { // si esta activo el control de invetario
                     if (isset($product['idStore']) && !empty($product['idStore'])) {  // Verificar si se proporciona un idStore

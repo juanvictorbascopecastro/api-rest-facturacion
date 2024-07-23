@@ -36,21 +36,25 @@ class BaseController extends Controller
         return parent::beforeAction($action);
     }
 
-    protected function sendResponse($message, $statusCode, $name = null, $errors = null)
+    protected function sendResponse($response)
     {
-        Yii::$app->response->statusCode = $statusCode;
+        Yii::$app->response->statusCode = $response['statusCode'];
 
-        $response = ['message' => $message];
+        $responseData = ['message' => $response['message']];
 
-        if ($name !== null) {
-            $response['name'] = $name;
+        if (isset($response['name'])) {
+            $responseData['name'] = $response['name'];
         }
 
-        if ($errors !== null) {
-            $response['errors'] = $errors;
+        if (isset($response['errors'])) {
+            $responseData['errors'] = $response['errors'];
         }
 
-        return $response;
+        if (isset($response['data'])) {
+            $responseData['data'] = $response['data'];
+        }
+
+        return $responseData;
     }
 
 }

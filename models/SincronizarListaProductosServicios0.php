@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;    
+namespace app\models;
 
 use Yii;
 
@@ -15,7 +15,7 @@ use Yii;
  * @property string|null $descripcionProducto
  * @property int|null $iduser
  */
-class SincronizarListaProductosServicios extends \yii\db\ActiveRecord
+class SincronizarListaProductosServicios extends \yii\db\ActiveRecord 
 {
     /**
      * {@inheritdoc}
@@ -28,9 +28,9 @@ class SincronizarListaProductosServicios extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\Connection the database connection used by this AR class.
      */
-    public static function getDb()  
+    public static function getDb()
     {
-        return Yii::$app->get('iooxsBranch'); 
+        return Yii::$app->get('iooxsBranch');
     }
 
     /**

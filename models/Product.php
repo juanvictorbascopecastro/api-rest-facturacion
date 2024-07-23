@@ -2,6 +2,9 @@
 
 namespace app\models;
 
+use app\models\SincronizarListaProductosServicios;
+use app\models\Unit;
+
 use Yii;
 
 
@@ -66,6 +69,11 @@ class Product extends \yii\db\ActiveRecord
         return $this->hasOne(Category::class, ['id' => 'idcategory']);
     }
 
+    public function getIdsincronizarListaProductosServicios0()
+    {
+        return $this->hasOne(SincronizarListaProductosServicios::class, ['id' => 'idsincronizarListaProductosServicios']);
+    }
+    
     public function getIdunit0()
     {
         return $this->hasOne(Unit::class, ['id' => 'idunit']);

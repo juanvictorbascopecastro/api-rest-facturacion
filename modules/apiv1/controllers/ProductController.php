@@ -56,6 +56,7 @@ class ProductController extends BaseController
     {
         $user = Yii::$app->user->identity;
         $productForm = new ProductForm();
+        $productForm->scenario = ProductForm::SCENARIO_CREATE;
     
         if ($productForm->load(Yii::$app->request->post(), '') && $productForm->validate()) {
             $product = new Product();
@@ -150,6 +151,7 @@ class ProductController extends BaseController
         $product->attributes = Yii::$app->request->post();
 
         $productForm = new ProductForm();
+        $productForm->scenario = ProductForm::SCENARIO_UPDATE;
         $productForm->attributes = Yii::$app->request->post();
         
         if ($productForm->validate()) {
