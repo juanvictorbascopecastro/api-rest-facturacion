@@ -1,0 +1,38 @@
+<?php 
+namespace app\modules\apiv1\helpers;
+
+use app\modules\apiv1\models\SiatTipoDocumentoIdentidad;
+use app\modules\ioLib\helpers\WsdlSiat; 
+use app\models\Siat;
+
+class ValidateNit {
+
+    public static function isValid ($nit) {
+        $codigoExcepcion = 0;
+
+        $wsdlSiat = new wsdlSiat('ServicioFacturacionCompraVenta');
+        if ($wsdlSiat->success()) {
+            $resp = $wsdlSiat->run('verificarComunicacion');
+            // print_r($resp);
+            if ($resp->return->transaccion == 1) {
+                //echo '[x]';
+                Siat::model()->conn(1);
+            } else {
+                Siat::model()->conn(0);
+            }
+        }
+
+
+        $connection = Siat::model()->cfg()->connection;
+        $msg = '';
+        if ($connection == 1) {
+            //echo '[xx]';
+            $codigoExcepcion = SiatTipoDocumentoIdentidad::model()->verifiedNit($nit, $msg);
+        }
+
+        $data = ['codigoExcepcion' => $codigoExcepcion, 'msg' => $msg, 'connection' => $connection];
+
+        echo CJSON::encode($data);
+        return $data;
+    }
+}
